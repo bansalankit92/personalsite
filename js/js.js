@@ -44,7 +44,7 @@
 
 			(function () {
 					
-						$(".navbar").hide();
+					//	$(".navbar").hide();
 					
 					 $('a.page-scroll').click(function() {
 					if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
@@ -52,7 +52,7 @@
 					  target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
 					  if (target.length) {
 						$('html,body').animate({
-						  scrollTop: target.offset().top - 40
+						  scrollTop: target.offset().top
 						}, 900);
 						return false;
 					  }
@@ -66,9 +66,9 @@
 							$('.navbar-default').removeClass('on');
 						}
 						if ($(this).scrollTop() > 600) {
-							$('.navbar').fadeIn();
+							$('.navbar').show();
 						} else {
-							$('.navbar').fadeOut();
+							$('.navbar').hide();
 						}
 					});
 

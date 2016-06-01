@@ -57,16 +57,26 @@
     </head>
     <body ng-app="app">
     
-        <nav id="menu" class="navbar navbar-default navbar-fixed-top">
-            <div class="container">
-                 <div class="navbar-header">
+        <nav id="menu" class="navbar navbar-default   "  role="navigation">
+           
+                  <!--<div class="navbar-header">
                       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
                       <a class="navbar-brand" href="index.html">Ankit Bansal</a></div>
 
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                      <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#home" class="page-scroll">Home</a></li>
+                    Collect the nav links, forms, and other content for toggling -->
+					
+					<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+					
+                    <div class="collapse navbar-collapse navbar-ex1-collapse" id="bs-example-navbar-collapse-1">
+                      <ul class="nav  navbar-nav ">
+                        <!--li><a href="#home" class="page-scroll">Home</a></li-->
                         <li><a href="#profile_section" class="page-scroll">Profile</a></li>
                         <li><a href="#experience-section" class="page-scroll">Experiences</a></li>
                         <li><a href="#abilities_section" class="page-scroll">Abilities</a></li>
@@ -74,7 +84,7 @@
                         <li><a href="#contact-section" class="page-scroll">Contact</a></li>
                       </ul>
                     </div>            
-            </div>
+            
         </nav>
 
         
@@ -83,9 +93,11 @@
 				<h1  class="wow zoomIn">I am <span typed class="brand">Ankit Bansal</span></h1>
 				<p  class="wow fadeInDown" data-wow-delay="600ms">tech enthusiast / full stack developer / geek</p>
 			</div>
-		   <div class="clearfix">
-				<a href="#about-section" class="btn btn-default btn-lg page-scroll wow fadeInDown" data-wow-delay="1000ms">Find Out More</a>
-     		</div>
+			<div class="clearfix"></div>
+			<div class="bounce"><a style="text-decoration : none;" href="#profile_section" class="page-scroll" ><i class="fa fa-angle-double-down"></i></a></div>
+		   <!--<button class="button page-scroll wow fadeInDown" data-wow-delay="1000ms">
+							<a href="#profile_section"  >Find Out More</a>
+						</button>-->
 			
 	 </header>
     
@@ -94,7 +106,7 @@
         <div class="profile_section" id="profile_section"> 
             <div class="container">
                 <div class="section-title text-center center wow fadeInDown">
-                    <h2>Projects</h2>
+                    <h2>Profile</h2>
                     <hr/>
                 </div>
                 <div class="row wow fadeInDown" data-wow-delay="200ms">
