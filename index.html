@@ -8,11 +8,23 @@
         <meta name="keywords" content=""/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         
-      
-        <!-- Latest compiled and minified CSS -->
-        
-        
-        <style>
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+		
+		<link href="css/owl.carousel.css" rel="stylesheet" media="screen">
+		<link href="css/owl.theme.css" rel="stylesheet" media="screen">
+
+		<!-- Stylesheet
+					================================================== -->
+		<link rel="stylesheet" type="text/css" href="css/animate.min.css">
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800,600,300' rel='stylesheet' type='text/css'>
+		<script type="text/javascript" src="js/modernizr.custom.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="css/css.css">
+		
+		<style>
             .typed-cursor{
                 opacity: 1;
                 -webkit-animation: blink 0.7s infinite;
@@ -34,6 +46,11 @@
                 50% { opacity:0; }
                 100% { opacity:1; }
             }
+			
+			
+
+}
+			
         </style>
         
     
@@ -60,14 +77,17 @@
             </div>
         </nav>
 
-        <br><br><br><br>
-        <header class="text-center" name="home">
+        
+        <header  class="text-center intro-bg" name="home">
             <div class="intro-text">
-            <h1  class="wow zoomIn">I am <span typed class="brand">Ankit Bansal</span></h1>
-            <p  class="wow fadeInDown" data-wow-delay="600ms">tech enthusiast / full stack developer / geek</p>
-            <div class="clearfix"></div>
-            <a href="#about-section" class="btn btn-default btn-lg page-scroll wow fadeInDown" data-wow-delay="1000ms">Find Out More</a> </div>
-        </header>
+				<h1  class="wow zoomIn">I am <span typed class="brand">Ankit Bansal</span></h1>
+				<p  class="wow fadeInDown" data-wow-delay="600ms">tech enthusiast / full stack developer / geek</p>
+			</div>
+		   <div class="clearfix">
+				<a href="#about-section" class="btn btn-default btn-lg page-scroll wow fadeInDown" data-wow-delay="1000ms">Find Out More</a>
+     		</div>
+			
+	 </header>
     
         
         
@@ -332,87 +352,77 @@
             </div>
         </div>
         
-     <div class="project-section" id="project-section"> 
-        <div class="container">
-            <div class="section-title text-center center wow fadeInDown">
-                <h2>Projects</h2>
-                <p class="lead">
-                    &ldquo;You can do anything you set your mind to.&rdquo;<br />- Benjamin Franklin
-                </p>
-                <hr/>
-            </div>
-            <div class="row wow fadeInDown" data-wow-delay="200ms">
-                
-            </div>
-        </div>
-    </div>
+		 <div class="project-section" id="project-section"> 
+			<div class="container">
+				<div class="section-title text-center center wow fadeInDown">
+					<h2>Projects</h2>
+					<p class="lead">
+						&ldquo;You can do anything you set your mind to.&rdquo;<br />- Benjamin Franklin
+					</p>
+					<hr/>
+				</div>
+				<div class="row wow fadeInDown" data-wow-delay="200ms">
+					
+				</div>
+			</div>
+		</div>
         
-	 <div class="contact-section" id="contact-section"> 
-        <div class="container">
-            <div class="section-title text-center center wow fadeInDown">
-                <h2>Contact Me</h2>
-                <p class="lead">
+        <div id="footer" class="text-center">
+		  <div class="container">
+			<p>Copyright &copy; Ankit Bansal. Design by <a href="#" rel="nofollow">Ankit Bansal</a></p>
+		  </div>
+		</div>
 
-                </p>
-                <hr/>
-            </div>
-            <div class="row wow fadeInDown" data-wow-delay="200ms">
-                
-            </div>
-        </div>
-    </div>
-        
+		<!-- Portfolio Modals --> 
+		<!-- Use the modals below to showcase details about your portfolio projects! --> 
+
+		<!-- Portfolio Modal 1 -->
+		<div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+		  <div class="modal-content">
+			<div class="close-modal" data-dismiss="modal">
+			  <div class="lr">
+				<div class="rl"> </div>
+			  </div>
+			</div>
+			<div class="container">
+			  <div class="row">
+				<div class="col-lg-8 col-lg-offset-2">
+				  <div class="modal-body"> 
+					<!-- Project Details Go Here -->
+					<h2>Project Title</h2>
+					<p class="item-intro">Lorem ipsum dolor sit amet consectetur.</p>
+					<img class="img-responsive img-centered" src="img/portfolio/01-preview.jpg" alt="">
+					<p>Lorem ipsum dolor sit amet, sea essent iisque iudicabit te, pro no justo delicata inimicus et oblique docendi laboramus eum. Ei minim fabulas pertinacia pro graeco urbanitas reformidans quoid.</p>
+					<ul class="list-inline">
+					  <li><span>Client</span>: John Doe</li>
+					  <li><span>Service</span>: Web Design</li>
+					</ul>
+					<button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
+				  </div>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</div>
     </body>
     
-    <script type="application/javascript">
-  
-        
-        var app = angular.module('app', []);
-app.directive('typed', ["$timeout", function ($timeout) {
-    return {
-        restrict: 'A',
-        link: function (scope, element, attr) {
-            element.typed({
-                strings: [ " Full Stack Developer", " Tech Enthusiast"," Geek"," Ankit Bansal"],
-                typeSpeed: 0.7,
-                // time before typing starts
-                startDelay: 0,
-                // backspacing speed
-                backSpeed: 0,
-                // time before backspacing
-                backDelay: 500,
-                // loop
-                loop: false,
-                // false = infinite
-                loopCount: false,
-                // show cursor
-                showCursor: true,
-                // character for cursor
-                cursorChar: "|",
-                // attribute to type (null == text)
-                attr: null,
-                // either html or text
-                contentType: 'html',
-                // call when done callback function
-                callback: function() {},
-                // starting callback function before each string
-                preStringTyped: function() {},
-                //callback for every typed string
-                onStringTyped: function() { },
-                // callback for reset
-                resetCallback: function() {}
-            });
-        }
-    }
-}]);
-    
-    </script>
-    
-	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-		
+   
+    <!--  Social Sections -->
+	<div id="social-section">
+  <div class="container">
+    <div class="social">
+      <ul>
+        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+        <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+        <li><a href="#"><i class="fa fa-github"></i></a></li>
+        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+	
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 
         <!-- Latest compiled and minified JavaScript -->
@@ -422,9 +432,21 @@ app.directive('typed', ["$timeout", function ($timeout) {
         
         <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/1.1.1/typed.min.js"></script>
     
-        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular.min.js"></script>
 
-       
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.js"></script>
+		
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.0/isotope.pkgd.js"></script>
+	    <script src=""></script>
+	    <script src=""></script>
+		
+		
+		<script type="text/javascript" src="js/SmoothScroll.js"></script> 
+		<script type="text/javascript" src="js/waypoints.js"></script> 
+		<script type="text/javascript" src="js/jqBootstrapValidation.js"></script> 
+		<script type="text/javascript" src="js/owl.carousel.js"></script> 
+
+        <script type="application/javascript" src="js/js.js"> </script>
 	
 	
 	
