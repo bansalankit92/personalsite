@@ -4,17 +4,14 @@
  //ref http://www.pascalvangemert.nl/#/profile
  //#F3ECEC
  
-.fa {
- width: 60px;
- display: block;
- text-align: center;
- color:white;
- font:normal 45px 'FontAwesome';
- line-height:60px;
- text-rendering: auto;
- -webkit-font-smoothing: antialiased;
-}
+
 .fa-angle-double-down:before {content: "\f103";}
+ 
+.fa-angle-double-down{
+	color:white;
+	font-size:60px;
+	
+}
  
 .bounce {
 	
