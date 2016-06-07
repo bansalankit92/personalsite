@@ -57,7 +57,7 @@
         
     
     </head>
-    <body ng-app="app">
+    <body ng-app="app" ng-controller="SiteController">
     
         <nav id="menu" class="navbar navbar-default   "  role="navigation">
            
@@ -114,17 +114,17 @@
                 <div class="row wow fadeInDown" data-wow-delay="200ms">
                     <div class="col-md-1 col-sm-11 col-xs-11"></div>
                     <div class="col-md-2 col-sm-11 col-xs-11">
-                        <h4 >Details</h4>
-                            <strong>Name:</strong><br />
-                            Ankit Bansal<br />
-                            <strong>Age:</strong><br />
-                            22 years<br />
-                            <strong>Location:</strong><br />
-                            1360, Anand Bhavan,<br />oppo Bharat Ratna Soc; <br/>Dehuroad Pune:412101	<p/>
+                        <h4 >Details</h4><br />
+                            <p><strong>Name:</strong><br />
+                            Ankit Bansal	</p>
+                           <p> <strong>Age:</strong><br />
+                            22 years	</p>
+                            <p><strong>Location:</strong><br />
+                            Pune:412101	</p>
                     </div>
                     <div class="col-md-6 col-sm-12 col-xs-12">
                        <h4 class="text-center">About Me</h4>
-                         <p>
+                         <p style="padding:25px;">
 							I am an allround Full Stack Java Developer. I love structure and order and I also stand for quality. I love spending time on fixing little details, optimizing web apps and Developing new apps.  Also I like working in a team, you'll learn faster and more. As the saying goes: 'two heads are better than one'.	
    						</p>
                     </div>
@@ -144,18 +144,36 @@
 					<a class="btn btn-social-icon " href="https://www.hackerearth.com/@bansal.ankit92"><img src="jpg/hackerearth.png"/></a>
 
 					<a class="btn btn-social-icon btn-social btn-twitter"> <span class="fa fa-twitter"></span></a>
+					
 				</div>
+				   
             </div>
         </div>
         
+		 <!--  Social Sections -->
+						<div id="social-section">
+					  <div class="container">
+						<div class="social">
+						  <ul>
+							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+							<li><a href="#"><i class="fa fa-github"></i></a></li>
+							<li><a href="#"><i class="fa fa-instagram"></i></a></li>
+							<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+						  </ul>
+						</div>
+					  </div>
+					</div>
 		
 		
-		<br><br><br>
         <div class="experience-section" id="experience-section">
-            <div class="container">
+         
+		  <div class="container">
                 <div class="section-title text-center center wow fadeInDown">
                     <h2>Experiences </h2>
-                    <p>nice quote</p>    
+                    <p>&ldquo;Given the choice between the experience of pain and nothing, I would choose pain.&rdquo; 
+― William Faulkner</p>    
                     <hr/>
                 </div>
                 <div class="row wow fadeInDown" data-wow-delay="200ms">
@@ -165,18 +183,19 @@
                         
                     </div>
                     <div class="col-md-9">
-                        <p><strong> GATE-2015 AIR-5322 Score-435</strong></p>
-                        <br/>
+					<br/>
+					
+                        
                         <div class="row">                            
                             <div class="col-md-8">
-                              <p> <strong>Oracle Certified SQL Expert</strong>
-                               <br/> Oracle University</p>
+                               <p><strong>Graduate Aptitude Test in Engineering-2015 </strong>
+							   <br/> AIR-5322 <br/>Score-435</p>
                             </div>   
                             <div class="col-md-4">
-                                <p>2014</p>
+                                <p>Feb-2015</p>
                             </div>  
                         </div>
-                        <br/>
+						<br/>
                         <div class="row">                            
                             <div class="col-md-8">
                                <p><strong>Bachelor- Computer Science and Engineering (65%)</strong>
@@ -199,8 +218,29 @@
                         
                     </div>
                 </div>
+				<br/>
+                <div class="row wow fadeInDown" data-wow-delay="200ms">
+
+				 <div class="col-md-1 col-sm-11 col-xs-11"></div>
+                    <div class="col-md-2">
+                        <h4><strong>Certification</strong></h4>
+                        
+                    </div>
+                    <div class="col-md-9">
+					<br/>
+                        <div class="row">                            
+                            <div class="col-md-8">
+                              <p> <strong>Oracle Certified SQL Expert</strong>
+                               <br/> Oracle University</p>
+                            </div>   
+                            <div class="col-md-4">
+                                <p>2014</p>
+                            </div>  
+                        </div>
+					</div>
+				</div>
             </div>
-            
+            <br/>
             <div class="container">
                <br/>
                 <div class="row wow fadeInDown" data-wow-delay="200ms">
@@ -210,7 +250,7 @@
                         
                     </div>
                     <div class="col-md-9">
-                       
+                       <br/>
                         <div class="row">                            
                             <div class="col-md-8">
                                <p><strong>Software Engineer</strong>
@@ -224,13 +264,14 @@
                                     <br/> I have learned lot of new technologies with rigorous training and can call myself as Full Stack Developer </p>
                             </div>   
                             <div class="col-md-4">
-                                <p>Sept 2016 (Present)</p>
+                                <p>Sept 2015 (Present)</p>
                             </div>  
                         </div>
                         
                         
                     </div>
                 </div>
+				<br/>
             </div>
         </div>
         
@@ -276,11 +317,19 @@
                         <p><strong>Development Languages</strong></p>                          
                     </div>
                     <div class="col-md-7 col-sm-12 col-xs-12">
-                        <p> HTML	</p>
-                        <p> CSS	</p>
-                        <p> Javascript</p>
+                        <div class="row">
+							<div class="col-md-4">
+								<p> HTML	</p>
+							</div>
+							<div class="progress-striped col-md-4">
+								<!--div class="progress-bar progress-bar-info six-sec-ease-in-out" role="progressbar" data-transitiongoal="60"></div-->
+								<uib-progressbar class="progress-striped active six-sec-ease-in-out" value="dynamic" type="{{type}}">{{type}} </uib-progressbar>
+							</div>
+						</div>
+							<p> CSS	</p>
+							<p> Javascript</p>
                         
-                    </div>                    
+                                       
                 </div>
                  <div class="row wow fadeInDown" data-wow-delay="200ms">
                     
@@ -474,21 +523,7 @@
     </body>
     
    
-    <!--  Social Sections -->
-	<div id="social-section">
-  <div class="container">
-    <div class="social">
-      <ul>
-        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-        <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-        <li><a href="#"><i class="fa fa-github"></i></a></li>
-        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-      </ul>
-    </div>
-  </div>
-</div>
+
 	
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 
@@ -504,6 +539,10 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.js"></script>
 		
 	    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.0/isotope.pkgd.js"></script>
+		
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.3.3/ui-bootstrap-tpls.js"></script>
+		
 	    <script src=""></script>
 	    <script src=""></script>
 		

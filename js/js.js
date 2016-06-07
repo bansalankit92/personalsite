@@ -1,5 +1,5 @@
 
-        var app = angular.module('app', []);
+        var app = angular.module('app', ['ui.bootstrap']);
 		app.directive('typed', ["$timeout", function ($timeout) {
 			return {
 				restrict: 'A',
@@ -36,7 +36,29 @@
 					});
 				}
 			}
-		}]);
+		}])
+		.controller('SiteController',function($scope){
+			
+			 var value = 60;
+				var type;
+
+				
+$scope.dynamic = value;
+    $scope.type = getType(value);
+						
+			
+		});
+		
+		function getType(value){
+			if (value < 25) {
+			  return 'Beginner';
+			}  else if (value < 75) {
+			  return 'Intermediate';
+			} else {
+			  return 'Expert';
+			}
+			
+		}
 		
 		main();
 		
@@ -44,7 +66,7 @@
 
 			(function () {
 					
-					//	$(".navbar").hide();
+						$(".navbar").hide();
 					
 					 $('a.page-scroll').click(function() {
 					if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
@@ -65,7 +87,7 @@
 						} else {
 							$('.navbar-default').removeClass('on');
 						}
-						if ($(this).scrollTop() > 600) {
+						if ($(this).scrollTop() > 750) {
 							$('.navbar').show();
 						} else {
 							$('.navbar').hide();

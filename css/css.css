@@ -79,8 +79,8 @@ h3 {
 	text-transform: uppercase;
 }
 h4 {
-	font-size: 20px;
-	text-transform: uppercase;
+	font-size: 22px;
+	//text-transform: uppercase;
 	font-weight: 600;
 	color: #444;
 }
@@ -91,9 +91,16 @@ h5 {
 }
 p {
 	color: #555;
-	font-size: 13px;
+	font-size: 15px;
 }
 
+.six-sec-ease-in-out {
+    -webkit-transition: width 6s ease-in-out;
+    -moz-transition: width 6s ease-in-out;
+    -ms-transition: width 6s ease-in-out;
+    -o-transition: width 6s ease-in-out;
+    transition: width 6s ease-in-out;
+}
 
 .clearfix{
 	display: inline-block;
@@ -203,20 +210,40 @@ header p {
 
 
 
-/* About Section */
-#about-section {
+#profile_section {
 	padding: 80px 0;
 	background: #fff;
 }
-#about-section .color {
+#profile_section .color {
 	color: #f38181;
 }
-#about-section p {
-	margin-top: 20px;
-	margin-bottom: 30px;
-	padding-left: 20px;
+
+#experience-section {
+	padding: 10px 0;
+	background-color: #F7F2F2;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#F7F2F2), to(#ffffff));
+  background-image: -webkit-linear-gradient(top, #F7F2F2, #ffffff);
+  background-image:    -moz-linear-gradient(top, #F7F2F2, #ffffff);
+  background-image:      -o-linear-gradient(top, #F7F2F2, #ffffff);
+  background-image:         linear-gradient(to bottom, #F7F2F2, #ffffff);
+ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f2f2', endColorstr='#ffffff', GradientType=0 ); /* IE6-9 */
+
 }
-/* Team Section */
+
+#experience-section .color {
+	color: #f38181;
+}
+
+#abilities_section {
+	padding: 20px 0;
+	//background-color: #fff;
+}
+#abilities_section .color {
+	color: #f38181;
+}
+
+
+/* Team Section #F7F2F2*/
 #team-section {
 	padding: 100px 0;
 }
@@ -482,7 +509,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 	border: 2px solid #ddd;
 	border-radius: 0;
 }
-.portfolio-modal .btn-primary:hover, .portfolio-modal .btn-primary:focus, .portfolio-modal .btn-primary.focus, .portfolio-modal .btn-primary:active, .portfolio-modal .btn-primary.active {
+.portfolio-modal .btn-primary:hover, .portfolio-modal .btn-primary:focus, .portfolio-modal .btn-primary.focus, .portfolio-modal
+ .btn-primary:active, .portfolio-modal .btn-primary.active {
 	color: #fff;
 	background-color: #f59898;
 	border: 2px solid #f59898;
