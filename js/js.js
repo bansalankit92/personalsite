@@ -37,13 +37,16 @@
 				}
 			}
 		}])
-		.controller('SiteController',function($scope){
+		.controller('SiteController',function($scope,$timeout){
 			
 			 var value = 60;
 				var type;
+$scope.htmlProgressVal=0;
+				$timeout(function(){
+					$scope.htmlProgressVal = value;
+					  }, 2000);
+  
 
-				
-$scope.dynamic = value;
     $scope.type = getType(value);
 						
 			
@@ -91,6 +94,9 @@ $scope.dynamic = value;
 							$('.navbar').show();
 						} else {
 							$('.navbar').hide();
+						}
+						if($('#abilities_section').offset().top<($(this).scrollTop())){
+							 $('.progress .progress-bar').progressbar({display_text: 'fill', use_percentage: false, amount_format: function() {return '';}});
 						}
 					});
 

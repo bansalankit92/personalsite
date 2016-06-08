@@ -101,7 +101,9 @@ p {
     -o-transition: width 6s ease-in-out;
     transition: width 6s ease-in-out;
 }
-
+.progress  {
+    height:22px;
+}
 .clearfix{
 	display: inline-block;
 	position: relative;
@@ -257,70 +259,9 @@ header p {
 	color: #444;
 	text-transform: uppercase;
 }
-#team-section H3 {
-	font-size: 16px;
-}
-.section-title hr {
-	height: 3px;
-	width: 60px;
-	background: #f59898;
-	position: relative;
-	border: 0;
-	margin-top: 40px;
-	margin-bottom: 40px;
-}
-#team-section i.fa {
-	font-size: 16px;
-	color: #fff;
-	margin-top: 10px;
-	width: 30px;
-	height: 30px;
-	padding: 8px 0;
-	background: #ddd;
-}
-#team-section i.fa:hover {
-	background: #f59898;
-}
-#team-section .item {
-	padding: 0;
-	margin: 15px;
-}
-#team-section .team-img {
-	width: 225px;
-	border: 3px solid #fff;
-}
-#team-section .thumbnail {
-	background: transparent;
-	border: 0;
-}
-#team-section .thumbnail .caption {
-	padding: 9px;
-}
-/* Services Section */
-#services-section {
-	padding: 80px 0;
-	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+50,f6f6f6+100 */
-	background: #ffffff; /* Old browsers */
-	background: -moz-linear-gradient(top, #ffffff 50%, #f6f6f6 100%); /* FF3.6-15 */
-	background: -webkit-linear-gradient(top, #ffffff 50%, #f6f6f6 100%); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(to bottom, #ffffff 50%, #f6f6f6 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f6f6f6', GradientType=0 ); /* IE6-9 */
-}
-.space {
-	margin-top: 40px;
-}
-#services-section i.fa {
-	font-size: 32px;
-	margin-bottom: 10px;
-	color: #f59898;
-	transition: all 0.5;
-}
-#services-section .service:hover > i.fa {
-	color: #555;
-}
 /* Gallery Section 
 ==============================*/
-#works-section {
+#project-section {
 	padding: 100px 0 0 0;
 }
 .categories {
@@ -378,10 +319,10 @@ ol.type li a:hover {
 	-moz-transition-property: -moz-transform, opacity;
 	transition-property: transform, opacity;
 }
-.portfolio-item {
+.project-item {
 	margin-bottom: 30px;
 }
-.portfolio-item .hover-bg {
+.project-item .hover-bg {
 	max-height: 300px;
 	overflow: hidden;
 	position: relative;
@@ -430,7 +371,7 @@ ol.type li a:hover {
 	border-radius: 50%;
 	color: #19B5FE;
 }
-.portfolio-modal .modal-content {
+.project-modal .modal-content {
 	padding: 100px 0;
 	min-height: 100%;
 	border: 0;
@@ -448,31 +389,31 @@ ol.type li a:hover {
 	background: linear-gradient(to bottom, #ffffff 50%, #f6f6f6 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f6f6f6', GradientType=0 ); /* IE6-9 */
 }
-.portfolio-modal .modal-content h2 {
+.project-modal .modal-content h2 {
 	margin-bottom: 15px;
 	font-size: 36px;
 	font-weight: 600;
 }
-.portfolio-modal .modal-content p {
+.project-modal .modal-content p {
 	margin-bottom: 30px;
 	font-size: 15px;
 }
-.portfolio-modal .modal-content p.item-intro {
+.project-modal .modal-content p.item-intro {
 	margin: 20px 0 30px;
 	font-style: italic;
 	font-size: 16px;
 }
-.portfolio-modal .modal-content ul.list-inline {
+.project-modal .modal-content ul.list-inline {
 	margin-top: 0;
 	margin-bottom: 30px;
 }
-.portfolio-modal .modal-content ul.list-inline span {
+.project-modal .modal-content ul.list-inline span {
 	font-weight: 600;
 }
-.portfolio-modal .modal-content img {
+.project-modal .modal-content img {
 	margin-bottom: 30px;
 }
-.portfolio-modal .close-modal {
+.project-modal .close-modal {
 	position: absolute;
 	top: 25px;
 	right: 25px;
@@ -481,10 +422,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 	background-color: transparent;
 	cursor: pointer;
 }
-.portfolio-modal .close-modal:hover {
+.project-modal .close-modal:hover {
 	opacity: .3;
 }
-.portfolio-modal .close-modal .lr {
+.project-modal .close-modal .lr {
 	z-index: 1051;
 	width: 1px;
 	height: 75px;
@@ -494,7 +435,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 	-ms-transform: rotate(45deg);
 	transform: rotate(45deg);
 }
-.portfolio-modal .close-modal .lr .rl {
+.project-modal .close-modal .lr .rl {
 	z-index: 1052;
 	width: 1px;
 	height: 75px;
@@ -503,14 +444,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 	-ms-transform: rotate(90deg);
 	transform: rotate(90deg);
 }
-.portfolio-modal .btn-primary {
+.project-modal .btn-primary {
 	color: #777;
 	background-color: transparent;
 	border: 2px solid #ddd;
 	border-radius: 0;
 }
-.portfolio-modal .btn-primary:hover, .portfolio-modal .btn-primary:focus, .portfolio-modal .btn-primary.focus, .portfolio-modal
- .btn-primary:active, .portfolio-modal .btn-primary.active {
+.project-modal .btn-primary:hover, .project-modal .btn-primary:focus, .project-modal .btn-primary.focus, .project-modal
+ .btn-primary:active, .project-modal .btn-primary.active {
 	color: #fff;
 	background-color: #f59898;
 	border: 2px solid #f59898;
