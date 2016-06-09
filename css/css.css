@@ -262,7 +262,15 @@ header p {
 /* Gallery Section 
 ==============================*/
 #project-section {
-	padding: 100px 0 0 0;
+	padding: 50px 0 0 0;
+	background-color:#ffffff;
+	 background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#F7F2F2));
+  background-image: -webkit-linear-gradient(top, #ffffff, #F7F2F2);
+  background-image:    -moz-linear-gradient(top, #ffffff, #F7F2F2);
+  background-image:      -o-linear-gradient(top, #ffffff, #F7F2F2);
+  background-image:         linear-gradient(to bottom, #ffffff, #F7F2F2);
+ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#F7F2F2', GradientType=0 ); /* IE6-9 */
+
 }
 .categories {
 	padding-bottom: 30px;
@@ -288,38 +296,9 @@ ol.type li a:hover {
 	color: #ffffff;
 	background: #f59898;
 }
-.isotope-item {
-	z-index: 2
-}
-.isotope-hidden.isotope-item {
-	z-index: 1
-}
-.isotope, .isotope .isotope-item {
-	/* change duration value to whatever you like */
-	-webkit-transition-duration: 0.8s;
-	-moz-transition-duration: 0.8s;
-	transition-duration: 0.8s;
-}
-.isotope-item {
-	margin-right: -1px;
-	-webkit-backface-visibility: hidden;
-	backface-visibility: hidden;
-}
-.isotope {
-	-webkit-backface-visibility: hidden;
-	backface-visibility: hidden;
-	-webkit-transition-property: height, width;
-	-moz-transition-property: height, width;
-	transition-property: height, width;
-}
-.isotope .isotope-item {
-	-webkit-backface-visibility: hidden;
-	backface-visibility: hidden;
-	-webkit-transition-property: -webkit-transform, opacity;
-	-moz-transition-property: -moz-transform, opacity;
-	transition-property: transform, opacity;
-}
+
 .project-item {
+	
 	margin-bottom: 30px;
 }
 .project-item .hover-bg {
@@ -362,15 +341,7 @@ ol.type li a:hover {
 .hover-bg:hover .hover-text {
 	opacity: 1;
 }
-#works-section i.fa {
-	height: 30px;
-	width: 30px;
-	border: 1px solid rgba(25,181,254,0.3);
-	font-size: 20px;
-	padding: 5px;
-	border-radius: 50%;
-	color: #19B5FE;
-}
+
 .project-modal .modal-content {
 	padding: 100px 0;
 	min-height: 100%;
@@ -456,80 +427,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 	background-color: #f59898;
 	border: 2px solid #f59898;
 }
-/* Achivements Section */
-#achievements {
-	padding: 0 0 50px 0;
-	background: #CCCCCC;
-}
-.achievement-box i.fa {
-	font-size: 54px;
-	font-weight: 400;
-	color: #19B5FE;
-	margin-bottom: 20px;
-}
-.achievement-box h4 {
-	color: #ffffff;
-	font-size: 15px;
-	font-weight: 500;
-	text-transform: uppercase;
-}
-.achievement-box span.count {
-	font-size: 52px;
-	font-weight: 600;
-	display: block;
-	color: #fff;
-}
-/* Testimonials Section */
-#testimonials-section {
-	padding: 100px 0 60px 0;
-	background: url(../img/testimonials-bg.jpg);
-	background-size: cover;
-	background-attachment: fixed;
-}
-#testimonials-section i.fa {
-	color: #8e9599;
-	font-size: 36px;
-}
-#testimonial {
-	padding: 30px 0;
-}
-#testimonial .item {
-	display: block;
-	width: 100%;
-	height: auto;
-}
-#testimonial img {
-	width: 140px;
-	height: 140px;
-}
-#testimonial .item p {
-	font-weight: 400;
-	margin: 30px 0;
-	color: #444;
-}
-.owl-theme .owl-controls .owl-page span {
-	display: block;
-	width: 14px;
-	height: 14px;
-	margin: 5px 7px;
-	filter: Alpha(Opacity=1);
-	opacity: 1;
-	border-radius: 0;
-	background: #fff;
-	transition: all 0.5s;
-	border: 1px solid #bfc3c6;
-}
-.owl-theme .owl-controls .owl-page.active span, .owl-theme .owl-controls.clickable .owl-page:hover span {
-	filter: Alpha(Opacity=100);
-	opacity: 1;
-	background: #f59898;
-	border: 1px solid #f59898;
-}
-.owl-theme .owl-controls .owl-page.active span {
-	background: #f59898;
-	border: 1px solid #f59898;
-}
-/* Contact Section */
+
 #contact-section {
 	padding: 100px 0 80px 0;
 	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+50,f6f6f6+100 */
