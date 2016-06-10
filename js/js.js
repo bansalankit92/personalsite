@@ -6,13 +6,13 @@
 				link: function (scope, element, attr) {
 					element.typed({
 						strings: [ " Full Stack Developer", " Tech Enthusiast"," Geek"," Ankit Bansal"],
-						typeSpeed: 0.7,
+						typeSpeed: 1,
 						// time before typing starts
-						startDelay: 0,
+						startDelay: 200,
 						// backspacing speed
-						backSpeed: 0,
+						backSpeed: 50,
 						// time before backspacing
-						backDelay: 500,
+						backDelay: 1000,
 						// loop
 						loop: false,
 						// false = infinite
@@ -41,13 +41,13 @@
 			
 			 var value = 60;
 				var type;
-$scope.htmlProgressVal=0;
+			$scope.htmlProgressVal=0;
 				$timeout(function(){
 					$scope.htmlProgressVal = value;
-					  }, 2000);
+					  }, 1500);
   
 
-    $scope.type = getType(value);
+			$scope.type = getType(value);
 						
 			
 		});
@@ -70,7 +70,7 @@ $scope.htmlProgressVal=0;
 			(function () {
 					
 						$(".navbar").hide();
-					
+					$('#backtotop').hide();
 					 $('a.page-scroll').click(function() {
 					if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
 					  var target = $(this.hash);
@@ -95,11 +95,22 @@ $scope.htmlProgressVal=0;
 						} else {
 							$('.navbar').hide();
 						}
-						if($('#abilities_section').offset().top<($(this).scrollTop())){
+						if(($('#abilities_section').offset().top)-100<($(this).scrollTop())){
 							 $('.progress .progress-bar').progressbar({display_text: 'fill', use_percentage: false, amount_format: function() {return '';}});
 						}
+						
+						if($(this).scrollTop()>800)
+							$('#backtotop').show();
+						else $('#backtotop').hide();
 					});
 
+					
+					$('#backtotop').click(function(event) { 
+						//event.preventDefault(); 
+						$('html, body').animate({scrollTop: 0}, 3000);
+ 						return false;
+
+					});
 				  
 				   $('body').scrollspy({ 
 						target: '.navbar-default',
