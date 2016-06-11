@@ -28,10 +28,12 @@
     
         <meta charset="utf-8"/>
         <meta name="author" content="Ankit Bansal"/>
-        <meta name="description" content="My Personal Resume Interactive Site"/>
-        <meta name="keywords" content=""/>
+        <meta name="description" content="I am Ankit Bansal, I am Full Stack Java Software Developer. This is my Personal Resume Interactive Site"/>
+        <meta name="keywords" content="resume,j2ee,java,personal site, ankit bansal, ankit,bansal,website,best resume website,cv, startup, entrepreneur, full stack developer, full stack java developer, jquery, javascript,programmer, software developer, algorithms, oops ,data structures,interactive cv, cv, mysql, computer science engineer, software engineer,web serveices, restful jaxrs,places to visit, mobile based campus info retrieval, codehub, ata project, personal site, reactiv"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
-		
+		<meta name="robots" content="index, follow" />
+		<meta name="revisit-after" content="7 days" />
+		<meta name="google-site-verification" content="OuZYB7ACASzioV462WESC4bBSbmF27AUCGZbj0ssNRw" />
 		<link rel="shortcut icon" href="favicon.ico" />
         <title> Ankit Bansal</title>
 		
@@ -45,35 +47,7 @@
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.0.0/bootstrap-social.css" rel="stylesheet" type='text/css'>
 		<link rel="stylesheet" type="text/css" href="css/css.css">
 		
-		<style>
-            .typed-cursor{
-                opacity: 1;
-                -webkit-animation: blink 0.7s infinite;
-                -moz-animation: blink 0.7s infinite;
-                animation: blink 0.7s infinite;
-            }
-            @keyframes blink{
-                0% { opacity:1; }
-                50% { opacity:0; }
-                100% { opacity:1; }
-            }
-            @-webkit-keyframes blink{
-                0% { opacity:1; }
-                50% { opacity:0; }
-                100% { opacity:1; }
-            }
-            @-moz-keyframes blink{
-                0% { opacity:1; }
-                50% { opacity:0; }
-                100% { opacity:1; }
-            }
-			
-			
-
-}
-			
-        </style>
-        
+		
     
     </head>
     <body ng-app="app" ng-controller="SiteController">    
@@ -98,8 +72,9 @@
 					</div> 
 		</nav>
 
-		<a class="back-to-top" id="backtotop" style="display: inline;" href="#"><span class="glyphicon  glyphicon-menu-up"></span></a>
-		<a id="hireme" href="mailto:bansal.ankit92@gmail.com" target="_top"><button type="button" class="btn btn-warning btn-lg btn3d">Hire Me!</button></a>
+		<a class="back-to-top" id="backtotop"  href="#"><span class="glyphicon  glyphicon-menu-up"></span></a>
+		<a id="hireme" href="mailto:bansal.ankit92@gmail.com" target="_top"><button type="button" class="btn btn-warning  btn3d">Hire Me!</button></a>
+		<a id="callme" href="tel:9762907853" target="_top"><button type="button" class="btn btn-warning  btn3d">Call Me!</button></a>
 
         <header  class="text-center intro-bg" name="home">
             <div class="intro-text">
@@ -107,7 +82,7 @@
 				<p  class="wow fadeInDown" data-wow-delay="200ms">tech enthusiast / full stack developer / geek</p>
 			</div>
 			<div class="clearfix"></div>
-			<div class="bounce"><a style="text-decoration : none;" href="#profile_section" class="page-scroll" ><i class="fa fa-angle-double-down"></i></a></div>
+			<div class="bounce"><a  href="#profile_section" class="page-scroll" ><i class="fa fa-angle-double-down"></i></a></div>
 		</header>
     
         
@@ -120,7 +95,7 @@
                 </div>
                 <div class="row wow fadeInDown" data-wow-delay="200ms">
                     <div class="col-md-1 col-sm-11 col-xs-11"></div>
-                    <div style="padding:25px;" class="col-md-2 col-sm-11 col-xs-11 text-center ">
+                    <div id="details"  class="col-md-2 col-sm-11 col-xs-11 text-center ">
 						<div class="text-left">
                         <h4 >Details</h4><br />
                             <p><strong>Name:</strong>
@@ -128,14 +103,14 @@
                            <p> <strong>Age:</strong>
                             22 years	</p>
                             <p><strong>Location:</strong>
-                            Pune:412101	</p>
+                            Pune - 412101	</p>
 							<p><strong>Mob No.:</strong>
-                            9762907853	</p>
+                            <a  href="tel:9762907853" target="_top">9762907853</a>	</p>
 						</div>
 					</div>
                     <div class="col-md-6 col-sm-12 col-xs-12">
                        <h4 class="text-center">About Me</h4>
-                         <p style="padding:25px;">
+                         <p id="aboutme" >
 							I am an allround Full Stack Java Developer. I love structure and order and I also stand for quality. I love spending time on fixing little details, optimizing web apps and Developing new apps.  Also I like working in a team, you'll learn faster and more. As the saying goes: 'two heads are better than one'.	
    						</p>
                     </div>
@@ -160,9 +135,10 @@
 				<li><a class="btn btn-social-icon btn-linkedin" href="https://www.linkedin.com/in/ankitbansal2"target="_blank"><span class="fa fa-linkedin"></span></a></li>
 				<li><a class="btn btn-social-icon btn-facebook" href="https://www.facebook.com/ankeet.bansal" target="_blank"><span class="fa fa-facebook"></span></a></li>
 				<li><a class="btn btn-social-icon btn-google" href="https://plus.google.com/u/0/+AnkitBansal2/posts" target="_blank"><span class="fa fa-google"></span></a></li>
-				<li><a class="btn btn-social-icon " href="https://www.hackerrank.com/bansal_ankit92" target="_blank"><img src="jpg/hackerrank.png"/></a></li>
-				<li><a class="btn btn-social-icon " href="https://www.hackerearth.com/@bansal.ankit92" target="_blank"><img src="jpg/hackerearth.png"/></a></li>
+				<li><a class="btn btn-social-icon " href="https://www.hackerrank.com/bansal_ankit92" target="_blank"><img src="jpg/hackerrank.png" alt="hackerrank"/></a></li>
+				<li><a class="btn btn-social-icon " href="https://www.hackerearth.com/@bansal.ankit92" target="_blank"><img src="jpg/hackerearth.png" alt="hackerearth"/></a></li>
 				<li><a class="btn btn-social-icon btn-social btn-twitter" href="https://twitter.com/ban1ankit" target="_blank"> <span class="fa fa-twitter"></span></a></li>
+				<li><a class="btn btn-social-icon btn-social " href="http://blog.ankitbansal.co.in" target="_blank"> <img src="jpg/blogger.png" alt="hackerearth"/></a></li>
 						
 			  </ul>
 			</div>
@@ -784,7 +760,7 @@
 				
 			</div>
 				<div class="row wow fadeInDown">
-						  <div class="container-fluid" style="padding:40px">
+					<div class="container-fluid" >
 						<div class="row">
 						  <div class="project-items">
 							<div class="col-sm-6 col-md-3 col-lg-3 web">
@@ -906,7 +882,7 @@
 					<!-- Project Details Go Here -->
 					<h2>Attribute Authority</h2>
 					<p class="item-intro"></p>
-					<img class="img-responsive img-centered" src="jpg/ata1.png" alt="">
+					<img class="img-responsive img-centered" src="jpg/ata1.png" alt="AtA project at Persistent">
 					<p> My role was to develop Complete UI version 2.0 using AngularJs,Bootstrap, HTML5 at front End. <p/>
 					<p> At Server Side to get the user data, process it to make SOAP Request(XML) and send this request to AtA service and get the SOAP Response from that services and send this SOAP Response to user so that it can Download/Check/Use and this server side was developed using Spring MVC frameworks </p>
 					<ul class="list-inline">
@@ -939,7 +915,7 @@
 					<!-- Project Details Go Here -->
 					<h2>REACTIV</h2>
 					<p class="item-intro">Realtime Collaborative Technical Interview with Video/Live Interviews.</p>
-					<img class="img-responsive img-centered" src="jpg/reactiv.png" alt="">
+					<img class="img-responsive img-centered" src="jpg/reactiv.png" alt="REACTIV Technothon Persi Project Winner">
 					<p>We developed an online coding environment for conducting coding interview. We provided an online editor where candidate and interviewer can collaboratively write code, we also provided automated judging to make the task of objectively evaluating the candidate performance easier and chatting and video calling to communicate each other.
 						Also created job portal that tracks candidate request and HR can choose selective candidate and the schedule an interview. He / She can also able to pick what questions candidate needs to solve.
 						</p>
@@ -986,7 +962,7 @@
 					<!-- Project Details Go Here -->
 					<h2>Places To visit</h2>
 					<p class="item-intro">Shows the list of nearby places that You haven't visited yet</p>
-					<img class="img-responsive img-centered" src="jpg/placestovisit.png" alt="">
+					<img class="img-responsive img-centered" src="jpg/placestovisit.png" alt="Places to Visit">
 					<p> <strong>Website:</strong> <a href="http://placestovisit.ankitbansal.co.in">http://placestovisit.ankitbansal.co.in </a></p>
 
 					<p>In this app user gets to know all the interesting places which s/he doesn’t know or haven’t visited yet. User first has to logged in via FB account and after successfully logged in and selecting the interesting place s/he gets detailed info about top 20 places s/he haven’t visited on map. Then on selecting the place to visit user get the routes with the via option like which place to go before visiting destination and user can also post its location, message on Facebook.  </p>
@@ -1021,7 +997,7 @@
 					<!-- Project Details Go Here -->
 					<h2>CodeHub 12hrs Challenge</h2>
 					<p class="item-intro">To Search various code submissions by Users based on Full Text Search and show analytics of the all the Code Submissions </p>
-					<img class="img-responsive img-centered" src="jpg/jdacodehub.png" alt="">
+					<img class="img-responsive img-centered" src="jpg/jdacodehub.png" alt="CodeHub">
 					<p> <strong>Website:</strong> <a href="http://jda-codehub.heroku.com"> http://jda-codehub.heroku.com</a></p>
 					<p>  </p>
 					<ul class="list-inline">
@@ -1055,7 +1031,7 @@
 					<!-- Project Details Go Here -->
 					<h2>Mobile Based Campus Information Retrieval Android App</h2>
 					<p class="item-intro">Students and Teachers can get all the information/notification on mobile and no need to visit any notice board or anything</p>
-					<img class="img-responsive img-centered" src="jpg/campusinforetrieval.png" alt="">
+					<img class="img-responsive img-centered" src="jpg/campusinforetrieval.png" alt="BE Project Mobile Based Campus Info Retrieval">
 					<p> <strong>Paper Published :</strong> <a href="http://placestovisit.ankitbansal.co.in">IJCSMC </a></p>
 
 					<p>  I have developed this application in android keeping in mind that, in a real world scenario, such as college campus, the information is shared in the form of notices, hand-written manuals, oral communication, among the students. So this application provides students and teachers with information regarding library books availability, placement activities, general notices, and important notices regarding all departments, discussion forum to discuss on various topics. 
@@ -1093,7 +1069,7 @@
 					<!-- Project Details Go Here -->
 					<h2>Additional Spread Sheet Features</h2>
 					<p class="item-intro">Find Data Duplication in rows, Compare Columns and get the missing data</p>
-					<img class="img-responsive img-centered" src="jpg/excelfeatures.png" alt="">
+					<img class="img-responsive img-centered" src="jpg/excelfeatures.png" alt="Additional Excel Features">
 					<p> <strong>Website:</strong> <a href="http://placestovisit.ankitbansal.co.in">http://placestovisit.ankitbansal.co.in </a></p>
 
 					<p>  </p>
@@ -1130,7 +1106,7 @@
 					<!-- Project Details Go Here -->
 					<h2>Zombie Bird</h2>
 					<p class="item-intro">Game same as flappy bird</p>
-					<img class="img-responsive img-centered" src="jpg/zombiebird.png" alt="">
+					<img class="img-responsive img-centered" src="jpg/zombiebird.png" alt="Android Game">
 					<p> <strong>Website:</strong> <a href="http://ankitbansal.co.in">Not yet published at AppStore </a></p>
 
 					<p> Flappy Bird  </p>
@@ -1164,7 +1140,7 @@
 					<!-- Project Details Go Here -->
 					<h2>Personal Interactive Site</h2>
 					<p class="item-intro">Online Interactive Resume</p>
-					<img class="img-responsive img-centered" src="jpg/personalsite.png" alt="">
+					<img class="img-responsive img-centered" src="jpg/personalsite.png" alt="Interactive Resume">
 					<p> <strong>Website:</strong> <a href="http://ankitbansal.co.in">http://ankitbansal.co.in </a></p>
 
 					<p> Current Site </p>

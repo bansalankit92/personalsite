@@ -1,9 +1,3 @@
-@import url(http://weloveiconfonts.com/api/?family=fontawesome);
- 
- 
- //ref http://www.pascalvangemert.nl/#/profile
- //#F3ECEC
- 
 
 .fa-angle-double-down:before {content: "\f103";}
  
@@ -12,7 +6,27 @@
 	font-size:60px;
 	
 }
- 
+ .typed-cursor{
+	opacity: 1;
+	-webkit-animation: blink 0.7s infinite;
+	-moz-animation: blink 0.7s infinite;
+	animation: blink 0.7s infinite;
+}
+@keyframes blink{
+	0% { opacity:1; }
+	50% { opacity:0; }
+	100% { opacity:1; }
+}
+@-webkit-keyframes blink{
+	0% { opacity:1; }
+	50% { opacity:0; }
+	100% { opacity:1; }
+}
+@-moz-keyframes blink{
+	0% { opacity:1; }
+	50% { opacity:0; }
+	100% { opacity:1; }
+} 
 .bounce {
 	
 	 position: absolute;
@@ -33,26 +47,26 @@
 }
  
 @-webkit-keyframes bounce {
- 0%, 20%, 50%, 80%, 100% {-webkit-transform: translateY(0);} 
- 40% {-webkit-transform: translateY(-30px);}
- 60% {-webkit-transform: translateY(-15px);}
+	 0%, 20%, 50%, 80%, 100% {-webkit-transform: translateY(0);} 
+	 40% {-webkit-transform: translateY(-30px);}
+	 60% {-webkit-transform: translateY(-15px);}
 }
  
 @-moz-keyframes bounce {
- 0%, 20%, 50%, 80%, 100% {-moz-transform: translateY(0);}
- 40% {-moz-transform: translateY(-30px);}
- 60% {-moz-transform: translateY(-15px);}
+	 0%, 20%, 50%, 80%, 100% {-moz-transform: translateY(0);}
+	 40% {-moz-transform: translateY(-30px);}
+	 60% {-moz-transform: translateY(-15px);}
 }
  
 @-o-keyframes bounce {
- 0%, 20%, 50%, 80%, 100% {-o-transform: translateY(0);}
- 40% {-o-transform: translateY(-30px);}
- 60% {-o-transform: translateY(-15px);}
+	 0%, 20%, 50%, 80%, 100% {-o-transform: translateY(0);}
+	 40% {-o-transform: translateY(-30px);}
+	 60% {-o-transform: translateY(-15px);}
 }
 @keyframes bounce {
- 0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
- 40% {transform: translateY(-30px);}
- 60% {transform: translateY(-15px);}
+	 0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+	 40% {transform: translateY(-30px);}
+	 60% {transform: translateY(-15px);}
 }
 
 
@@ -109,7 +123,7 @@ hr {
 	float:right;
 	width: 70px;
 	height: 70px;
-	z-index: 100;
+	
 	display: none;
 	text-decoration: none;
 	font-size:40px;
@@ -139,35 +153,10 @@ hr {
 	border: 7px solid #f38181;
 	
 }
-/*
-.button {	
-	
-	 background-color: transparent; 
-    //color: black; 
-    border: 2px solid #f44336;
-    color: white;
-    padding: 16px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    -webkit-transition-duration: 0.4s; 
-    transition-duration: 0.4s;
-    cursor: pointer;
-	border-radius: 15px;
-}
-.button a{
-	font-size: 15px;
-	 color: white;
-}
-.button:hover {
-	 background-color: #f44336;
-    color: white;
-    box-shadow: 0 12px 16px 0 rgba(255,255,255,0.24),0 17px 50px 0 rgba(255,255,255,0.19);
-}
-*/
 
+#details #aboutme{
+	padding:25px;
+}
 
 .img-centered {
 	margin: 0 auto;
@@ -235,9 +224,6 @@ header p {
 	border: 2px solid rgba(245,152,152,0.2);
 	color: #fff;
 }
-
-
-
 
 #profile_section {
 	padding: 80px 0;
@@ -514,8 +500,16 @@ label {
 }
 
 #hireme{
-	right:20px;
+	right:15px;
 	float:right;
+	position:fixed;
+	z-index:5;
+}
+#callme{
+	height:10px;	
+	clear:both;
+	
+	left:6%;
 	position:fixed;
 	z-index:5;
 }
@@ -594,6 +588,10 @@ label {
 		right: 20px;
 		top: 20px;		
 	}
+	.clearfix{
+		
+		padding-bottom: 10px;
+	}
 	.jumbotron .container { top: 20%; padding-top: 0px; }
 	.jumbotron .scroll-down { width: 100%; right: 0px; }
 	
@@ -602,20 +600,28 @@ label {
 	.navbar .nav > li a { height: 60px; text-align: center; padding-top: 20px; font-weight: 600; color: #FFFFFF; }
 	.navbar-default {
 		background-color: #F7F2F2;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#F7F2F2), to(#ffffff));
-  background-image: -webkit-linear-gradient(top, #F7F2F2, #ffffff);
-  background-image:    -moz-linear-gradient(top, #F7F2F2, #ffffff);
-  background-image:      -o-linear-gradient(top, #F7F2F2, #ffffff);
-  background-image:         linear-gradient(to bottom, #F7F2F2, #ffffff);
- filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f2f2', endColorstr='#ffffff', GradientType=0 ); /* IE6-9 */
+	  background-image: -webkit-gradient(linear, left top, left bottom, from(#F7F2F2), to(#ffffff));
+	  background-image: -webkit-linear-gradient(top, #F7F2F2, #ffffff);
+	  background-image:    -moz-linear-gradient(top, #F7F2F2, #ffffff);
+	  background-image:      -o-linear-gradient(top, #F7F2F2, #ffffff);
+	  background-image:         linear-gradient(to bottom, #F7F2F2, #ffffff);
+	 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f2f2', endColorstr='#ffffff', GradientType=0 ); /* IE6-9 */
 
 		border-radius:0px;
 		
 	}
 	#hireme{
-height:10px;		clear:both;
-	bottom:130px;
+height:10px;	
+	clear:both;
+	bottom:70px;
 	right:0px;
+	position:fixed;
+	z-index:5;
+}
+#callme{
+	left:10px;
+	height:10px;	
+	bottom:70px;
 	position:fixed;
 	z-index:5;
 }
@@ -628,7 +634,17 @@ height:10px;		clear:both;
 }
 
 
+@media(min-height:800px){
+	.clearfix{
+	display: inline-block;
+	position: relative;
+	padding-top: 210px;
+	padding-right: 0;
+	padding-left: 0;
+	padding-bottom: 200px;
+}
 
+}
 @media (max-width: 1300px) { 
 
 .container{
