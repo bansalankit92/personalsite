@@ -22,836 +22,1071 @@
 -->
 <!DOCTYPE html>
 <html lang=en>
-<head>
-<meta charset="utf-8"/>
-<meta name=author content="Ankit Bansal"/>
-<meta name=description content="I am Ankit Bansal, I am Full Stack Java Software Developer. This is my Personal Resume Interactive Site"/>
-<meta name=keywords content="resume,j2ee,java,personal site, ankit bansal, ankit,bansal,website,best resume website,cv, startup, entrepreneur, full stack developer, full stack java developer, jquery, javascript,programmer, software developer, algorithms, oops ,data structures,interactive cv, cv, mysql, computer science engineer, software engineer,web serveices, restful jaxrs,places to visit, mobile based campus info retrieval, codehub, ata project, personal site, reactiv"/>
-<meta name=viewport content="width=device-width, initial-scale=1"/>
-<meta name=robots content="index, follow" />
-<meta name=revisit-after content="7 days" />
-<meta name=google-site-verification content=OuZYB7ACASzioV462WESC4bBSbmF27AUCGZbj0ssNRw />
-<link rel="shortcut icon" href=favicon.ico />
-<title> Ankit Bansal</title>
-<link rel=stylesheet href=https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css integrity=sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7 crossorigin=anonymous>
-<link href=css/owl.carousel.css rel=stylesheet media=screen>
-<link href=css/owl.theme.css rel=stylesheet media=screen>
-<link rel=stylesheet type=text/css href=css/animate.min.css>
-<script type=text/javascript src=js/modernizr.custom.js></script>
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800,600,300' rel=stylesheet type=text/css>
-<link rel=stylesheet type=text/css href=fonts/font-awesome/css/font-awesome.css>
-<link href=https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.0.0/bootstrap-social.css rel=stylesheet type=text/css>
-<link rel=stylesheet type=text/css href=css/css.css>
-</head>
-<body ng-app=app ng-controller=SiteController>
-<nav id=menu class="navbar navbar-default" role=navigation>
-<div class=navbar-header>
-<button type=button class=navbar-toggle data-toggle=collapse data-target=.navbar-ex1-collapse>
-<span class=sr-only>Toggle navigation</span>
-<span class=icon-bar></span>
-<span class=icon-bar></span>
-<span class=icon-bar></span>
-</button>
-</div>
-<div class="collapse navbar-collapse navbar-ex1-collapse" id=bs-example-navbar-collapse-1>
-<ul class="nav navbar-nav">
-<li><a href=#profile_section class=page-scroll>Profile</a></li>
-<li><a href=#experience-section class=page-scroll>Experiences</a></li>
-<li><a href=#abilities_section class=page-scroll>Abilities</a></li>
-<li><a href=#project-section class=page-scroll>Projects</a></li>
-</ul>
-</div>
-</nav>
-<a class=back-to-top id=backtotop href=#><span class="glyphicon glyphicon-menu-up"></span></a>
-<a id=hireme href=mailto:bansal.ankit92@gmail.com target=_top><button type=button class="btn btn-warning btn3d">Hire Me!</button></a>
-<a id=callme href=tel:9762907853 target=_top><button type=button class="btn btn-warning btn3d">Call Me!</button></a>
-<header class="text-center intro-bg" name=home>
-<div class=intro-text>
-<h1 class="wow zoomIn">I am <span typed class=brand>Ankit Bansal</span></h1>
-<p class="wow fadeInDown" data-wow-delay=200ms>tech enthusiast / full stack developer / geek</p>
-</div>
-<div class=clearfix></div>
-<div class=bounce><a href=#profile_section class=page-scroll><i class="fa fa-angle-double-down"></i></a></div>
-</header>
-<div class=profile_section id=profile_section>
-<div class="container wow fadeInDown">
-<div class="section-title text-center center">
-<h2>Profile</h2>
-<hr/>
-</div>
-<div class="row wow fadeInDown" data-wow-delay=200ms>
-<div class="col-md-1 col-sm-11 col-xs-11"></div>
-<div id=details class="col-md-2 col-sm-11 col-xs-11 text-center">
-<div class=text-left>
-<h4>Details</h4><br />
-<p><strong>Name:</strong>
-Ankit Bansal </p>
-<p> <strong>Age:</strong>
-22 years </p>
-<p><strong>Location:</strong>
-Pune - 412101 </p>
-<p><strong>Mob No.:</strong>
-<a href=tel:9762907853 target=_top>9762907853</a> </p>
-</div>
-</div>
-<div class="col-md-6 col-sm-12 col-xs-12">
-<h4 class=text-center>About Me</h4>
-<p id=aboutme>
-I am an allround Full Stack Java Developer. I love structure and order and I also stand for quality. I love spending time on fixing little details, optimizing web apps and Developing new apps. Also I like working in a team, you'll learn faster and more. As the saying goes: 'two heads are better than one'.
-</p>
-</div>
-<div class="col-md-2 col-sm-12 col-xs-12 text-center">
-<img id=mypic src=jpg/pic.png class=img-circle alt="Ankit Bansal" width=190 height=190><br/>
-<a "href="docs/Ankit Bansal Resume.docx" download><button type=button class="btn btn-warning btn3d"> &nbsp;&nbsp;&nbsp;Download Resume&nbsp;&nbsp;&nbsp; </button></a>
-</div>
-</div>
-<div class=text-center>
-<a href=https://github.com/bansalankit92/personalsite target=_blank><button type=button class="btn btn-danger btn3d"> &nbsp;&nbsp;&nbsp;Download Code &nbsp;&nbsp;&nbsp; </button></a>
-</div>
-</div>
-</div>
-<div id=social-section>
-<div class=container>
-<div class=social>
-<ul>
-<li> <a class="btn btn-social-icon btn-github" href=http://github.com/bansalankit92/ target=_blank><span class="fa fa-github"></span></a></li>
-<li><a class="btn btn-social-icon btn-linkedin" href="https://www.linkedin.com/in/ankitbansal2"target=_blank><span class="fa fa-linkedin"></span></a></li>
-<li><a class="btn btn-social-icon btn-facebook" href=https://www.facebook.com/ankeet.bansal target=_blank><span class="fa fa-facebook"></span></a></li>
-<li><a class="btn btn-social-icon btn-google" href=https://plus.google.com/u/0/+AnkitBansal2/posts target=_blank><span class="fa fa-google"></span></a></li>
-<li><a class="btn btn-social-icon" href=https://www.hackerrank.com/bansal_ankit92 target=_blank><img src=jpg/hackerrank.png alt="hackerrank"/></a></li>
-<li><a class="btn btn-social-icon" href=https://www.hackerearth.com/@bansal.ankit92 target=_blank><img src=jpg/hackerearth.png alt="hackerearth"/></a></li>
-<li><a class="btn btn-social-icon btn-social btn-twitter" href=https://twitter.com/ban1ankit target=_blank> <span class="fa fa-twitter"></span></a></li>
-<li><a class="btn btn-social-icon btn-social" href=http://blog.ankitbansal.co.in target=_blank> <img src=jpg/blogger.png alt="hackerearth"/></a></li>
-</ul>
-</div>
-</div>
-</div>
-<div class=experience-section id=experience-section>
-<div class=container>
-<div class="section-title text-center center wow fadeInDown">
-<h2>Experiences </h2>
-<p>&ldquo;Given the choice between the experience of pain and nothing, I would choose pain.&rdquo; <br/>
-― William Faulkner</p>
-<hr/>
-</div>
-<div class="row wow fadeInDown" data-wow-delay=200ms>
-<div class="col-md-1 col-sm-11 col-xs-11"></div>
-<div class="col-md-2 col-sm-11 col-xs-11">
-<h4><strong>Education</strong></h4>
-</div>
-<div class="col-md-9 col-sm-11 col-xs-11">
-<br/>
-<div class=row>
-<div class="col-md-8 col-sm-6 col-xs-6">
-<p><strong>Graduate Aptitude Test in Engineering-2015 </strong>
-<br/> AIR-5322 <br/>Score-435</p>
-</div>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<p>Feb-2015</p>
-</div>
-</div>
-<br/>
-<div class=row>
-<div class="col-md-8 col-sm-6 col-xs-6">
-<p><strong>Bachelor- Computer Science and Engineering (65%)</strong>
-<br/> Pune University</p>
-</div>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<p>2011-2015</p>
-</div>
-</div>
-<br />
-<div class=row>
-<div class="col-md-8 col-sm-6 col-xs-6">
-<p><strong>High School- Maths &amp; Science (70%)</strong>
-<br/> Maharashtra State Board</p>
-</div>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<p>2009-2011</p>
-</div>
-</div>
-</div>
-</div>
-<br/>
-<div class="row wow fadeInDown" data-wow-delay=200ms>
-<div class="col-md-1 col-sm-11 col-xs-11"></div>
-<div class=col-md-2>
-<h4><strong>Certification</strong></h4>
-</div>
-<div class="col-md-9 col-sm-11 col-xs-11">
-<br/>
-<div class=row>
-<div class="col-md-8 col-sm-6 col-xs-6">
-<p> <strong>Oracle Certified SQL Expert</strong>
-<br/> Oracle University</p>
-</div>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<p>2014</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<br/>
-<div class=container>
-<br/>
-<div class="row wow fadeInDown" data-wow-delay=200ms>
-<div class="col-md-1 col-sm-11 col-xs-11"></div>
-<div class=col-md-2>
-<h4><strong>Career</strong></h4>
-</div>
-<div class=col-md-9>
-<br/>
-<div class=row>
-<div class=col-md-8>
-<p><strong>Software Engineer</strong>
-<br/> Persistent System Pvt. Ltd.</p>
-<p> <strong>Role</strong>
-<br/> To Develop a webapp using HTML5 Bootstrap AngularJS as FrontEnd and Java with Spring Framework as BackEnd.
-<br/>Basically user will submit a form to server and this form data will be processed as XML SOAP request and this request is passed to a WebServices and this Web Service API sends SOAP Response and after processing to pass the response to User.
-</p>
-<p><strong>Acquired Skills</strong>
-<br/> Being the first and very well structured company, with clear and defined work procedures, helps me to grow both personally and professionally, as well as enjoying a young and international working environment. I have the opportunity to redefine the way I work in a more intelligent way. I am definitely improving my technical knowledge.
-<br/> I have learned lot of new technologies with rigorous training and can call myself as Full Stack Developer </p>
-</div>
-<div class=col-md-4>
-<p>Sept 2015 (Present)</p>
-</div>
-</div>
-</div>
-</div>
-<br/>
-</div>
-</div>
-<br/>
-<div class=abilities_section id=abilities_section>
-<div class=container>
-<div class="section-title text-center center wow fadeInDown">
-<h2>Ability and Skills</h2>
-<hr/>
-<p>&ldquo;Man often becomes what he believes himself to be. If I keep on saying to myself that I cannot do a certain thing, it is possible that I may end by really becoming incapable of doing it. On the contrary, if I have the belief that I can do it, I shall surely acquire the capacity to do it even if I may not have it at the beginning.&rdquo;
-<br/>― Mahatma Gandhi</p>
-</div>
-<div class="row wow fadeInDown" data-wow-delay=200ms>
-<div class="col-md-1 col-sm-11 col-xs-11"></div>
-<div class="col-md-4 col-sm-12 col-xs-12">
-<h4><strong>Concepts</strong></h4>
-</div>
-<div class="col-md-7 col-sm-12 col-xs-12">
-<br/>
-<div class=row>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<p> OOPs </p>
-</div>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<div class="progress progress-striped active">
-<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out" role=progressbar data-transitiongoal=74></div>
-</div>
-</div>
-</div>
-<div class=row>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<p> Data Structures </p>
-</div>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<div class="progress progress-striped active">
-<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out" role=progressbar data-transitiongoal=70></div>
-</div>
-</div>
-</div>
-<div class=row>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<p> Algorithms </p>
-</div>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<div class="progress progress-striped active">
-<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out" role=progressbar data-transitiongoal=56></div>
-</div>
-</div>
-</div>
-<div class=row>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<p> DBMS </p>
-</div>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<div class="progress progress-striped active">
-<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out" role=progressbar data-transitiongoal=60></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="row wow fadeInDown" data-wow-delay=200ms>
-<div class="col-md-1 col-sm-11 col-xs-11"></div>
-<div class="col-md-4 col-sm-12 col-xs-12">
-<h4><strong>Programming Languages</strong></h4>
-</div>
-<div class="col-md-7 col-sm-12 col-xs-12">
-<br/>
-<div class=row>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<p> Java </p>
-</div>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<div class="progress progress-striped active">
-<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out" role=progressbar data-transitiongoal=65></div>
-</div>
-</div>
-</div>
-<div class=row>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<p> C-C++ </p>
-</div>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<div class="progress progress-striped active">
-<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out" role=progressbar data-transitiongoal=50></div>
-</div>
-</div>
-</div>
-<div class=row>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<p> Python </p>
-</div>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<div class="progress progress-striped active">
-<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out" role=progressbar data-transitiongoal=40></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="row wow fadeInDown" data-wow-delay=200ms>
-<div class="col-md-1 col-sm-11 col-xs-11"></div>
-<div class="col-md-4 col-sm-12 col-xs-12">
-<h4> <strong>Web (Client Side)</strong></h4>
-<p><strong>Development Languages</strong></p>
-</div>
-<div class="col-md-7 col-sm-12 col-xs-12">
-<br/><br/><br/>
-<div class=row>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<p> HTML </p>
-</div>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<div class="progress progress-striped active">
-<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out" role=progressbar data-transitiongoal=70></div>
-</div>
-</div>
-</div>
-<div class=row>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<p> CSS </p>
-</div>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<div class="progress progress-striped active">
-<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out" role=progressbar data-transitiongoal=50></div>
-</div>
-</div>
-</div>
-<div class=row>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<p> JavaScript </p>
-</div>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<div class="progress progress-striped active">
-<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out" role=progressbar data-transitiongoal=60></div>
-</div>
-</div>
-</div>
-</div>
-<div>
-<div class="col-md-1 col-sm-11 col-xs-11"></div>
-<div class="col-md-4 col-sm-12 col-xs-12">
-<p><strong>JS Libraries/Frameworks</strong></p>
-</div>
-<div class="col-md-7 col-sm-12 col-xs-12">
-<div class=row>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<p> AngularJS </p>
-</div>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<div class="progress progress-striped active">
-<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out" role=progressbar data-transitiongoal=40></div>
-</div>
-</div>
-</div>
-<div class=row>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<p> JQuery </p>
-</div>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<div class="progress progress-striped active">
-<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out" role=progressbar data-transitiongoal=60></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="row wow fadeInDown" data-wow-delay=200ms>
-<div class="col-md-1 col-sm-11 col-xs-11"></div>
-<div class="col-md-4 col-sm-12 col-xs-12">
-<h4> <strong>Web (Server Side)</strong></h4>
-<p><strong>Development Languages</strong></p>
-</div>
-<div class="col-md-7 col-sm-12 col-xs-12">
-<br/><br/><br/>
-<div class=row>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<p> Java(J2EE6) </p>
-</div>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<div class="progress progress-striped active">
-<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out" role=progressbar data-transitiongoal=60></div>
-</div>
-</div>
-</div>
-<div class=row>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<p> PHP </p>
-</div>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<div class="progress progress-striped active">
-<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out" role=progressbar data-transitiongoal=35></div>
-</div>
-</div>
-</div>
-<div class=row>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<p> NodeJs (Learning) </p>
-</div>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<div class="progress progress-striped active">
-<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out" role=progressbar data-transitiongoal=5></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="row wow fadeInDown" data-wow-delay=200ms>
-<div class="col-md-1 col-sm-11 col-xs-11"></div>
-<div class="col-md-4 col-sm-12 col-xs-12">
-<p><strong>Frameworks/API's</strong></p>
-</div>
-<div class="col-md-7 col-sm-12 col-xs-12">
-<div class=row>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<p> Spring (MVC) </p>
-</div>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<div class="progress progress-striped active">
-<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out" role=progressbar data-transitiongoal=40></div>
-</div>
-</div>
-</div>
-<div class=row>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<p> Hibernate </p>
-</div>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<div class="progress progress-striped active">
-<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out" role=progressbar data-transitiongoal=30></div>
-</div>
-</div>
-</div>
-<div class=row>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<p> JAX-WS </p>
-</div>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<div class="progress progress-striped active">
-<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out" role=progressbar data-transitiongoal=30></div>
-</div>
-</div>
-</div>
-<div class=row>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<p> JAX-RS </p>
-</div>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<div class="progress progress-striped active">
-<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out" role=progressbar data-transitiongoal=50></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="row wow fadeInDown" data-wow-delay=200ms>
-<div class="col-md-1 col-sm-11 col-xs-11"></div>
-<div class="col-md-4 col-sm-12 col-xs-12">
-<h4><strong> Mobile App Development</strong></h4>
-</div>
-<div class="col-md-7 col-sm-12 col-xs-12">
-<div class=row>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<p> Android using Android Studio </p>
-</div>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<div class="progress progress-striped active">
-<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out" role=progressbar data-transitiongoal=40></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="row wow fadeInDown" data-wow-delay=100ms>
-<div class="col-md-1 col-sm-11 col-xs-11"></div>
-<div class="col-md-4 col-sm-12 col-xs-12">
-<h4> <strong>Database Management Systems</strong></h4>
-<p><strong>RDBMS</strong></p>
-</div>
-<div class="col-md-7 col-sm-12 col-xs-12">
-<br/><br/><br/>
-<div class=row>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<p> MySQL </p>
-</div>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<div class="progress progress-striped active">
-<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out" role=progressbar data-transitiongoal=60></div>
-</div>
-</div>
-</div>
-<div class=row>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<p> Oracle 11G (Oracle Certified) </p>
-</div>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<div class="progress progress-striped active">
-<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out" role=progressbar data-transitiongoal=55></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="row wow fadeInDown" data-wow-delay=200ms>
-<div class="col-md-1 col-sm-11 col-xs-11"></div>
-<div class="col-md-4 col-sm-12 col-xs-12">
-<p><strong>Search Server</strong></p>
-</div>
-<div class="col-md-7 col-sm-12 col-xs-12">
-<div class=row>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<p> Elastic Search </p>
-</div>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<div class="progress progress-striped active">
-<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out" role=progressbar data-transitiongoal=10></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="row wow fadeInDown" data-wow-delay=200ms>
-<div class="col-md-1 col-sm-11 col-xs-11"></div>
-<div class="col-md-4 col-sm-12 col-xs-12">
-<h4><strong>Version Control System</strong></h4>
-</div>
-<div class="col-md-7 col-sm-12 col-xs-12">
-<br/>
-<div class=row>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<p> Git/GitHub </p>
-</div>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<div class="progress progress-striped active">
-<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out" role=progressbar data-transitiongoal=20></div>
-</div>
-</div>
-</div>
-<div class=row>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<p> SVN Tortoise </p>
-</div>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<div class="progress progress-striped active">
-<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out" role=progressbar data-transitiongoal=5></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="row wow fadeInDown" data-wow-delay=100ms>
-<div class="col-md-1 col-sm-11 col-xs-11"></div>
-<div class="col-md-4 col-sm-12 col-xs-12">
-<h4><strong>Cloud Computing</strong></h4>
-</div>
-<div class="col-md-7 col-sm-12 col-xs-12">
-<br/>
-<div class=row>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<p> AWS </p>
-</div>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<div class="progress progress-striped active">
-<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out" role=progressbar data-transitiongoal=5></div>
-</div>
-</div>
-</div>
-<div class=row>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<p> Heroku </p>
-</div>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<div class="progress progress-striped active">
-<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out" role=progressbar data-transitiongoal=7></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="row wow fadeInDown" data-wow-delay=100ms>
-<div class="col-md-1 col-sm-11 col-xs-11"></div>
-<div class="col-md-4 col-sm-12 col-xs-12">
-<h4><strong>Build Tools</strong></h4>
-</div>
-<div class="col-md-7 col-sm-12 col-xs-12">
-<br/>
-<div class=row>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<p> Apache Ant </p>
-</div>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<div class="progress progress-striped active">
-<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out" role=progressbar data-transitiongoal=10></div>
-</div>
-</div>
-</div>
-<div class=row>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<p> Apache Maven </p>
-</div>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<div class="progress progress-striped active">
-<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out" role=progressbar data-transitiongoal=15></div>
-</div>
-</div>
-</div>
-<div class=row>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<p> Gradle </p>
-</div>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<div class="progress progress-striped active">
-<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out" role=progressbar data-transitiongoal=10></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="row wow fadeInDown" data-wow-delay=100ms>
-<div class="col-md-1 col-sm-11 col-xs-11"></div>
-<div class="col-md-4 col-sm-12 col-xs-12">
-<h4><strong>Code Editing Softwares</strong></h4>
-</div>
-<div class="col-md-7 col-sm-12 col-xs-12">
-<br/>
-<div class=row>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<p> Eclipse </p>
-</div>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<div class="progress progress-striped active">
-<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out" role=progressbar data-transitiongoal=70></div>
-</div>
-</div>
-</div>
-<div class=row>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<p> NetBeans </p>
-</div>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<div class="progress progress-striped active">
-<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out" role=progressbar data-transitiongoal=60></div>
-</div>
-</div>
-</div>
-<div class=row>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<p> Notepad++ </p>
-</div>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<div class="progress progress-striped active">
-<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out" role=progressbar data-transitiongoal=73></div>
-</div>
-</div>
-</div>
-<div class=row>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<p> SubLime and Brackets </p>
-</div>
-<div class="col-md-4 col-sm-6 col-xs-6">
-<div class="progress progress-striped active">
-<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out" role=progressbar data-transitiongoal=70></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class=project-section id=project-section>
-<div class=container>
-<div class="section-title text-center center wow fadeInDown">
-<h2>Projects</h2>
-<p>
-&ldquo;You can do anything you set your mind to.&rdquo;<br />- Benjamin Franklin
-</p>
-<hr>
-</div>
-<div class="row wow fadeInDown">
-<div class=container-fluid>
-<div class=row>
-<div class=project-items>
-<div class="col-sm-6 col-md-3 col-lg-3 web">
-<div class="project-item wow fadeInDown" data-wow-delay=200ms>
-<div class=hover-bg> <a href=#ataproject class=project-link data-toggle=modal>
-<div class=hover-text>
-<h4>AtA Project</h4>
-<p>Web App</p>
-<div class=clearfix></div>
-</div>
-<img src=jpg/ata1.png class=img-responsive alt="Project Title"> </a> </div>
-</div>
-</div>
-<div class="col-sm-6 col-md-3 col-lg-3 app">
-<div class="project-item wow fadeInDown" data-wow-delay=400ms>
-<div class=hover-bg> <a href=#reactiv class=project-link data-toggle=modal>
-<div class=hover-text>
-<h4>REACTIV</h4>
-<p>Full Stack Java Web App</p>
-<div class=clearfix></div>
-</div>
-<img src=jpg/reactiv.png class=img-responsive alt="Project Title"> </a> </div>
-</div>
-</div>
-<div class="col-sm-6 col-md-3 col-lg-3 web">
-<div class="project-item wow fadeInDown" data-wow-delay=600ms>
-<div class=hover-bg> <a href=#placestovisit class=project-link data-toggle=modal>
-<div class=hover-text>
-<h4>Places To Visit</h4>
-<p>Web App</p>
-<div class=clearfix></div>
-</div>
-<img src=jpg/placestovisit.png class=img-responsive alt="Project Title"> </a> </div>
-</div>
-</div>
-<div class="col-sm-6 col-md-3 col-lg-3 web">
-<div class="project-item wow fadeInDown" data-wow-delay=800ms>
-<div class=hover-bg> <a href=#jdacodehub class=project-link data-toggle=modal>
-<div class=hover-text>
-<h4>Code Hub</h4>
-<p>Full Stack Java Web App</p>
-<div class=clearfix></div>
-<i class="fa fa-plus"></i> </div>
-<img src=jpg/jdacodehub.png class=img-responsive alt="Project Title"> </a> </div>
-</div>
-</div>
-<div class="col-sm-6 col-md-3 col-lg-3 web">
-<div class="project-item wow fadeInDown" data-wow-delay=1000ms>
-<div class=hover-bg> <a href=#campusinforetrieval class=project-link data-toggle=modal>
-<div class=hover-text>
-<h4>Campus Info Retrieval</h4>
-<p>Android App Development</p>
-<div class=clearfix></div>
-</div>
-<img src=jpg/campusinforetrieval.png class=img-responsive alt="Project Title"> </a> </div>
-</div>
-</div>
-<div class="col-sm-6 col-md-3 col-lg-3 branding">
-<div class="project-item wow fadeInDown" data-wow-delay=1200ms>
-<div class=hover-bg> <a href=#excelfeatures class=project-link data-toggle=modal>
-<div class=hover-text>
-<h4>More Excel Sheet Features</h4>
-<p>DeskTop</p>
-<div class=clearfix></div>
-</div>
-<img src=jpg/excelfeatures.png class=img-responsive alt="Project Title"> </a> </div>
-</div>
-</div>
-<div class="col-sm-6 col-md-3 col-lg-3 branding app">
-<div class="project-item wow fadeInDown" data-wow-delay=1400ms>
-<div class=hover-bg> <a href=#zombiebird class=project-link data-toggle=modal>
-<div class=hover-text>
-<h4>Zombie Bird</h4>
-<p>Android Game Development</p>
-<div class=clearfix></div>
-</div>
-<img src=jpg/zombiebird.png class=img-responsive alt="Project Title"> </a> </div>
-</div>
-</div>
-<div class="col-sm-6 col-md-3 col-lg-3 web">
-<div class="project-item wow fadeInDown" data-wow-delay=1600ms>
-<div class=hover-bg> <a href=#personalsite class=project-link data-toggle=modal>
-<div class=hover-text>
-<h4>Personal Site</h4>
-<p>Web Design</p>
-<div class=clearfix></div>
-</div>
-<img src=jpg/personalsite.png class=img-responsive alt="Project Title"> </a> </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div id=footer class=text-center>
-<div class=container>
-<p>Copyright &copy; Ankit Bansal. Design by <a href=# rel=nofollow>Ankit Bansal</a></p>
-</div>
-</div>
-<div class="project-modal modal fade" id=ataproject tabindex=-1 role=dialog aria-hidden=true>
-<div class=modal-content>
-<div class=close-modal data-dismiss=modal>
-<div class=lr>
-<div class=rl> </div>
-</div>
-</div>
-<div class=container>
-<div class=row>
-<div class="col-lg-8 col-lg-offset-2">
-<div class=modal-body>
-<h2>Attribute Authority</h2>
-<p class=item-intro></p>
-<img class="img-responsive img-centered" src=jpg/ata1.png alt="AtA project at Persistent">
-<p> My role was to develop Complete UI version 2.0 using AngularJs,Bootstrap, HTML5 at front End. <p/>
-<p> At Server Side to get the user data, process it to make SOAP Request(XML) and send this request to AtA service and get the SOAP Response from that services and send this SOAP Response to user so that it can Download/Check/Use and this server side was developed using Spring MVC frameworks </p>
-<ul class=list-inline>
-<li><span>Front End Technologies and Api's</span>: HTML5, AngularJS,Bootstrap, CodeMirror</li>
-<li><span>Back End Technologies</span>: J2EE6, Spring Framework, Apache commons HTTPClient</li>
-</ul>
-<ul class=list-inline>
-<li><span>Client</span>: CISCO</li>
-<li><span>Service</span>: Web Design</li>
-</ul>
-<button type=button class="btn btn-primary" data-dismiss=modal><i class="fa fa-times"></i> Close Project</button>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="project-modal modal fade" id=reactiv tabindex=-1 role=dialog aria-hidden=true>
-<div class=modal-content>
-<div class=close-modal data-dismiss=modal>
-<div class=lr>
-<div class=rl> </div>
-</div>
-</div>
-<div class=container>
-<div class=row>
-<div class="col-lg-8 col-lg-offset-2">
-<div class=modal-body>
-<h2>REACTIV</h2>
-<p class=item-intro>Realtime Collaborative Technical Interview with Video/Live Interviews.</p>
-<img class="img-responsive img-centered" src=jpg/reactiv.png alt="REACTIV Technothon Persi Project Winner">
-<p>We developed an online coding environment for conducting coding interview. We provided an online editor where candidate and interviewer can collaboratively write code, we also provided automated judging to make the task of objectively evaluating the candidate performance easier and chatting and video calling to communicate each other.
-Also created job portal that tracks candidate request and HR can choose selective candidate and the schedule an interview. He / She can also able to pick what questions candidate needs to solve.
-</p>
-<pre><p> 	Requirements Gathering.
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name=author content="Ankit Bansal" />
+		<meta name=description content="I am Ankit Bansal, Full Stack Java Software Developer, Entrepreneur, Blogger. This is my Personal resume/portfolio website presenting every work that I have done."/>
+		<meta name=keywords content="resume,j2ee,java,personal site, ankit bansal, ankit,bansal,website,best resume website,cv, startup, entrepreneur, full stack developer, full stack java developer, jquery, javascript,programmer, software developer, algorithms, oops ,data structures, mysql, computer science engineer, software engineer,web services, restful jaxrs"/>
+		<meta name=viewport content="width=device-width, initial-scale=1" />
+		<meta name=robots content="index, follow" />
+		<meta name=revisit-after content="7 days" />
+		<meta name=google-site-verification content=OuZYB7ACASzioV462WESC4bBSbmF27AUCGZbj0ssNRw />
+		<link rel="shortcut icon" href=favicon.ico />
+		<title> Ankit Bansal</title>
+		<link rel=stylesheet href=https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css integrity=sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7
+		    crossorigin=anonymous>
+		<link href=css/owl.carousel.css rel=stylesheet media=screen>
+		<link href=css/owl.theme.css rel=stylesheet media=screen>
+		<link rel=stylesheet type=text/css href=css/animate.min.css>
+		<script type=text/javascript src=js/modernizr.custom.js></script>
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800,600,300' rel=stylesheet type=text/css>
+		<link rel=stylesheet type=text/css href=fonts/font-awesome/css/font-awesome.css>
+		<link href=https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.0.0/bootstrap-social.css rel=stylesheet type=text/css>
+		<link rel=stylesheet type=text/css href=css/css.css>
+	</head>
+
+	<body ng-app=app ng-controller=SiteController>
+		<nav id=menu class="navbar navbar-default" role=navigation>
+			<div class=navbar-header>
+				<button type=button class=navbar-toggle data-toggle=collapse data-target=.navbar-ex1-collapse>
+					<span class=sr-only>Toggle navigation</span>
+					<span class=icon-bar></span>
+					<span class=icon-bar></span>
+					<span class=icon-bar></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse navbar-ex1-collapse" id=bs-example-navbar-collapse-1>
+				<ul class="nav navbar-nav">
+					<li>
+						<a href=#profile_section class=page-scroll>Profile</a>
+					</li>
+					<li>
+						<a href=#experience-section class=page-scroll>Experiences</a>
+					</li>
+					<li>
+						<a href=#abilities_section class=page-scroll>Abilities</a>
+					</li>
+					<li>
+						<a href=#project-section class=page-scroll>Projects</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+		<a class=back-to-top id=backtotop href=#>
+			<span class="glyphicon glyphicon-menu-up"></span>
+		</a>
+		<a id=hireme href=mailto:bansal.ankit92@gmail.com target=_top>
+			<button type=button class="btn btn-warning btn3d">Hire Me!</button>
+		</a>
+		<a id=callme href=tel:9762907853 target=_top>
+			<button type=button class="btn btn-warning btn3d">Call Me!</button>
+		</a>
+		<header class="text-center intro-bg" name=home>
+			<div class=intro-text>
+				<h1 class="wow zoomIn">I am
+					<span typed class=brand>Ankit Bansal</span>
+				</h1>
+				<p class="wow fadeInDown" data-wow-delay=200ms>tech enthusiast / full stack web developer / Solopreneur</p>
+			</div>
+			<div class=clearfix></div>
+			<div class=bounce>
+				<a href=#profile_section class=page-scroll>
+					<i class="fa fa-angle-double-down"></i>
+				</a>
+			</div>
+		</header>
+		<div class=profile_section id=profile_section>
+			<div class="container wow fadeInDown">
+				<div class="section-title text-center center">
+					<h2>Profile</h2>
+					<hr/>
+				</div>
+				<div class="row wow fadeInDown" data-wow-delay=200ms>
+					<div class="col-md-1 col-sm-11 col-xs-11"></div>
+					<div id=details class="col-md-2 col-sm-11 col-xs-11 text-center">
+						<div class=text-left>
+							<h4>Details</h4>
+							<br />
+							<p>
+								<strong>Name:</strong>
+								Ankit Bansal </p>
+							<p>
+								<strong>Age:</strong>
+								24 years </p>
+							<p>
+								<strong>Location:</strong>
+								Pune - 412101 </p>
+							<p>
+								<strong>Mob No.:</strong>
+								<a href=tel:9762907853 target=_top>9762907853</a>
+							</p>
+						</div>
+					</div>
+					<div class="col-md-6 col-sm-12 col-xs-12">
+						<h4 class=text-center>About Me</h4>
+						<p id=aboutme>
+							I am Full Stack Web and Mobile Developer in Java and JS stack. I love structure and order and I also stand for quality. 
+							I love spending time on fixing little details, optimizing web apps and Developing new apps. 
+							Also I like working in a team, you'll learn
+							faster and more. As the saying goes: 'two heads are better than one'.
+						</p>
+					</div>
+					<div class="col-md-2 col-sm-12 col-xs-12 text-center">
+						<img id=mypic src=jpg/ankit.png class=img-circle alt="Ankit Bansal" width=200 height=190>
+						<br/>
+						<a href="/docs/Ankit_Bansal_Resume.pdf" target="_blank" download>
+							<button type=button class="btn btn-warning btn"> &nbsp;&nbsp;&nbsp;Download Resume&nbsp;&nbsp;&nbsp; </button>
+						</a>
+					</div>
+				</div>
+				<div class=text-center>
+					<a href=https://github.com/bansalankit92/personalsite target=_blank>
+						<button type=button class="btn btn-danger btn3d "> &nbsp;&nbsp;&nbsp;Download Code &nbsp;&nbsp;&nbsp; </button>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div id=social-section>
+			<div class=container>
+				<div class=social>
+					<ul>
+						<li>
+							<a class="btn btn-social-icon btn-github " href=http://github.com/bansalankit92/ target=_blank>
+								<span class="fa fa-github "></span>
+							</a>
+						</li>
+						<li>
+							<a class="btn btn-social-icon btn-linkedin " href="https://www.linkedin.com/in/ankitbansal2
+						    " target=_blank>
+								<span class="fa fa-linkedin "></span>
+							</a>
+						</li>
+						<li>
+							<a class="btn btn-social-icon btn-facebook
+						    " href=https://www.facebook.com/ankeet.bansal target=_blank>
+								<span class="fa fa-facebook "></span>
+							</a>
+						</li>
+						<li>
+							<a class="btn btn-social-icon btn-google
+						    " href=https://plus.google.com/u/0/+AnkitBansal2/posts target=_blank>
+								<span class="fa fa-google "></span>
+							</a>
+						</li>
+						<li>
+							<a class="btn btn-social-icon
+						    " href=https://www.hackerrank.com/bansal_ankit92 target=_blank>
+								<img src=jpg/hackerrank.png alt="hackerrank " />
+							</a>
+						</li>
+						<li>
+							<a class="btn btn-social-icon
+						    " href=https://www.hackerearth.com/@bansal.ankit92 target=_blank>
+								<img src=jpg/hackerearth.png alt="hackerearth " />
+							</a>
+						</li>
+						<li>
+							<a class="btn btn-social-icon btn-social btn-twitter
+						    " href=https://twitter.com/ban1ankit target=_blank>
+								<span class="fa fa-twitter "></span>
+							</a>
+						</li>
+						<li>
+							<a class="btn btn-social-icon btn-social
+						    " href=http://codevik.com target=_blank>
+								<img src=jpg/blogger.png alt="hackerearth " />
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class=experience-section id=experience-section>
+			<div class=container>
+				<div class="section-title text-center center wow fadeInDown ">
+					<h2>Experiences </h2>
+					<p>&ldquo;Given the choice between the experience of pain and nothing, I would choose pain.&rdquo;
+						<br/> ― William Faulkner</p>
+					<hr/>
+				</div>
+				<div class="row wow fadeInDown " data-wow-delay=200ms>
+					<div class="col-md-1 col-sm-11 col-xs-11 "></div>
+					<div class="col-md-2 col-sm-11 col-xs-11 ">
+						<h4>
+							<strong>Education</strong>
+						</h4>
+					</div>
+					<div class="col-md-9 col-sm-11 col-xs-11 ">
+						<br/>
+						<div class=row>
+							<div class="col-md-8 col-sm-6 col-xs-6 ">
+								<p>
+									<strong>Graduate Aptitude Test in Engineering-2015 </strong>
+									<br/> AIR-5322
+									<br/>Score-435</p>
+							</div>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<p>Feb-2015</p>
+							</div>
+						</div>
+						<br/>
+						<div class=row>
+							<div class="col-md-8 col-sm-6 col-xs-6 ">
+								<p>
+									<strong>Bachelor- Computer Science and Engineering (65%)</strong>
+									<br/> Pune University</p>
+							</div>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<p>2011-2015</p>
+							</div>
+						</div>
+						<br />
+						<div class=row>
+							<div class="col-md-8 col-sm-6 col-xs-6 ">
+								<p>
+									<strong>High School- Maths &amp; Science (70%)</strong>
+									<br/> Maharashtra State Board</p>
+							</div>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<p>2009-2011</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<br/>
+				<div class="row wow fadeInDown " data-wow-delay=200ms>
+					<div class="col-md-1 col-sm-11 col-xs-11 "></div>
+					<div class=col-md-2>
+						<h4>
+							<strong>Certification</strong>
+						</h4>
+					</div>
+					<div class="col-md-9 col-sm-11 col-xs-11 ">
+						<br/>
+						<div class=row>
+							<div class="col-md-8 col-sm-6 col-xs-6 ">
+								<p>
+									<strong>Oracle Certified SQL Expert</strong>
+									<br/> Oracle University</p>
+							</div>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<p>2014</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<br/>
+			<div class=container>
+				<br/>
+				<div class="row wow fadeInDown " data-wow-delay=200ms>
+					<div class="col-md-1 col-sm-11 col-xs-11 "></div>
+					<div class=col-md-2>
+						<h4>
+							<strong>Career</strong>
+						</h4>
+					</div>
+					<div class=col-md-9>
+						<div class=row>
+							<div class=col-md-8>
+								<p>
+									<h4> Clairvoyant India Pvt. Ltd.</h4>
+									Software Engineer</p>
+								<p>
+									<strong>Responsibility</strong><br/>
+									Worked as an individual contributor in an agile and fast paced environment to design, and develop user stories.
+<br/>Worked closely with the business unit to ensure application development meets product specification requirements.
+<br/>Took ownership, worked effectively and helped the team deliver commitments in areas such as UI, Web Services, etc.
+<br/>Developed high-quality code from implementation to delivery and testing.
+<br/>Collaborated with the customer and subject matter experts across different geographical locations.
+
+								</p>
+								<p>
+									<strong>Acquired Skills</strong>
+									<br/> Developed various web services using Spring Framework.
+									<br/> Developed messaging system using Kafka messaging system.
+									<br/> 	Implemented UI using Bootstrap and Angular 4.
+									<br/>  Implemented frontend search functionality and Web application in Angular 2.
+									<br/>   Front-end web development experience with HTML5, JavaScript, and CSS3.
+								  <br/>  Experience writing Restful web services in Java (Spring MVC Framework).
+								  <br/>   Developed and unit test code and implemented stand-alone automated test framework for the web application
+								  <br/>   Knowledge of Version Control and release management approaches.
+								</div>
+							<div class=col-md-4>
+								<p>October 2016 (Present)</p>
+							</div>
+						</div>
+						<br/>
+						
+						<div class=row>
+							<div class=col-md-8>
+								<p>
+										<h4>Persistent System Pvt. Ltd.</h4>
+										Software Engineer</p>
+								<p>
+									<strong>Role</strong>
+									<br/> To Develop a webapp using HTML5 Bootstrap AngularJS as FrontEnd and Java with Spring Framework as BackEnd.
+									<br/>Basically user will submit a form to server and this form data will be processed as XML SOAP request and this request
+									is passed to a WebServices and this Web Service API sends SOAP Response and after processing to pass the response
+									to User.
+								</p>
+								<p>
+									<strong>Acquired Skills</strong>
+									<br/> Being the first and very well structured company, with clear and defined work procedures, helps me to grow both
+									personally and professionally, as well as enjoying a young and international working environment. I have the opportunity
+									to redefine the way I work in a more intelligent way. I am definitely improving my technical knowledge.
+									<br/> I have learned lot of new technologies with rigorous training and can call myself as Full Stack Developer </p>
+							</div>
+							<div class=col-md-4>
+								<p>Sept 2015 - Oct 2016</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<br/>
+			</div>
+		</div>
+		<br/>
+		<div class=abilities_section id=abilities_section>
+			<div class=container>
+				<div class="section-title text-center center wow fadeInDown ">
+					<h2>Ability and Skills</h2>
+					<hr/>
+					<p>&ldquo;Man often becomes what he believes himself to be. If I keep on saying to myself that I cannot do a certain thing,
+						it is possible that I may end by really becoming incapable of doing it. On the contrary, if I have the belief that
+						I can do it, I shall surely acquire the capacity to do it even if I may not have it at the beginning.&rdquo;
+						<br/>― Mahatma Gandhi</p>
+				</div>
+				<div class="row wow fadeInDown " data-wow-delay=200ms>
+					<div class="col-md-1 col-sm-11 col-xs-11 "></div>
+					<div class="col-md-4 col-sm-12 col-xs-12 ">
+						<h4>
+							<strong>Concepts</strong>
+						</h4>
+					</div>
+					<div class="col-md-7 col-sm-12 col-xs-12 ">
+						<br/>
+						<div class=row>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<p> OOPs </p>
+							</div>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<div class="progress progress-striped active ">
+									<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out " role=progressbar data-transitiongoal=74></div>
+								</div>
+							</div>
+						</div>
+						<div class=row>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<p> Data Structures </p>
+							</div>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<div class="progress progress-striped active ">
+									<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out " role=progressbar data-transitiongoal=70></div>
+								</div>
+							</div>
+						</div>
+						<div class=row>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<p> Algorithms </p>
+							</div>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<div class="progress progress-striped active ">
+									<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out " role=progressbar data-transitiongoal=56></div>
+								</div>
+							</div>
+						</div>
+						<div class=row>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<p> DBMS </p>
+							</div>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<div class="progress progress-striped active ">
+									<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out " role=progressbar data-transitiongoal=60></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row wow fadeInDown " data-wow-delay=200ms>
+					<div class="col-md-1 col-sm-11 col-xs-11 "></div>
+					<div class="col-md-4 col-sm-12 col-xs-12 ">
+						<h4>
+							<strong>Programming Languages</strong>
+						</h4>
+					</div>
+					<div class="col-md-7 col-sm-12 col-xs-12 ">
+						<br/>
+						<div class=row>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<p> Java </p>
+							</div>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<div class="progress progress-striped active ">
+									<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out " role=progressbar data-transitiongoal=75></div>
+								</div>
+							</div>
+						</div>
+						<!-- <div class=row>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<p> C-C++ </p>
+							</div>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<div class="progress progress-striped active ">
+									<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out " role=progressbar data-transitiongoal=50></div>
+								</div>
+							</div>
+						</div> -->
+						<div class=row>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<p> Python </p>
+							</div>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<div class="progress progress-striped active ">
+									<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out " role=progressbar data-transitiongoal=35></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row wow fadeInDown " data-wow-delay=200ms>
+					<div class="col-md-1 col-sm-11 col-xs-11 "></div>
+					<div class="col-md-4 col-sm-12 col-xs-12 ">
+						<h4>
+							<strong>Web (Client Side)</strong>
+						</h4>
+						<p>
+							<strong>Development Languages</strong>
+						</p>
+					</div>
+					<div class="col-md-7 col-sm-12 col-xs-12 ">
+						<br/>
+						<br/>
+						<br/>
+						<div class=row>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<p> HTML </p>
+							</div>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<div class="progress progress-striped active ">
+									<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out " role=progressbar data-transitiongoal=75></div>
+								</div>
+							</div>
+						</div>
+						<div class=row>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<p> CSS </p>
+							</div>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<div class="progress progress-striped active ">
+									<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out " role=progressbar data-transitiongoal=60></div>
+								</div>
+							</div>
+						</div>
+						<div class=row>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<p> JavaScript </p>
+							</div>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<div class="progress progress-striped active ">
+									<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out " role=progressbar data-transitiongoal=65></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div>
+						<div class="col-md-1 col-sm-11 col-xs-11 "></div>
+						<div class="col-md-4 col-sm-12 col-xs-12 ">
+							<p>
+								<strong>JS Libraries/Frameworks</strong>
+							</p>
+						</div>
+						<div class="col-md-7 col-sm-12 col-xs-12 ">
+							<div class=row>
+								<div class="col-md-4 col-sm-6 col-xs-6 ">
+									<p> AngularJS/4 </p>
+								</div>
+								<div class="col-md-4 col-sm-6 col-xs-6 ">
+									<div class="progress progress-striped active ">
+										<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out " role=progressbar data-transitiongoal=60></div>
+									</div>
+								</div>
+							</div>
+							<div class=row>
+								<div class="col-md-4 col-sm-6 col-xs-6 ">
+									<p> JQuery </p>
+								</div>
+								<div class="col-md-4 col-sm-6 col-xs-6 ">
+									<div class="progress progress-striped active ">
+										<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out " role=progressbar data-transitiongoal=50></div>
+									</div>
+								</div>
+							</div>
+							<div class=row>
+									<div class="col-md-4 col-sm-6 col-xs-6 ">
+										<p> React </p>
+									</div>
+									<div class="col-md-4 col-sm-6 col-xs-6 ">
+										<div class="progress progress-striped active ">
+											<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out " role=progressbar data-transitiongoal=40></div>
+										</div>
+									</div>
+								</div>
+						</div>
+					</div>
+				</div>
+				<div class="row wow fadeInDown " data-wow-delay=200ms>
+					<div class="col-md-1 col-sm-11 col-xs-11 "></div>
+					<div class="col-md-4 col-sm-12 col-xs-12 ">
+						<h4>
+							<strong>Web (Server Side)</strong>
+						</h4>
+						<p>
+							<strong>Development Languages</strong>
+						</p>
+					</div>
+					<div class="col-md-7 col-sm-12 col-xs-12 ">
+						<br/>
+						<br/>
+						<br/>
+						<div class=row>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<p> Java(J2EE6) </p>
+							</div>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<div class="progress progress-striped active ">
+									<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out " role=progressbar data-transitiongoal=75></div>
+								</div>
+							</div>
+						</div>
+						<div class=row>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<p> PHP </p>
+							</div>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<div class="progress progress-striped active ">
+									<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out " role=progressbar data-transitiongoal=35></div>
+								</div>
+							</div>
+						</div>
+						<div class=row>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<p> NodeJs (Learning) </p>
+							</div>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<div class="progress progress-striped active ">
+									<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out " role=progressbar data-transitiongoal=25></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row wow fadeInDown " data-wow-delay=200ms>
+					<div class="col-md-1 col-sm-11 col-xs-11 "></div>
+					<div class="col-md-4 col-sm-12 col-xs-12 ">
+						<p>
+							<strong>Frameworks/API's</strong>
+						</p>
+					</div>
+					<div class="col-md-7 col-sm-12 col-xs-12 ">
+						<div class=row>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<p> Spring-Boot </p>
+							</div>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<div class="progress progress-striped active ">
+									<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out " role=progressbar data-transitiongoal=50></div>
+								</div>
+							</div>
+						</div>
+						<div class=row>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<p> Hibernate/JPA </p>
+							</div>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<div class="progress progress-striped active ">
+									<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out " role=progressbar data-transitiongoal=50></div>
+								</div>
+							</div>
+						</div>
+						<div class=row>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<p> JAX-WS </p>
+							</div>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<div class="progress progress-striped active ">
+									<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out " role=progressbar data-transitiongoal=30></div>
+								</div>
+							</div>
+						</div>
+						<div class=row>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<p> JAX-RS </p>
+							</div>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<div class="progress progress-striped active ">
+									<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out " role=progressbar data-transitiongoal=50></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row wow fadeInDown " data-wow-delay=200ms>
+					<div class="col-md-1 col-sm-11 col-xs-11 "></div>
+					<div class="col-md-4 col-sm-12 col-xs-12 ">
+						<h4>
+							<strong> Mobile App Development</strong>
+						</h4>
+					</div>
+					<div class="col-md-7 col-sm-12 col-xs-12 ">
+						<div class=row>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<p> Android </p>
+							</div>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<div class="progress progress-striped active ">
+									<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out " role=progressbar data-transitiongoal=45></div>
+								</div>
+							</div>
+						</div>
+						<div class=row>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<p> React Native </p>
+							</div>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<div class="progress progress-striped active ">
+									<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out " role=progressbar data-transitiongoal=35></div>
+								</div>
+							</div>
+						</div>
+						<div class=row>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<p> Ionic </p>
+							</div>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<div class="progress progress-striped active ">
+									<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out " role=progressbar data-transitiongoal=55></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row wow fadeInDown " data-wow-delay=100ms>
+					<div class="col-md-1 col-sm-11 col-xs-11 "></div>
+					<div class="col-md-4 col-sm-12 col-xs-12 ">
+						<h4>
+							<strong>Database Management Systems</strong>
+						</h4>
+						<p>
+							<strong>RDBMS</strong>
+						</p>
+					</div>
+					<div class="col-md-7 col-sm-12 col-xs-12 ">
+						<br/>
+						<br/>
+						<br/>
+						<div class=row>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<p> MySQL </p>
+							</div>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<div class="progress progress-striped active ">
+									<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out " role=progressbar data-transitiongoal=60></div>
+								</div>
+							</div>
+						</div>
+						<div class=row>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<p> Oracle 11G (Oracle Certified) </p>
+							</div>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<div class="progress progress-striped active ">
+									<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out " role=progressbar data-transitiongoal=55></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row wow fadeInDown " data-wow-delay=200ms>
+					<div class="col-md-1 col-sm-11 col-xs-11 "></div>
+					<div class="col-md-4 col-sm-12 col-xs-12 ">
+						<p>
+							<strong>Search Server</strong>
+						</p>
+					</div>
+					<div class="col-md-7 col-sm-12 col-xs-12 ">
+						<div class=row>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<p> Elastic Search </p>
+							</div>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<div class="progress progress-striped active ">
+									<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out " role=progressbar data-transitiongoal=35></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row wow fadeInDown " data-wow-delay=200ms>
+					<div class="col-md-1 col-sm-11 col-xs-11 "></div>
+					<div class="col-md-4 col-sm-12 col-xs-12 ">
+						<h4>
+							<strong>Version Control System</strong>
+						</h4>
+					</div>
+					<div class="col-md-7 col-sm-12 col-xs-12 ">
+						<br/>
+						<div class=row>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<p> Git/GitHub </p>
+							</div>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<div class="progress progress-striped active ">
+									<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out " role=progressbar data-transitiongoal=50></div>
+								</div>
+							</div>
+						</div>
+						<!-- <div class=row>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<p> SVN Tortoise </p>
+							</div>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<div class="progress progress-striped active ">
+									<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out " role=progressbar data-transitiongoal=5></div>
+								</div>
+							</div>
+						</div> -->
+					</div>
+				</div>
+				<div class="row wow fadeInDown " data-wow-delay=100ms>
+					<div class="col-md-1 col-sm-11 col-xs-11 "></div>
+					<div class="col-md-4 col-sm-12 col-xs-12 ">
+						<h4>
+							<strong>Cloud Computing</strong>
+						</h4>
+					</div>
+					<div class="col-md-7 col-sm-12 col-xs-12 ">
+						<br/>
+						<div class=row>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<p> AWS </p>
+							</div>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<div class="progress progress-striped active ">
+									<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out " role=progressbar data-transitiongoal=15></div>
+								</div>
+							</div>
+						</div>
+						<div class=row>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<p> Heroku </p>
+							</div>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<div class="progress progress-striped active ">
+									<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out " role=progressbar data-transitiongoal=15></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row wow fadeInDown " data-wow-delay=100ms>
+					<div class="col-md-1 col-sm-11 col-xs-11 "></div>
+					<div class="col-md-4 col-sm-12 col-xs-12 ">
+						<h4>
+							<strong>Build Tools</strong>
+						</h4>
+					</div>
+					<div class="col-md-7 col-sm-12 col-xs-12 ">
+						<br/>
+						<div class=row>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<p> Apache Ant </p>
+							</div>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<div class="progress progress-striped active ">
+									<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out " role=progressbar data-transitiongoal=10></div>
+								</div>
+							</div>
+						</div>
+						<div class=row>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<p> Apache Maven </p>
+							</div>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<div class="progress progress-striped active ">
+									<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out " role=progressbar data-transitiongoal=35></div>
+								</div>
+							</div>
+						</div>
+						<div class=row>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<p> Gradle </p>
+							</div>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<div class="progress progress-striped active ">
+									<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out " role=progressbar data-transitiongoal=35></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row wow fadeInDown " data-wow-delay=100ms>
+					<div class="col-md-1 col-sm-11 col-xs-11 "></div>
+					<div class="col-md-4 col-sm-12 col-xs-12 ">
+						<h4>
+							<strong>Code Editing Softwares</strong>
+						</h4>
+					</div>
+					<div class="col-md-7 col-sm-12 col-xs-12 ">
+						<br/>
+						<div class=row>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<p> Eclipse </p>
+							</div>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<div class="progress progress-striped active ">
+									<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out " role=progressbar data-transitiongoal=70></div>
+								</div>
+							</div>
+						</div>
+						<div class=row>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<p> Intelji </p>
+							</div>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<div class="progress progress-striped active ">
+									<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out " role=progressbar data-transitiongoal=70></div>
+								</div>
+							</div>
+						</div>
+						<div class=row>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<p> NetBeans </p>
+							</div>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<div class="progress progress-striped active ">
+									<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out " role=progressbar data-transitiongoal=60></div>
+								</div>
+							</div>
+						</div>
+						<div class=row>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<p> Notepad++ </p>
+							</div>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<div class="progress progress-striped active ">
+									<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out " role=progressbar data-transitiongoal=73></div>
+								</div>
+							</div>
+						</div>
+						<div class=row>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<p> SubLime and Brackets </p>
+							</div>
+							<div class="col-md-4 col-sm-6 col-xs-6 ">
+								<div class="progress progress-striped active ">
+									<div class="progress progress-striped progress-bar progress-bar-info six-sec-ease-in-out " role=progressbar data-transitiongoal=70></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+		<div class=project-section id=project-section>
+			<div class=container>
+				<div class="section-title text-center center wow fadeInDown ">
+					<h2>Projects</h2>
+					<p>
+						&ldquo;You can do anything you set your mind to.&rdquo;
+						<br />- Benjamin Franklin
+					</p>
+					<hr>
+				</div>
+				<div class="row wow fadeInDown ">
+					<div class=container-fluid>
+						<div class=row>
+							<div class=project-items>
+								<div class="col-sm-6 col-md-3 col-lg-3 web ">
+									<div class="project-item wow fadeInDown " data-wow-delay=200ms>
+										<div class=hover-bg>
+											<a href=#ataproject class=project-link data-toggle=modal>
+												<div class=hover-text>
+													<h4>AtA Project</h4>
+													<p>Web App</p>
+													<div class=clearfix></div>
+												</div>
+												<img src=jpg/ata1.png class=img-responsive alt="Project Title "> </a>
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-6 col-md-3 col-lg-3 app ">
+									<div class="project-item wow fadeInDown " data-wow-delay=400ms>
+										<div class=hover-bg>
+											<a href=#reactiv class=project-link data-toggle=modal>
+												<div class=hover-text>
+													<h4>REACTIV</h4>
+													<p>Full Stack Java Web App</p>
+													<div class=clearfix></div>
+												</div>
+												<img src=jpg/reactiv.png class=img-responsive alt="Project Title "> </a>
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-6 col-md-3 col-lg-3 web ">
+									<div class="project-item wow fadeInDown " data-wow-delay=600ms>
+										<div class=hover-bg>
+											<a href=#placestovisit class=project-link data-toggle=modal>
+												<div class=hover-text>
+													<h4>Places To Visit</h4>
+													<p>Web App</p>
+													<div class=clearfix></div>
+												</div>
+												<img src=jpg/placestovisit.png class=img-responsive alt="Project Title "> </a>
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-6 col-md-3 col-lg-3 web ">
+									<div class="project-item wow fadeInDown " data-wow-delay=800ms>
+										<div class=hover-bg>
+											<a href=#jdacodehub class=project-link data-toggle=modal>
+												<div class=hover-text>
+													<h4>Code Hub</h4>
+													<p>Full Stack Java Web App</p>
+													<div class=clearfix></div>
+													<i class="fa fa-plus "></i>
+												</div>
+												<img src=jpg/jdacodehub.png class=img-responsive alt="Project Title "> </a>
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-6 col-md-3 col-lg-3 web ">
+									<div class="project-item wow fadeInDown " data-wow-delay=1000ms>
+										<div class=hover-bg>
+											<a href=#campusinforetrieval class=project-link data-toggle=modal>
+												<div class=hover-text>
+													<h4>Campus Info Retrieval</h4>
+													<p>Android App Development</p>
+													<div class=clearfix></div>
+												</div>
+												<img src=jpg/campusinforetrieval.png class=img-responsive alt="Project Title "> </a>
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-6 col-md-3 col-lg-3 branding ">
+									<div class="project-item wow fadeInDown " data-wow-delay=1200ms>
+										<div class=hover-bg>
+											<a href=#excelfeatures class=project-link data-toggle=modal>
+												<div class=hover-text>
+													<h4>More Excel Sheet Features</h4>
+													<p>DeskTop</p>
+													<div class=clearfix></div>
+												</div>
+												<img src=jpg/excelfeatures.png class=img-responsive alt="Project Title "> </a>
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-6 col-md-3 col-lg-3 branding app ">
+									<div class="project-item wow fadeInDown " data-wow-delay=1400ms>
+										<div class=hover-bg>
+											<a href=#zombiebird class=project-link data-toggle=modal>
+												<div class=hover-text>
+													<h4>Zombie Bird</h4>
+													<p>Android Game Development</p>
+													<div class=clearfix></div>
+												</div>
+												<img src=jpg/zombiebird.png class=img-responsive alt="Project Title "> </a>
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-6 col-md-3 col-lg-3 web ">
+									<div class="project-item wow fadeInDown " data-wow-delay=1600ms>
+										<div class=hover-bg>
+											<a href=#personalsite class=project-link data-toggle=modal>
+												<div class=hover-text>
+													<h4>Personal Site</h4>
+													<p>Web Design</p>
+													<div class=clearfix></div>
+												</div>
+												<img src=jpg/personalsite.png class=img-responsive alt="Project Title "> </a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id=footer class=text-center>
+			<div class=container>
+				<p>Copyright &copy; Ankit Bansal. Design by
+					<a href=# rel=nofollow>Ankit Bansal</a>
+				</p>
+			</div>
+		</div>
+		<div class="project-modal modal fade " id=ataproject tabindex=-1 role=dialog aria-hidden=true>
+			<div class=modal-content>
+				<div class=close-modal data-dismiss=modal>
+					<div class=lr>
+						<div class=rl> </div>
+					</div>
+				</div>
+				<div class=container>
+					<div class=row>
+						<div class="col-lg-8 col-lg-offset-2 ">
+							<div class=modal-body>
+								<h2>Attribute Authority</h2>
+								<p class=item-intro></p>
+								<img class="img-responsive img-centered " src=jpg/ata1.png alt="AtA project at Persistent ">
+								<p> My role was to develop Complete UI version 2.0 using AngularJs,Bootstrap, HTML5 at front End.
+									<p/>
+									<p> At Server Side to get the user data, process it to make SOAP Request(XML) and send this request to AtA service and
+										get the SOAP Response from that services and send this SOAP Response to user so that it can Download/Check/Use
+										and this server side was developed using Spring MVC frameworks </p>
+									<ul class=list-inline>
+										<li>
+											<span>Front End Technologies and Api's</span>: HTML5, AngularJS,Bootstrap, CodeMirror</li>
+										<li>
+											<span>Back End Technologies</span>: J2EE6, Spring Framework, Apache commons HTTPClient</li>
+									</ul>
+									<ul class=list-inline>
+										<li>
+											<span>Client</span>: CISCO</li>
+										<li>
+											<span>Service</span>: Web Design</li>
+									</ul>
+									<button type=button class="btn btn-primary " data-dismiss=modal>
+										<i class="fa fa-times "></i> Close Project</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="project-modal modal fade " id=reactiv tabindex=-1 role=dialog aria-hidden=true>
+			<div class=modal-content>
+				<div class=close-modal data-dismiss=modal>
+					<div class=lr>
+						<div class=rl> </div>
+					</div>
+				</div>
+				<div class=container>
+					<div class=row>
+						<div class="col-lg-8 col-lg-offset-2 ">
+							<div class=modal-body>
+								<h2>REACTIV</h2>
+								<p class=item-intro>Realtime Collaborative Technical Interview with Video/Live Interviews.</p>
+								<img class="img-responsive img-centered " src=jpg/reactiv.png alt="REACTIV Technothon Persi Project Winner ">
+								<p>We developed an online coding environment for conducting coding interview. We provided an online editor where candidate
+									and interviewer can collaboratively write code, we also provided automated judging to make the task of objectively
+									evaluating the candidate performance easier and chatting and video calling to communicate each other. Also created
+									job portal that tracks candidate request and HR can choose selective candidate and the schedule an interview. He
+									/ She can also able to pick what questions candidate needs to solve.
+								</p>
+								<pre><p> 	Requirements Gathering.
 							Designed whole structure, Data Flow of the project.
 							Developed all required Bean classes i.e. Model part of MVC.
 							Implemented Controllers i.e. to get the user data, process it and send required JSON object as response.
@@ -860,223 +1095,293 @@ Also created job portal that tracks candidate request and HR can choose selectiv
 						o	Admin approves companies, check list of questions and Test Cases and Interview Details.
 						o	Company can schedule interviews, check interviews and questions to be asked, check student scores. 
 						 <p/></pre>
-<ul class=list-inline>
-<li><span>Front End Technologies and Api's</span>: HTML5, JQuery,Bootstrap, CodeMirror, WebSocket</li>
-<li><span>Back End Technologies</span>: J2EE6, JSP, Servlets, Hibernate</li>
-<li><span>DBMS</span>MYSQL</li>
-</ul>
-<ul class=list-inline>
-<li><span>Competition/Hackathon</span>:<strong>(Winners)</strong> Persistent Systems Ltd.</li>
-<li><span>Service</span>:Full Stack Web App</li>
-</ul>
-<button type=button class="btn btn-primary" data-dismiss=modal><i class="fa fa-times"></i> Close Project</button>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="project-modal modal fade" id=placestovisit tabindex=-1 role=dialog aria-hidden=true>
-<div class=modal-content>
-<div class=close-modal data-dismiss=modal>
-<div class=lr>
-<div class=rl> </div>
-</div>
-</div>
-<div class=container>
-<div class=row>
-<div class="col-lg-8 col-lg-offset-2">
-<div class=modal-body>
-<h2>Places To visit</h2>
-<p class=item-intro>Shows the list of nearby places that You haven't visited yet</p>
-<img class="img-responsive img-centered" src=jpg/placestovisit.png alt="Places to Visit">
-<p> <strong>Website:</strong> <a href=http://placestovisit.ankitbansal.co.in>http://placestovisit.ankitbansal.co.in </a></p>
-<p>In this app user gets to know all the interesting places which s/he doesn’t know or haven’t visited yet. User first has to logged in via FB account and after successfully logged in and selecting the interesting place s/he gets detailed info about top 20 places s/he haven’t visited on map. Then on selecting the place to visit user get the routes with the via option like which place to go before visiting destination and user can also post its location, message on Facebook. </p>
-<ul class=list-inline>
-<li><span>Front End Technologies</span>: HTML5, JQuery,Bootstrap</li>
-<li><span>Third Party API's</span>: FaceBook Graph API, MapMyIndia API</li>
-</ul>
-<ul class=list-inline>
-<li><span>App Competition</span>:(Finalist) Techgig Code Gladiator 2016</li>
-<li><span>Service</span>: Web App</li>
-</ul>
-<button type=button class="btn btn-primary" data-dismiss=modal><i class="fa fa-times"></i> Close Project</button>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="project-modal modal fade" id=jdacodehub tabindex=-1 role=dialog aria-hidden=true>
-<div class=modal-content>
-<div class=close-modal data-dismiss=modal>
-<div class=lr>
-<div class=rl> </div>
-</div>
-</div>
-<div class=container>
-<div class=row>
-<div class="col-lg-8 col-lg-offset-2">
-<div class=modal-body>
-<h2>CodeHub 12hrs Challenge</h2>
-<p class=item-intro>To Search various code submissions by Users based on Full Text Search and show analytics of the all the Code Submissions </p>
-<img class="img-responsive img-centered" src=jpg/jdacodehub.png alt=CodeHub>
-<p> <strong>Website:</strong> <a href=http://jda-codehub.heroku.com> http://jda-codehub.heroku.com</a></p>
-<p> </p>
-<ul class=list-inline>
-<li><span>Front End Technologies</span>: HTML5, AngularJs,Bootstrap</li>
-<li><span>BackEnd Technologies</span>: J2EE6, Spring MVC 4, Servlets</li>
-<li><span> DBMS</span>:MySQL</li>
-</ul>
-<ul class=list-inline>
-<li><span>App Competition</span>:JDA</li>
-<li><span>Service</span>:Full Stack Web App</li>
-</ul>
-<button type=button class="btn btn-primary" data-dismiss=modal><i class="fa fa-times"></i> Close Project</button>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="project-modal modal fade" id=campusinforetrieval tabindex=-1 role=dialog aria-hidden=true>
-<div class=modal-content>
-<div class=close-modal data-dismiss=modal>
-<div class=lr>
-<div class=rl> </div>
-</div>
-</div>
-<div class=container>
-<div class=row>
-<div class="col-lg-8 col-lg-offset-2">
-<div class=modal-body>
-<h2>Mobile Based Campus Information Retrieval Android App</h2>
-<p class=item-intro>Students and Teachers can get all the information/notification on mobile and no need to visit any notice board or anything</p>
-<img class="img-responsive img-centered" src=jpg/campusinforetrieval.png alt="BE Project Mobile Based Campus Info Retrieval">
-<p> <strong>Paper Published :</strong> <a href=http://placestovisit.ankitbansal.co.in>IJCSMC </a></p>
-<p> I have developed this application in android keeping in mind that, in a real world scenario, such as college campus, the information is shared in the form of notices, hand-written manuals, oral communication, among the students. So this application provides students and teachers with information regarding library books availability, placement activities, general notices, and important notices regarding all departments, discussion forum to discuss on various topics.
-This application also includes functionality such as showing college campus map, route direction of college and provides various important contacts information like hospitals and ambulance nearby campus for emergency purpose. This information is provided to students in a cost and time effective way. Just install the available Android application and explore the services.
-</p>
-<ul class=list-inline>
-<li><span>Mobile App</span>: Android (using Android Studio)</li>
-<li><span>Server Side</span>: PHP, Slim Framework - RESTFul API</li>
-</ul>
-<ul class=list-inline>
-<li><span>BE Project</span>:DYPIET pimpri</li>
-<li><span>Service</span>: Android App</li>
-</ul>
-<button type=button class="btn btn-primary" data-dismiss=modal><i class="fa fa-times"></i> Close Project</button>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="project-modal modal fade" id=excelfeatures tabindex=-1 role=dialog aria-hidden=true>
-<div class=modal-content>
-<div class=close-modal data-dismiss=modal>
-<div class=lr>
-<div class=rl> </div>
-</div>
-</div>
-<div class=container>
-<div class=row>
-<div class="col-lg-8 col-lg-offset-2">
-<div class=modal-body>
-<h2>Additional Spread Sheet Features</h2>
-<p class=item-intro>Find Data Duplication in rows, Compare Columns and get the missing data</p>
-<img class="img-responsive img-centered" src=jpg/excelfeatures.png alt="Additional Excel Features">
-<p> <strong>Website:</strong> <a href=http://placestovisit.ankitbansal.co.in>http://placestovisit.ankitbansal.co.in </a></p>
-<p> </p>
-<ul class=list-inline>
-<li><span>Front End </span>: Swing </li>
-<li><span>Programming Languages</span>: J2SE7</li>
-</ul>
-<ul class=list-inline>
-<li><span>Client</span>:DYPIET pimpri - Library</li>
-<li><span>Service</span>: Desktop App</li>
-</ul>
-<button type=button class="btn btn-primary" data-dismiss=modal><i class="fa fa-times"></i> Close Project</button>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="project-modal modal fade" id=zombiebird tabindex=-1 role=dialog aria-hidden=true>
-<div class=modal-content>
-<div class=close-modal data-dismiss=modal>
-<div class=lr>
-<div class=rl> </div>
-</div>
-</div>
-<div class=container>
-<div class=row>
-<div class="col-lg-8 col-lg-offset-2">
-<div class=modal-body>
-<h2>Zombie Bird</h2>
-<p class=item-intro>Game same as flappy bird</p>
-<img class="img-responsive img-centered" src=jpg/zombiebird.png alt="Android Game">
-<p> <strong>Website:</strong> <a href=http://ankitbansal.co.in>Not yet published at AppStore </a></p>
-<p> Flappy Bird </p>
-<ul class=list-inline>
-<li><span>Platforms</span>: HTML5, Android, Desktop</li>
-<li><span>Gaming API<span>: LibGdx</li>
-</ul>
-<ul class=list-inline>
-<li><span>Extra Activities</span>:Just For Fun</li>
-<li><span>Service</span>: Game</li>
-</ul>
-<button type=button class="btn btn-primary" data-dismiss=modal><i class="fa fa-times"></i> Close Project</button>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="project-modal modal fade" id=personalsite tabindex=-1 role=dialog aria-hidden=true>
-<div class=modal-content>
-<div class=close-modal data-dismiss=modal>
-<div class=lr>
-<div class=rl> </div>
-</div>
-</div>
-<div class=container>
-<div class=row>
-<div class="col-lg-8 col-lg-offset-2">
-<div class=modal-body>
-<h2>Personal Interactive Site</h2>
-<p class=item-intro>Online Interactive Resume</p>
-<img class="img-responsive img-centered" src=jpg/personalsite.png alt="Interactive Resume">
-<p> <strong>Website:</strong> <a href=http://ankitbansal.co.in>http://ankitbansal.co.in </a></p>
-<p> Current Site </p>
-<ul class=list-inline>
-<li><span>Front End Technologies</span>: HTML5, JQuery, AngularJS,Bootstrap, CSS3, Typed.js, Wow.js, SmoothScrolljs</li>
-</ul>
-<ul class=list-inline>
-<li><span>Extra Activities</span>:Just for fun</li>
-<li><span>Service</span>: Web Design</li>
-</ul>
-<button type=button class="btn btn-primary" data-dismiss=modal><i class="fa fa-times"></i> Close Project</button>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</body>
-<script src=https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js></script>
-<script src=https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js integrity=sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS crossorigin=anonymous></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/typed.js/1.1.1/typed.min.js></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular.min.js></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.js></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.3.3/ui-bootstrap-tpls.js></script>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/bootstrap-progressbar/0.9.0/bootstrap-progressbar.js></script>
-<script src></script>
-<script type=text/javascript src=js/SmoothScroll.js></script>
-<script type=text/javascript src=js/waypoints.js></script>
-<script type=text/javascript src=js/jqBootstrapValidation.js></script>
-<script type=text/javascript src=js/owl.carousel.js></script>
-<script type=application/javascript src=js/js.js></script>
+								<ul class=list-inline>
+									<li>
+										<span>Front End Technologies and Api's</span>: HTML5, JQuery,Bootstrap, CodeMirror, WebSocket</li>
+									<li>
+										<span>Back End Technologies</span>: J2EE6, JSP, Servlets, Hibernate</li>
+									<li>
+										<span>DBMS</span>MYSQL</li>
+								</ul>
+								<ul class=list-inline>
+									<li>
+										<span>Competition/Hackathon</span>:
+										<strong>(Winners)</strong> Persistent Systems Ltd.</li>
+									<li>
+										<span>Service</span>:Full Stack Web App</li>
+								</ul>
+								<button type=button class="btn btn-primary " data-dismiss=modal>
+									<i class="fa fa-times "></i> Close Project</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="project-modal modal fade " id=placestovisit tabindex=-1 role=dialog aria-hidden=true>
+			<div class=modal-content>
+				<div class=close-modal data-dismiss=modal>
+					<div class=lr>
+						<div class=rl> </div>
+					</div>
+				</div>
+				<div class=container>
+					<div class=row>
+						<div class="col-lg-8 col-lg-offset-2 ">
+							<div class=modal-body>
+								<h2>Places To visit</h2>
+								<p class=item-intro>Shows the list of nearby places that You haven't visited yet</p>
+								<img class="img-responsive img-centered " src=jpg/placestovisit.png alt="Places to Visit ">
+								<p>
+									<strong>Website:</strong>
+									<a href=http://placestovisit.ankitbansal.co.in>http://placestovisit.ankitbansal.co.in </a>
+								</p>
+								<p>In this app user gets to know all the interesting places which s/he doesn’t know or haven’t visited yet. User first
+									has to logged in via FB account and after successfully logged in and selecting the interesting place s/he gets detailed
+									info about top 20 places s/he haven’t visited on map. Then on selecting the place to visit user get the routes with
+									the via option like which place to go before visiting destination and user can also post its location, message on
+									Facebook. </p>
+								<ul class=list-inline>
+									<li>
+										<span>Front End Technologies</span>: HTML5, JQuery,Bootstrap</li>
+									<li>
+										<span>Third Party API's</span>: FaceBook Graph API, MapMyIndia API</li>
+								</ul>
+								<ul class=list-inline>
+									<li>
+										<span>App Competition</span>:(Finalist) Techgig Code Gladiator 2016</li>
+									<li>
+										<span>Service</span>: Web App</li>
+								</ul>
+								<button type=button class="btn btn-primary " data-dismiss=modal>
+									<i class="fa fa-times "></i> Close Project</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="project-modal modal fade " id=jdacodehub tabindex=-1 role=dialog aria-hidden=true>
+			<div class=modal-content>
+				<div class=close-modal data-dismiss=modal>
+					<div class=lr>
+						<div class=rl> </div>
+					</div>
+				</div>
+				<div class=container>
+					<div class=row>
+						<div class="col-lg-8 col-lg-offset-2 ">
+							<div class=modal-body>
+								<h2>CodeHub 12hrs Challenge</h2>
+								<p class=item-intro>To Search various code submissions by Users based on Full Text Search and show analytics of the all the Code Submissions
+									</p>
+								<img class="img-responsive img-centered " src=jpg/jdacodehub.png alt=CodeHub>
+								<p>
+									<strong>Website:</strong>
+									<a href=http://jda-codehub.heroku.com> http://jda-codehub.heroku.com</a>
+								</p>
+								<p> </p>
+								<ul class=list-inline>
+									<li>
+										<span>Front End Technologies</span>: HTML5, AngularJs,Bootstrap</li>
+									<li>
+										<span>BackEnd Technologies</span>: J2EE6, Spring MVC 4, Servlets</li>
+									<li>
+										<span> DBMS</span>:MySQL</li>
+								</ul>
+								<ul class=list-inline>
+									<li>
+										<span>App Competition</span>:JDA</li>
+									<li>
+										<span>Service</span>:Full Stack Web App</li>
+								</ul>
+								<button type=button class="btn btn-primary " data-dismiss=modal>
+									<i class="fa fa-times "></i> Close Project</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="project-modal modal fade " id=campusinforetrieval tabindex=-1 role=dialog aria-hidden=true>
+			<div class=modal-content>
+				<div class=close-modal data-dismiss=modal>
+					<div class=lr>
+						<div class=rl> </div>
+					</div>
+				</div>
+				<div class=container>
+					<div class=row>
+						<div class="col-lg-8 col-lg-offset-2 ">
+							<div class=modal-body>
+								<h2>Mobile Based Campus Information Retrieval Android App</h2>
+								<p class=item-intro>Students and Teachers can get all the information/notification on mobile and no need to visit any notice board or
+									anything</p>
+								<img class="img-responsive img-centered " src=jpg/campusinforetrieval.png alt="BE Project Mobile Based Campus Info Retrieval ">
+								<p>
+									<strong>Paper Published :</strong>
+									<a href=http://placestovisit.ankitbansal.co.in>IJCSMC </a>
+								</p>
+								<p> I have developed this application in android keeping in mind that, in a real world scenario, such as college campus,
+									the information is shared in the form of notices, hand-written manuals, oral communication, among the students.
+									So this application provides students and teachers with information regarding library books availability, placement
+									activities, general notices, and important notices regarding all departments, discussion forum to discuss on various
+									topics. This application also includes functionality such as showing college campus map, route direction of college
+									and provides various important contacts information like hospitals and ambulance nearby campus for emergency purpose.
+									This information is provided to students in a cost and time effective way. Just install the available Android application
+									and explore the services.
+								</p>
+								<ul class=list-inline>
+									<li>
+										<span>Mobile App</span>: Android (using Android Studio)</li>
+									<li>
+										<span>Server Side</span>: PHP, Slim Framework - RESTFul API</li>
+								</ul>
+								<ul class=list-inline>
+									<li>
+										<span>BE Project</span>:DYPIET pimpri</li>
+									<li>
+										<span>Service</span>: Android App</li>
+								</ul>
+								<button type=button class="btn btn-primary " data-dismiss=modal>
+									<i class="fa fa-times "></i> Close Project</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="project-modal modal fade " id=excelfeatures tabindex=-1 role=dialog aria-hidden=true>
+			<div class=modal-content>
+				<div class=close-modal data-dismiss=modal>
+					<div class=lr>
+						<div class=rl> </div>
+					</div>
+				</div>
+				<div class=container>
+					<div class=row>
+						<div class="col-lg-8 col-lg-offset-2 ">
+							<div class=modal-body>
+								<h2>Additional Spread Sheet Features</h2>
+								<p class=item-intro>Find Data Duplication in rows, Compare Columns and get the missing data</p>
+								<img class="img-responsive img-centered " src=jpg/excelfeatures.png alt="Additional Excel Features ">
+								<p>
+									<strong>Website:</strong>
+									<a href=http://placestovisit.ankitbansal.co.in>http://placestovisit.ankitbansal.co.in </a>
+								</p>
+								<p> </p>
+								<ul class=list-inline>
+									<li>
+										<span>Front End </span>: Swing </li>
+									<li>
+										<span>Programming Languages</span>: J2SE7</li>
+								</ul>
+								<ul class=list-inline>
+									<li>
+										<span>Client</span>:DYPIET pimpri - Library</li>
+									<li>
+										<span>Service</span>: Desktop App</li>
+								</ul>
+								<button type=button class="btn btn-primary " data-dismiss=modal>
+									<i class="fa fa-times "></i> Close Project</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="project-modal modal fade " id=zombiebird tabindex=-1 role=dialog aria-hidden=true>
+			<div class=modal-content>
+				<div class=close-modal data-dismiss=modal>
+					<div class=lr>
+						<div class=rl> </div>
+					</div>
+				</div>
+				<div class=container>
+					<div class=row>
+						<div class="col-lg-8 col-lg-offset-2 ">
+							<div class=modal-body>
+								<h2>Zombie Bird</h2>
+								<p class=item-intro>Game same as flappy bird</p>
+								<img class="img-responsive img-centered " src=jpg/zombiebird.png alt="Android Game ">
+								<p>
+									<strong>Website:</strong>
+									<a href=http://ankitbansal.co.in>Not yet published at AppStore </a>
+								</p>
+								<p> Flappy Bird </p>
+								<ul class=list-inline>
+									<li>
+										<span>Platforms</span>: HTML5, Android, Desktop</li>
+									<li>
+										<span>Gaming API
+											<span>: LibGdx</li>
+								</ul>
+								<ul class=list-inline>
+									<li>
+										<span>Extra Activities</span>:Just For Fun</li>
+									<li>
+										<span>Service</span>: Game</li>
+								</ul>
+								<button type=button class="btn btn-primary " data-dismiss=modal>
+									<i class="fa fa-times "></i> Close Project</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="project-modal modal fade " id=personalsite tabindex=-1 role=dialog aria-hidden=true>
+			<div class=modal-content>
+				<div class=close-modal data-dismiss=modal>
+					<div class=lr>
+						<div class=rl> </div>
+					</div>
+				</div>
+				<div class=container>
+					<div class=row>
+						<div class="col-lg-8 col-lg-offset-2 ">
+							<div class=modal-body>
+								<h2>Personal Interactive Site</h2>
+								<p class=item-intro>Online Interactive Resume</p>
+								<img class="img-responsive img-centered " src=jpg/personalsite.png alt="Interactive Resume ">
+								<p>
+									<strong>Website:</strong>
+									<a href=http://ankitbansal.co.in>http://ankitbansal.co.in </a>
+								</p>
+								<p> Current Site </p>
+								<ul class=list-inline>
+									<li>
+										<span>Front End Technologies</span>: HTML5, JQuery, AngularJS,Bootstrap, CSS3, Typed.js, Wow.js, SmoothScrolljs</li>
+								</ul>
+								<ul class=list-inline>
+									<li>
+										<span>Extra Activities</span>:Just for fun</li>
+									<li>
+										<span>Service</span>: Web Design</li>
+								</ul>
+								<button type=button class="btn btn-primary " data-dismiss=modal>
+									<i class="fa fa-times "></i> Close Project</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src=https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js></script>
+	<script src=https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js integrity=sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS
+	    crossorigin=anonymous></script>
+	<script src=https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js></script>
+	<script src=https://cdnjs.cloudflare.com/ajax/libs/typed.js/1.1.1/typed.min.js></script>
+	<script src=https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular.min.js></script>
+	<script src=https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.js></script>
+	<script src=https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.3.3/ui-bootstrap-tpls.js></script>
+	<script src=https://cdnjs.cloudflare.com/ajax/libs/bootstrap-progressbar/0.9.0/bootstrap-progressbar.js></script>
+	<script src></script>
+	<script type=text/javascript src=js/SmoothScroll.js></script>
+	<script type=text/javascript src=js/waypoints.js></script>
+	<script type=text/javascript src=js/jqBootstrapValidation.js></script>
+	<script type=text/javascript src=js/owl.carousel.js></script>
+	<script type=application/javascript src=js/js.js></script>
+
 </html>

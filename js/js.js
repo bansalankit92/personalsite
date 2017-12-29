@@ -5,7 +5,7 @@
 				restrict: 'A',
 				link: function (scope, element, attr) {
 					element.typed({
-						strings: [ " Full Stack Developer", " Tech Enthusiast"," Geek"," Ankit Bansal"],
+						strings: [ " Full Stack Web Developer", " Tech Enthusiast"," Solopreneur"," Ankit Bansal"],
 						typeSpeed: 1,
 						// time before typing starts
 						startDelay: 200,
