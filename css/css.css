@@ -526,12 +526,14 @@ a:focus, .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:acti
 /* Social Section */
 #social-section {
 	padding: 35px 0 25px 0;
-	background-color: #e6e6e6;
+	background-color: dimgray;
 	text-align: center;
 }
 #social-section .social ul li {
 	display: inline-block;
 	margin: 0 30px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
 }
 #social-section .social i.fa {
 	color: #f59898;
@@ -704,4 +706,17 @@ height:10px;
 .btn-danger {
     box-shadow:0 0 0 1px #c63702 inset, 0 0 0 2px rgba(255,255,255,0.15) inset, 0 8px 0 0 #C24032, 0 8px 0 1px rgba(0,0,0,0.4), 0 8px 8px 1px rgba(0,0,0,0.5);
     background-color:#c63702;
+}
+a:hover{ 
+	color: #c63702;
+	text-decoration: none;
+}
+
+a, a:visited, a:active, a:focus{
+		text-decoration: none;
+
+}
+.header-span{
+	font-size: 22px;
+    font-weight: 600;
 }
