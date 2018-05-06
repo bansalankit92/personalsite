@@ -549,13 +549,13 @@ a:focus, .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:acti
 }
 /* Footer */
 #footer {
-	background: #f6f6f6;
+	background: #1a252f;
 	padding: 15px 0 10px 0;
 }
 #footer p {
-	font-size: 13px;
+	font-size: 14px;
 	margin-top: 10px;
-	color: #888;
+	color: white;
 }
 
 @media (max-width: 768px) {
@@ -717,6 +717,13 @@ a, a:visited, a:active, a:focus{
 
 }
 .header-span{
-	font-size: 22px;
+	font-size: 20px;
     font-weight: 600;
+}
+
+.mt15{
+	margin-top: 15px;
+}
+.ml15{
+	margin-left: 15px;
 }
