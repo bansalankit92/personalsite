@@ -162,7 +162,7 @@ hr {
 	margin: 0 auto;
 }
 /* Navigation */
-.navbar  { border: 1px; background-color: #000000; position: fixed; top: 60px; left: 5%; width: 110px; z-index:800;transition: all 0.8s; border-radius:5%}
+.navbar  { border: 1px; background-color: #000000; position: fixed; top: 60px; left: 4%; width: 110px; z-index:800;transition: all 0.8s; border-radius:5%}
 .navbar .navbar-collapse { padding: 0px; max-height: none; }
 .navbar .navbar-nav { float: none; }
 .navbar-nav { margin: 0px; }
@@ -509,7 +509,7 @@ label {
 	height:10px;	
 	clear:both;
 	
-	left:6%;
+	left:5%;
 	position:fixed;
 	z-index:5;
 }
@@ -531,7 +531,7 @@ a:focus, .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:acti
 }
 #social-section .social ul li {
 	display: inline-block;
-	margin: 0 30px;
+	margin: 10px 30px;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 }
@@ -613,26 +613,34 @@ label {
 		
 	}
 	#hireme{
-height:10px;	
-	clear:both;
-	bottom:70px;
-	right:0px;
-	position:fixed;
-	z-index:5;
-}
-#callme{
-	left:10px;
-	height:10px;	
-	bottom:70px;
-	position:fixed;
-	z-index:5;
-}
+		height:10px;	
+		clear:both;
+		bottom:70px;
+		right:0px;
+		position:fixed;
+		z-index:5;
+	}
+	#callme{
+		left:10px;
+		height:10px;	
+		bottom:70px;
+		position:fixed;
+		z-index:5;
+	}
 	.fixed .navbar { top: 0px; }
 	
-	.container { padding: 60px 20px; min-width: 280px; }
 	.hidden-phone { display: none; }
 	
-	
+	#social-section .social ul li {
+		margin: 10px;
+	}
+	#social-section .social ul{
+		-webkit-padding-start: 0px !important;
+		padding-left: 0px;
+	}
+	.intro-text H1 {
+		font-size: 36px;
+	}
 }
 
 
@@ -644,27 +652,14 @@ height:10px;
 	padding-right: 0;
 	padding-left: 0;
 	padding-bottom: 200px;
-}
+	}
 
 }
-@media (max-width: 1300px) { 
 
-.container{
-	padding:0px 30px 0px 85px;;
-}
-.container-fluid{
-	padding:0px 30px 0px 85px;
-}
-}
-
-@media (max-width: 900px) { 
-
-.container{
-	padding:0px 65px 0px 18%;;
-}
-.container-fluid{
-	padding:0px 60px 0px 85px;
-}
+@media(min-height:768px){
+	.border-right{
+		border-right: 3px solid darkslategrey;
+	}
 }
 
 .btn3d {
@@ -717,7 +712,7 @@ a, a:visited, a:active, a:focus{
 
 }
 .header-span{
-	font-size: 20px;
+	font-size: 18px;
     font-weight: 600;
 }
 
