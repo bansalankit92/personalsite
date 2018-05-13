@@ -162,19 +162,71 @@ hr {
 	margin: 0 auto;
 }
 /* Navigation */
-.navbar  { border: 1px; background-color: #000000; position: fixed; top: 60px; left: 4%; width: 110px; z-index:800;transition: all 0.8s; border-radius:5%}
-.navbar .navbar-collapse { padding: 0px; max-height: none; }
-.navbar .navbar-nav { float: none; }
-.navbar-nav { margin: 0px; }
-.navbar .nav > li { display: block; float: none; height: 80px; background-color:#26242A;;} 
-.navbar .nav > li a { display: block;  height: 80px; text-align: center; padding-top: 30px; font-weight: 600; color: #FFFFFF; }
-.navbar .nav > li a:hover, .navbar .nav > li a:focus { background-color:#26242A; color: #999999; }
-.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus { 
-	 background: #26242A; color: #f38181; }
-.navbar-default .navbar-toggle:hover .icon-bar,
-.navbar-default .navbar-toggle:focus .icon-bar { background-color:#000000;background:#f38181; }
+.navbar {
+	border: 1px;
+	background-color: #000000;
+	position: fixed;
+	top: 60px;
+	right: 3%;
+	width: 110px;
+	z-index: 800;
+	transition: all 0.8s;
+	border-radius: 5%
+}
 
-.fixed .navbar  { position: fixed; top: 60px; }
+.navbar .navbar-collapse {
+	padding: 0px;
+	max-height: none;
+}
+
+.navbar .navbar-nav {
+	float: none;
+}
+
+.navbar-nav {
+	margin: 0px;
+}
+
+.navbar .nav>li {
+	display: block;
+	float: none;
+	height: 80px;
+	background-color: #26242A;
+	;
+}
+
+.navbar .nav>li a {
+	display: block;
+	height: 80px;
+	text-align: center;
+	padding-top: 30px;
+	font-weight: 600;
+	color: #FFFFFF;
+}
+
+.navbar .nav>li a:hover,
+.navbar .nav>li a:focus {
+	background-color: #26242A;
+	color: #999999;
+}
+
+.navbar-default .navbar-nav>.active>a,
+.navbar-default .navbar-nav>.active>a:hover,
+.navbar-default .navbar-nav>.active>a:focus {
+	background: #26242A;
+	color: #f38181;
+}
+
+.navbar-default .navbar-toggle:hover .icon-bar,
+.navbar-default .navbar-toggle:focus .icon-bar {
+	background-color: #000000;
+	background: #f38181;
+}
+
+.fixed .navbar {
+	position: fixed;
+	top: 60px;
+}
 
 
 
@@ -500,7 +552,7 @@ label {
 }
 
 #hireme{
-	right:15px;
+	right:40px;
 	float:right;
 	position:fixed;
 	z-index:5;
@@ -656,7 +708,7 @@ label {
 
 }
 
-@media(min-height:768px){
+@media(min-width:992px){
 	.border-right{
 		border-right: 3px solid darkslategrey;
 	}
@@ -721,4 +773,8 @@ a, a:visited, a:active, a:focus{
 }
 .ml15{
 	margin-left: 15px;
+}
+
+.mr15{
+	margin-right: 15px;
 }
