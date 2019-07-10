@@ -38,7 +38,8 @@
 			}
 		}])
 		.controller('SiteController',function($scope,$timeout){
-			
+			$scope.getAge = Math.floor((new Date() - new Date("1993-12-27").getTime()) / 3.15576e+10)
+
 			 var value = 60;
 				var type;
 			$scope.htmlProgressVal=0;
