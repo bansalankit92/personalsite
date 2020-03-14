@@ -94,7 +94,7 @@ h3 {
 }
 h4 {
 	font-size: 22px;
-	//text-transform: uppercase;
+	/* text-transform: uppercase; */
 	font-weight: 600;
 	color: #444;
 }
@@ -241,7 +241,7 @@ header {
 header p {
 	color: #ffffff;
 	font-size: 18px;
-	//text-transform: uppercase;
+	/* //text-transform: uppercase; */
 	margin-bottom: 60px;
 	letter-spacing: 2px;
 }
@@ -254,7 +254,7 @@ header p {
 }
 .intro-text H1 {
 	font-size: 50px;
-	//text-transform: uppercase;
+	/* //text-transform: uppercase; */
 	color: #FFFFFF;
 	font-weight: 500;
 }
@@ -303,7 +303,7 @@ header p {
 
 #abilities_section {
 	padding: 20px 0;
-	//background-color: #fff;
+	/* //background-color: #fff; */
 }
 #abilities_section .color {
 	color: #f38181;
@@ -778,3 +778,8 @@ a, a:visited, a:active, a:focus{
 .mr15{
 	margin-right: 15px;
 }
+
+.owl-carousel {
+	-ms-touch-action: none;
+	touch-action: none;
+	}
