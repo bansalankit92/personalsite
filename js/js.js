@@ -38,7 +38,8 @@
 			}
 		}])
 		.controller('SiteController',function($scope,$timeout){
-			$scope.getAge = Math.floor((new Date() - new Date("1993-12-27").getTime()) / 3.15576e+10)
+			$scope.getAge = Math.floor((new Date() - new Date("1993-12-27").getTime()) / 3.15576e+10);
+			$scope.experience = ((new Date() - new Date("2015-09-23").getTime()) / 3.15576e+10).toFixed(1);
 
 			 var value = 60;
 				var type;
