@@ -326,7 +326,7 @@ header p {
 }
 /* Gallery Section 
 ==============================*/
-#project-section {
+.project-section, .service-section{
 	padding: 50px 0 0 0;
 	background-color:#ffffff;
 	 background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#F7F2F2));
@@ -783,3 +783,11 @@ a, a:visited, a:active, a:focus{
 	-ms-touch-action: none;
 	touch-action: none;
 	}
+
+.pricing{
+	font-size: medium;
+}
+
+.pb25{
+	padding-bottom: 25px;
+}
