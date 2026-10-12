@@ -25,7 +25,7 @@ export const profile = {
   birthDate: '1993-12-27',
   careerStart: '2015-09-23',
   location: 'Pune - 412101',
-  email: 'contact@ankitbansal.co.in',
+  email: 'contact@ankitbansal.dev',
   photo: 'ankit2.jpeg',
   resume: '/docs/Ankit_Bansal_SSE_Resume_11_yrs_exp.pdf',
   booking: 'https://cal.com/ankitbansal/30min',
