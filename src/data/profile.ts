@@ -34,10 +34,9 @@ export const profile = {
 };
 
 export const about = [
-  'I am a Senior Software Engineer with 11 years of experience, specializing in scalable backend architectures and enterprise systems.',
-  'I build non-blocking, event-driven microservices with Java, Spring WebFlux and Apache Kafka, and have worked extensively on RESTful API integrations, custom API adapters and OAuth2/OIDC security.',
-  'I have designed and deployed workflows across multi-cloud environments (AWS, GCP, Railway.com) using Docker and Kubernetes, and enjoy owning the full SDLC, from architecture and POCs to production support and performance tuning.',
-  'I have worked in both start-ups and enterprises, and I like to explore new technologies and always strive to learn something new every day.',
+  "I'm a Senior Software Engineer with 11 years of experience building backend systems that scale, from lending platforms at GoJek to products used by 200K+ people at Peerlist.",
+  'I enjoy owning problems end to end: understanding what users need, designing the system, shipping it, and keeping it fast and reliable in production. Outside work, I build my own products: SarvaKosh, Bharatiya Comics, FinCalculator.',
+  'I care about structure, quality and clean code, and I like working in teams. As the saying goes, two heads are better than one. I am always exploring new technologies and trying to learn something new every day.',
 ];
 
 export const stats = [
