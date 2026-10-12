@@ -1,0 +1,21 @@
+---
+interface Props {
+  cmd: string;
+  title: string;
+  id?: string;
+  quote?: { text: string; author: string };
+}
+const { cmd, title, id, quote } = Astro.props;
+---
+
+<div class="section-head reveal">
+  <p class="cmd" aria-hidden="true"><span class="ps">$</span>{cmd}</p>
+  <h2 id={id}>{title}</h2>
+  {
+    quote && (
+      <p class="quote">
+        // &ldquo;{quote.text}&rdquo; — {quote.author}
+      </p>
+    )
+  }
+</div>

@@ -1,0 +1,102 @@
+---
+import { Image } from 'astro:assets';
+import SectionHeader from './SectionHeader.astro';
+import { services, quotes, profile } from '../data/profile';
+
+const icons = import.meta.glob<{ default: ImageMetadata }>('../assets/services/*', { eager: true });
+const icon = (file: string) => icons[`../assets/services/${file}`].default;
+---
+
+<section id="services" class="section" aria-labelledby="services-title">
+  <div class="container">
+    <SectionHeader cmd="./hire --services" title="Services" id="services-title" quote={quotes.services} />
+    <ul class="grid">
+      {
+        services.map((s) => (
+          <li class="svc card reveal">
+            <p class="cmdline">
+              <span class="ps">$</span>
+              {s.command}
+            </p>
+            <div class="icon">
+              <Image src={icon(s.icon)} alt="" width={48} height={48} />
+            </div>
+            <h3>{s.title}</h3>
+            {s.lines.map((l) => (
+              <p class="line">{l}</p>
+            ))}
+            <p class="price">{s.price}</p>
+            <a class="btn" href={`mailto:${profile.email}?subject=${encodeURIComponent(s.title)}`}>
+              Get in touch
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .grid {
+    display: grid;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+  }
+  @media (min-width: 860px) {
+    .grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .svc {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 22px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .svc:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+  }
+  .cmdline {
+    font: 0.8125rem var(--font-mono);
+    color: var(--muted);
+    padding-bottom: 12px;
+    border-bottom: 1px dashed var(--border);
+  }
+  .ps {
+    color: var(--accent);
+    margin-right: 1ch;
+  }
+  .icon {
+    width: 56px;
+    height: 56px;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    background: #fff;
+    margin-top: 6px;
+  }
+  .icon img {
+    width: 36px;
+    height: 36px;
+  }
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 800;
+  }
+  .line {
+    color: var(--muted);
+    font-size: 0.9375rem;
+  }
+  .price {
+    margin-top: auto;
+    padding-top: 10px;
+    font: 700 1.375rem var(--font-mono);
+    color: var(--amber);
+  }
+  .btn {
+    align-self: flex-start;
+  }
+</style>

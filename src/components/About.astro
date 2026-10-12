@@ -1,0 +1,124 @@
+---
+import { Image } from 'astro:assets';
+import SectionHeader from './SectionHeader.astro';
+import Social from './Social.astro';
+import { about, profile, site } from '../data/profile';
+import photo from '../assets/ankit2.jpeg';
+---
+
+<section id="about" class="section" aria-labelledby="about-title">
+  <div class="container">
+    <SectionHeader cmd="cat about.md" title="Profile" id="about-title" />
+    <div class="grid">
+      <aside class="side card reveal">
+        <div class="photo">
+          <Image src={photo} alt="Ankit Bansal" width={200} height={200} widths={[200, 400]} sizes="200px" />
+        </div>
+        <dl class="details">
+          <div><dt>name</dt><dd>{profile.name}</dd></div>
+          <div>
+            <dt>age</dt><dd><span data-years="age" data-suffix=" years">32 years</span></dd>
+          </div>
+          <div><dt>location</dt><dd>{profile.location}</dd></div>
+          <div>
+            <dt>email</dt><dd><a href={`mailto:${profile.email}`}>{profile.email}</a></dd>
+          </div>
+        </dl>
+      </aside>
+
+      <div class="body reveal">
+        <h3 class="sub">About Me</h3>
+        {about.map((p) => <p>{p}</p>)}
+        <p class="mail">
+          Mail Id: <a href={`mailto:${profile.email}`}>{profile.email}</a>
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href={profile.resume} download>↓ Download Resume</a>
+          <a class="btn" href={site.sourceCode} target="_blank" rel="noopener">Download Code</a>
+        </div>
+        <Social />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .grid {
+    display: grid;
+    gap: 24px;
+  }
+  @media (min-width: 860px) {
+    .grid {
+      grid-template-columns: 300px 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+  }
+  .side {
+    padding: 24px;
+    display: grid;
+    gap: 20px;
+    justify-items: center;
+  }
+  .photo {
+    padding: 4px;
+    border-radius: 50%;
+    background: conic-gradient(from 200deg, var(--accent), var(--blue), var(--accent));
+  }
+  .photo img {
+    width: 168px;
+    height: 168px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--bg-raised);
+  }
+  .details {
+    width: 100%;
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+  }
+  .details div {
+    display: grid;
+    grid-template-columns: 84px 1fr;
+    gap: 8px;
+    padding: 8px 0;
+    border-top: 1px dashed var(--border);
+  }
+  .details dt {
+    color: var(--faint);
+  }
+  .details dt::after {
+    content: ':';
+  }
+  .details dd {
+    margin: 0;
+    color: var(--text);
+    overflow-wrap: anywhere;
+  }
+  .body {
+    display: grid;
+    gap: 14px;
+    color: var(--muted);
+    font-size: 1.0625rem;
+  }
+  .sub {
+    font: 700 0.875rem var(--font-mono);
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .body p:first-of-type {
+    color: var(--text);
+    font-size: 1.1875rem;
+  }
+  .mail {
+    font-size: 0.9375rem;
+  }
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-block: 6px;
+  }
+</style>

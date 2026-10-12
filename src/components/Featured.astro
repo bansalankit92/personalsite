@@ -1,0 +1,239 @@
+---
+import { Image } from 'astro:assets';
+import SectionHeader from './SectionHeader.astro';
+import { featured } from '../data/profile';
+
+const images = import.meta.glob<{ default: ImageMetadata }>('../assets/featured/*', { eager: true });
+const img = (file: string) => images[`../assets/featured/${file}`].default;
+
+const groups = [
+  { key: 'Founder', label: 'founder', note: 'Products I founded and run' },
+  { key: 'Employee', label: 'employee', note: 'Products I built as an employee' },
+] as const;
+---
+
+<section id="featured" class="section" aria-labelledby="featured-title">
+  <div class="container">
+    <SectionHeader cmd="ls ~/sites --featured" title="Featured Work" id="featured-title" />
+
+    {
+      groups.map((g) => (
+        <div class="group">
+          <p class="group-label reveal">
+            <span class="hash">//</span> {g.label} <span class="note">— {g.note}</span>
+          </p>
+          <ul class={`grid grid-${g.label}`}>
+            {featured
+              .filter((f) => f.relation === g.key)
+              .map((f) => (
+                <li class="item card reveal">
+                  <a class="shot" href={f.url} target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+                    <span class="bar">
+                      <span class="dots">
+                        <i />
+                        <i />
+                        <i />
+                      </span>
+                      <span class="addr">{f.domain}</span>
+                    </span>
+                    <Image
+                      src={img(f.image)}
+                      alt=""
+                      widths={[480, 800, 1280]}
+                      sizes="(min-width: 1100px) 360px, (min-width: 700px) 50vw, 100vw"
+                      loading="lazy"
+                    />
+                  </a>
+                  <div class="info">
+                    <div class="head">
+                      <h3>
+                        <a href={f.url} target="_blank" rel="noopener">
+                          {f.name}
+                          <span class="ext" aria-hidden="true">
+                            ↗
+                          </span>
+                        </a>
+                      </h3>
+                      <span class={`badge badge-${g.label}`}>{f.role}</span>
+                    </div>
+                    <p class="desc">{f.description}</p>
+                    <ul class="facts">
+                      {f.facts.map((x) => (
+                        <li class="tag">{x}</li>
+                      ))}
+                    </ul>
+                    {f.links && (
+                      <ul class="links">
+                        {f.links.map((l) => (
+                          <li>
+                            <a href={l.href} target="_blank" rel="noopener">
+                              <span aria-hidden="true">→ </span>
+                              {l.label}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                </li>
+              ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .group + .group {
+    margin-top: 40px;
+  }
+  .group-label {
+    font: 0.875rem var(--font-mono);
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+  .hash {
+    color: var(--faint);
+  }
+  .note {
+    color: var(--faint);
+  }
+  .grid {
+    display: grid;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+  }
+  @media (min-width: 700px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1000px) {
+    .grid-founder {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .item {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .item:hover {
+    border-color: var(--border-strong);
+    transform: translateY(-3px);
+  }
+  .shot {
+    display: block;
+    text-decoration: none;
+    background: var(--bg-sunken);
+    border-bottom: 1px solid var(--border);
+  }
+  .bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .dots {
+    display: flex;
+    gap: 5px;
+  }
+  .dots i {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--border-strong);
+  }
+  .addr {
+    flex: 1;
+    font: 0.75rem var(--font-mono);
+    color: var(--muted);
+    background: var(--bg-raised);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 2px 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .shot img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    object-position: top;
+  }
+  .info {
+    display: grid;
+    gap: 12px;
+    padding: 18px 18px 20px;
+    flex: 1;
+    align-content: start;
+  }
+  .head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 800;
+  }
+  h3 a {
+    color: var(--text);
+    text-decoration: none;
+  }
+  h3 a:hover {
+    color: var(--accent);
+  }
+  .ext {
+    color: var(--faint);
+    font-size: 0.9em;
+  }
+  .badge {
+    font: 600 0.6875rem/1 var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 5px 8px;
+    border-radius: 999px;
+  }
+  .badge-founder {
+    color: var(--accent-ink);
+    background: var(--accent);
+  }
+  .badge-employee {
+    color: var(--blue);
+    border: 1px solid currentColor;
+  }
+  .desc {
+    color: var(--muted);
+    font-size: 0.9375rem;
+  }
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    list-style: none;
+    padding: 0;
+    font: 0.8125rem var(--font-mono);
+  }
+  .links a {
+    color: var(--blue);
+    text-decoration: none;
+  }
+  .links a:hover {
+    text-decoration: underline;
+  }
+  .facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    list-style: none;
+    padding: 0;
+  }
+</style>
