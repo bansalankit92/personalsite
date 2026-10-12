@@ -3,7 +3,7 @@
 
 export const site = {
   url: 'https://ankitbansal.co.in',
-  title: 'Ankit Bansal - Senior Software Engineer',
+  title: 'Ankit Bansal - Senior Software Engineer - 11 years exp',
   description:
     'I am Ankit Bansal, a Senior Software Engineer with 11 years of experience building scalable backend systems, event-driven microservices and cloud platforms.',
   ogDescription:
