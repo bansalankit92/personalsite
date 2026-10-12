@@ -1,0 +1,339 @@
+---
+import { Image } from 'astro:assets';
+import SectionHeader from './SectionHeader.astro';
+import { projects, projectsNote, quotes } from '../data/profile';
+
+const images = import.meta.glob<{ default: ImageMetadata }>('../assets/projects/*', { eager: true });
+const img = (file: string) => images[`../assets/projects/${file}`].default;
+const sizes = '(min-width: 1100px) 260px, (min-width: 900px) 33vw, 50vw';
+---
+
+<section id="projects" class="section" aria-labelledby="projects-title">
+  <div class="container">
+    <SectionHeader cmd="ls ~/projects --archive" title="Projects" id="projects-title" quote={quotes.projects} />
+
+    <ul class="grid">
+      {
+        projects.map((p) => (
+          <li class="proj card reveal">
+            <div class="thumb">
+              <Image src={img(p.image)} alt="" widths={[320, 520]} sizes={sizes} loading="lazy" />
+            </div>
+            <div class="info">
+              <h3>
+                {p.href ? (
+                  <a href={p.href} target="_blank" rel="noopener" class="stretch">
+                    {p.title} <span aria-hidden="true">↗</span>
+                  </a>
+                ) : (
+                  <button type="button" class="stretch" data-open={p.id} aria-haspopup="dialog">
+                    {p.title} <span aria-hidden="true">+</span>
+                  </button>
+                )}
+              </h3>
+              <p class="subtitle">{p.subtitle}</p>
+              <p class="tech">{p.tech}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="note reveal">
+      {projectsNote.map((n) => <p>{n}</p>)}
+    </div>
+  </div>
+
+  {
+    projects
+      .filter((p) => p.detail)
+      .map((p) => {
+        const d = p.detail!;
+        return (
+          <dialog id={`dlg-${p.id}`} class="dlg" aria-labelledby={`dlg-${p.id}-title`}>
+            <div class="dlg-bar">
+              <span class="dlg-path">~/projects/{p.id}/README.md</span>
+              <button type="button" class="dlg-x" data-close aria-label="Close project">
+                ✕
+              </button>
+            </div>
+            <div class="dlg-body">
+              <h2 id={`dlg-${p.id}-title`}>{d.heading}</h2>
+              {d.intro && <p class="intro">{d.intro}</p>}
+              <Image src={img(p.image)} alt={d.heading} widths={[480, 800]} sizes="(min-width: 760px) 680px, 100vw" loading="lazy" />
+              {d.link && (
+                <p>
+                  <strong>{d.link.label}:</strong>{' '}
+                  {d.link.href ? (
+                    <a href={d.link.href} target="_blank" rel="noopener">
+                      {d.link.text}
+                    </a>
+                  ) : (
+                    d.link.text
+                  )}
+                </p>
+              )}
+              {d.body?.map((b) => <p>{b}</p>)}
+              {d.list && (
+                <ul class="dlg-list">
+                  {d.list.map((item) => (
+                    <li>
+                      {item.text}
+                      {item.children && (
+                        <ul>
+                          {item.children.map((c) => (
+                            <li>{c}</li>
+                          ))}
+                        </ul>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              )}
+              {d.meta.map((row) => (
+                <dl class="meta">
+                  {row.map((m) => (
+                    <div>
+                      <dt>{m.label}</dt>
+                      <dd>{m.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              ))}
+              <button type="button" class="btn" data-close>
+                ✕ Close Project
+              </button>
+            </div>
+          </dialog>
+        );
+      })
+  }
+</section>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    list-style: none;
+    padding: 0;
+  }
+  @media (min-width: 560px) {
+    .grid {
+      gap: 16px;
+    }
+  }
+  @media (max-width: 559px) {
+    .info {
+      padding: 10px 12px 12px;
+    }
+    h3 {
+      font-size: 0.9375rem;
+    }
+    .subtitle {
+      font-size: 0.8125rem;
+    }
+  }
+  @media (min-width: 900px) {
+    .grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  @media (min-width: 1100px) {
+    .grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .proj {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .proj:hover,
+  .proj:focus-within {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+  }
+  .thumb {
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: var(--bg-sunken);
+    border-bottom: 1px solid var(--border);
+  }
+  .thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    transition: transform 0.4s ease;
+  }
+  .proj:hover .thumb img {
+    transform: scale(1.04);
+  }
+  .info {
+    padding: 14px 16px 16px;
+    display: grid;
+    gap: 4px;
+  }
+  h3 {
+    font-size: 1rem;
+    font-weight: 800;
+  }
+  .stretch {
+    color: var(--text);
+    text-decoration: none;
+    background: none;
+    border: 0;
+    padding: 0;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+  }
+  /* Make the whole card clickable */
+  .stretch::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+  .stretch span {
+    color: var(--faint);
+  }
+  .subtitle {
+    color: var(--muted);
+    font-size: 0.875rem;
+  }
+  .tech {
+    font: 0.75rem var(--font-mono);
+    color: var(--accent);
+    margin-top: 4px;
+  }
+  .note {
+    margin-top: 28px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.9375rem;
+  }
+
+  /* Dialog */
+  .dlg {
+    width: min(760px, calc(100vw - 24px));
+    max-height: calc(100dvh - 24px);
+    padding: 0;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius);
+    background: var(--bg-raised);
+    color: var(--text);
+    box-shadow: 0 30px 80px rgb(0 0 0 / 0.5);
+  }
+  .dlg::backdrop {
+    background: rgb(0 0 0 / 0.6);
+    backdrop-filter: blur(4px);
+  }
+  .dlg-bar {
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 14px;
+    background: var(--bg-sunken);
+    border-bottom: 1px solid var(--border);
+    z-index: 1;
+  }
+  .dlg-path {
+    font: 0.8125rem var(--font-mono);
+    color: var(--muted);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .dlg-x {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .dlg-body {
+    padding: 20px;
+    display: grid;
+    gap: 14px;
+    color: var(--muted);
+  }
+  @media (min-width: 640px) {
+    .dlg-body {
+      padding: 28px 32px 32px;
+    }
+  }
+  .dlg-body h2 {
+    color: var(--text);
+    font-size: 1.5rem;
+    font-weight: 800;
+  }
+  .intro {
+    color: var(--text);
+  }
+  .dlg-body img {
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+  }
+  .dlg-body strong {
+    color: var(--text);
+  }
+  .dlg-list {
+    padding-left: 1.2em;
+    display: grid;
+    gap: 4px;
+  }
+  .meta {
+    display: grid;
+    gap: 6px;
+    margin: 0;
+    padding: 12px 14px;
+    border: 1px dashed var(--border);
+    border-radius: var(--radius-sm);
+    font-size: 0.875rem;
+  }
+  .meta div {
+    display: grid;
+    gap: 2px;
+  }
+  @media (min-width: 560px) {
+    .meta div {
+      grid-template-columns: 14em 1fr;
+      gap: 12px;
+    }
+  }
+  .meta dt {
+    font-family: var(--font-mono);
+    color: var(--accent);
+  }
+  .meta dd {
+    margin: 0;
+    color: var(--text);
+  }
+  .dlg-body .btn {
+    justify-self: start;
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('[data-open]').forEach((btn) => {
+    const dlg = document.getElementById(`dlg-${btn.dataset.open}`) as HTMLDialogElement | null;
+    if (!dlg) return;
+    btn.addEventListener('click', () => dlg.showModal());
+  });
+  document.querySelectorAll<HTMLDialogElement>('dialog.dlg').forEach((dlg) => {
+    dlg.querySelectorAll('[data-close]').forEach((b) => b.addEventListener('click', () => dlg.close()));
+    // Close when clicking the backdrop
+    dlg.addEventListener('click', (e) => {
+      if (e.target === dlg) dlg.close();
+    });
+  });
+</script>

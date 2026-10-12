@@ -1,0 +1,139 @@
+---
+import SectionHeader from './SectionHeader.astro';
+import { skills, skillLevel, quotes } from '../data/profile';
+
+const meter = (v: number) => {
+  const filled = Math.max(1, Math.round(v / 20));
+  return '■'.repeat(filled) + '□'.repeat(5 - filled);
+};
+---
+
+<section id="skills" class="section" aria-labelledby="skills-title">
+  <div class="container">
+    <SectionHeader cmd="npm ls --skills" title="Ability and Skills" id="skills-title" quote={quotes.skills} />
+
+    <div class="legend reveal" aria-hidden="true">
+      <span class="lv lv-expert">^expert</span>
+      <span class="lv lv-advanced">^advanced</span>
+      <span class="lv lv-intermediate">^intermediate</span>
+      <span class="lv lv-familiar">^familiar</span>
+    </div>
+
+    <div class="grid">
+      {
+        skills.map((g) => (
+          <article class="pkg card reveal">
+            <h3>{g.title}</h3>
+            <div class="code">
+              <p>
+                <span class="str">"{g.key}"</span>: {'{'}
+              </p>
+              {g.subgroups.map((sg) => (
+                <>
+                  {sg.title && <p class="comment">// {sg.title}</p>}
+                  <ul>
+                    {sg.skills.map((s) => {
+                      const lv = skillLevel(s.value);
+                      return (
+                        <li>
+                          <span class="key">"{s.name}"</span>
+                          <span class={`lv lv-${lv}`}>
+                            <span class="meter" aria-hidden="true">
+                              {meter(s.value)}
+                            </span>
+                            "^{lv}"
+                          </span>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </>
+              ))}
+              <p>{'}'}</p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    font: 0.8125rem var(--font-mono);
+    margin-bottom: 20px;
+  }
+  .grid {
+    columns: 1;
+    column-gap: 20px;
+  }
+  @media (min-width: 700px) {
+    .grid {
+      columns: 2;
+    }
+  }
+  .pkg {
+    break-inside: avoid;
+    margin-bottom: 20px;
+    padding: 18px;
+    display: inline-block;
+    width: 100%;
+  }
+  h3 {
+    font-size: 1rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+  }
+  .code {
+    font: 0.8125rem/1.8 var(--font-mono);
+    color: var(--muted);
+  }
+  .code ul {
+    list-style: none;
+    padding: 0 0 0 2ch;
+  }
+  .code li {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .comment {
+    padding-left: 2ch;
+    color: var(--faint);
+  }
+  .str,
+  .key {
+    color: var(--blue);
+  }
+  .key {
+    min-width: 0;
+  }
+  .lv {
+    white-space: nowrap;
+  }
+  .meter {
+    letter-spacing: -1px;
+    margin-right: 8px;
+    font-size: 0.75rem;
+  }
+  .lv-expert {
+    color: var(--accent);
+  }
+  .lv-advanced {
+    color: var(--blue);
+  }
+  .lv-intermediate {
+    color: var(--amber);
+  }
+  .lv-familiar {
+    color: var(--faint);
+  }
+  @media (max-width: 480px) {
+    .meter {
+      display: none;
+    }
+  }
+</style>

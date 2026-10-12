@@ -1,0 +1,360 @@
+---
+import SectionHeader from './SectionHeader.astro';
+import { experience, education, achievements, quotes } from '../data/profile';
+---
+
+<section id="experience" class="section" aria-labelledby="experience-title">
+  <div class="container">
+    <SectionHeader cmd="git log --career" title="Experiences" id="experience-title" quote={quotes.experience} />
+
+    <div class="block">
+      <h3 class="block-title reveal">
+        Career <span data-years="career-precise" data-suffix=" yrs">11.0 yrs</span>
+      </h3>
+      <ol class="timeline">
+        {
+          experience.map((job, i) => (
+            <li class="job reveal">
+              <span class="node" aria-hidden="true" />
+              <details open={i === 0}>
+                <summary>
+                  <span class="period">{job.period}</span>
+                  <span class="company">{job.company}</span>
+                  {job.role && <span class="role">{job.role}</span>}
+                  <span class="toggle" aria-hidden="true" />
+                </summary>
+                <div class="content">
+                  {job.stack && (
+                    <div class="stack">
+                      <p class="label">Tech Stack</p>
+                      <ul>
+                        {job.stack.map((s) => {
+                          const [k, ...v] = s.split(' - ');
+                          return (
+                            <li>
+                              <span class="k">{k}</span>
+                              <span class="v">{v.join(' - ')}</span>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </div>
+                  )}
+                  {job.highlights && (
+                    <div>
+                      <p class="label">Highlights</p>
+                      <ul class="bullets">
+                        {job.highlights.map((h) => (
+                          <li set:html={h} />
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                  {job.groups?.map((g) => (
+                    <div class="sub">
+                      <p class="sub-title">{g.title}</p>
+                      {g.items && (
+                        <ul class="bullets">
+                          {g.items.map((x) => (
+                            <li>{x}</li>
+                          ))}
+                        </ul>
+                      )}
+                      {g.stack && (
+                        <div class="stack">
+                          <p class="label">Tech Stack</p>
+                          <ul>
+                            {g.stack.map((s) => {
+                              const [k, ...v] = s.split(' - ');
+                              return (
+                                <li>
+                                  <span class="k">{k}</span>
+                                  <span class="v">{v.join(' - ')}</span>
+                                </li>
+                              );
+                            })}
+                          </ul>
+                        </div>
+                      )}
+                      {g.note && (
+                        <p class="note">
+                          <strong>{g.note.title}</strong>
+                          <br />
+                          {g.note.text}
+                        </p>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </details>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+
+    <div class="two">
+      <div class="block reveal">
+        <p class="cmd" aria-hidden="true"><span class="ps">$</span>cat education.txt</p>
+        <h3 class="block-title">Education</h3>
+        <ul class="list">
+          {
+            education.map((e) => (
+              <li>
+                <div>
+                  <p class="t">{e.title}</p>
+                  <p class="d">{e.place}</p>
+                </div>
+                <span class="y">{e.period}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div class="block reveal">
+        <p class="cmd" aria-hidden="true"><span class="ps">$</span>cat achievements.txt</p>
+        <h3 class="block-title">Achievements</h3>
+        <ul class="list">
+          {
+            achievements.map((a) => (
+              <li>
+                <div>
+                  <p class="t">{a.title}</p>
+                  {a.detail && <p class="d">{a.detail}</p>}
+                </div>
+                <span class="y">{a.year}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .block-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+  }
+  .block-title span {
+    color: var(--accent);
+    font-family: var(--font-mono);
+  }
+
+  /* Timeline */
+  .timeline {
+    list-style: none;
+    padding: 0 0 0 24px;
+    margin: 0;
+    position: relative;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: linear-gradient(var(--accent), var(--border) 30%);
+  }
+  .job {
+    position: relative;
+    padding-bottom: 14px;
+  }
+  .node {
+    position: absolute;
+    left: -24px;
+    top: 22px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--accent);
+  }
+  .job:first-child .node {
+    background: var(--accent);
+    box-shadow: 0 0 0 4px var(--accent-soft);
+  }
+  details {
+    background: var(--bg-raised);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: border-color 0.2s;
+  }
+  details[open],
+  details:hover {
+    border-color: var(--border-strong);
+  }
+  summary {
+    list-style: none;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      'period toggle'
+      'company toggle'
+      'role toggle';
+    gap: 2px 12px;
+    padding: 14px 16px;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  @media (min-width: 720px) {
+    summary {
+      grid-template-columns: 1fr auto auto;
+      grid-template-areas:
+        'company period toggle'
+        'role period toggle';
+      padding: 16px 20px;
+    }
+  }
+  .period {
+    grid-area: period;
+    font: 0.8125rem var(--font-mono);
+    color: var(--amber);
+    align-self: center;
+  }
+  .company {
+    grid-area: company;
+    font-size: 1.125rem;
+    font-weight: 800;
+    color: var(--text);
+  }
+  .role {
+    grid-area: role;
+    font: 0.875rem var(--font-mono);
+    color: var(--blue);
+  }
+  .toggle {
+    grid-area: toggle;
+    align-self: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    position: relative;
+  }
+  .toggle::before,
+  .toggle::after {
+    content: '';
+    position: absolute;
+    inset: 50% auto auto 50%;
+    width: 10px;
+    height: 2px;
+    background: var(--muted);
+    transform: translate(-50%, -50%);
+    transition: transform 0.2s;
+  }
+  .toggle::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+  details[open] .toggle::after {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  .content {
+    display: grid;
+    gap: 18px;
+    padding: 4px 16px 18px;
+    border-top: 1px dashed var(--border);
+    padding-top: 16px;
+  }
+  @media (min-width: 720px) {
+    .content {
+      padding-inline: 20px;
+    }
+  }
+  .label,
+  .sub-title {
+    font: 700 0.75rem var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--faint);
+    margin-bottom: 8px;
+  }
+  .sub-title {
+    color: var(--accent);
+  }
+  .stack ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 4px;
+    font: 0.8125rem/1.5 var(--font-mono);
+  }
+  .stack li {
+    display: grid;
+    grid-template-columns: 9.5em 1fr;
+    gap: 8px;
+  }
+  .stack .k {
+    color: var(--faint);
+  }
+  .stack .v {
+    color: var(--text);
+  }
+  .bullets {
+    padding-left: 1.1em;
+    display: grid;
+    gap: 6px;
+    color: var(--muted);
+    font-size: 0.9375rem;
+  }
+  .bullets li::marker {
+    color: var(--accent);
+    content: '▸  ';
+  }
+  .sub {
+    display: grid;
+    gap: 10px;
+  }
+  .note {
+    color: var(--muted);
+    font-size: 0.9375rem;
+  }
+  .note strong {
+    color: var(--text);
+  }
+
+  /* Education + achievements */
+  .two {
+    display: grid;
+    gap: 40px;
+    margin-top: 48px;
+  }
+  @media (min-width: 860px) {
+    .two {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 12px;
+  }
+  .list li {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 16px;
+    background: var(--bg-raised);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+  }
+  .t {
+    font-weight: 600;
+    color: var(--text);
+  }
+  .d {
+    color: var(--muted);
+    font-size: 0.875rem;
+  }
+  .y {
+    font: 0.8125rem var(--font-mono);
+    color: var(--amber);
+    white-space: nowrap;
+  }
+</style>

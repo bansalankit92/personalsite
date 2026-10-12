@@ -1,0 +1,108 @@
+---
+import Social from './Social.astro';
+import { profile, site } from '../data/profile';
+---
+
+<footer class="footer">
+  <div class="container inner">
+    <div class="cta">
+      <p class="cmd" aria-hidden="true"><span class="ps">$</span>echo "let's build something"</p>
+      <p class="big">Have a role or a project in mind?</p>
+      <div class="actions">
+        <a class="btn btn-primary" href={`mailto:${profile.email}`}>Hire me</a>
+        <a class="btn" href={profile.resume} download>↓ Resume</a>
+      </div>
+    </div>
+    <Social center />
+    <div class="meta">
+      <p>Copyright &copy; Ankit Bansal. Design by <a href="#top">Ankit Bansal</a></p>
+      <p>
+        <a href={site.sourceCode} target="_blank" rel="noopener">View source on GitHub</a>
+        <span class="dot">·</span>
+        Service icons by <a href="https://www.flaticon.com/" target="_blank" rel="noopener">Flaticon</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<a class="fab" href={`mailto:${profile.email}`} aria-label="Hire me by email">Hire me</a>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--border);
+    background: var(--bg-sunken);
+    padding-block: 56px 96px;
+  }
+  @media (min-width: 860px) {
+    .footer {
+      padding-bottom: 48px;
+    }
+  }
+  .inner {
+    display: grid;
+    gap: 28px;
+    justify-items: center;
+    text-align: center;
+  }
+  .big {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 16px;
+  }
+  .meta {
+    display: grid;
+    gap: 6px;
+    font-size: 0.8125rem;
+    color: var(--faint);
+  }
+  .meta a {
+    color: var(--muted);
+  }
+  .dot {
+    margin-inline: 6px;
+  }
+
+  /* Floating hire button on small screens (the nav one is hidden there) */
+  .fab {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    z-index: 40;
+    padding: 12px 18px;
+    border-radius: 999px;
+    background: var(--accent);
+    color: var(--accent-ink);
+    font: 700 0.9375rem var(--font-mono);
+    text-decoration: none;
+    box-shadow: 0 10px 30px -8px rgb(0 0 0 / 0.5);
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  :global(.js) .fab:not(.show) {
+    opacity: 0;
+    transform: translateY(12px);
+    pointer-events: none;
+  }
+  @media (min-width: 860px) {
+    .fab {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  // Show the floating hire button only once the hero (with its own button) is off screen.
+  const fab = document.querySelector<HTMLElement>('.fab');
+  const hero = document.getElementById('top');
+  if (fab && hero && 'IntersectionObserver' in window) {
+    new IntersectionObserver(([e]) => fab.classList.toggle('show', !e.isIntersecting)).observe(hero);
+  } else {
+    fab?.classList.add('show');
+  }
+</script>

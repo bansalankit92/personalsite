@@ -1,0 +1,175 @@
+---
+import '../styles/global.css';
+import { site, profile, socials, featured, skills, education } from '../data/profile';
+
+const url = `${site.url}/`;
+const image = `${site.url}/jpg/ankit.png`;
+const personId = `${url}#person`;
+
+// Structured data for search engines (schema.org), generated from the same content as the page.
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': `${url}#website`,
+      url,
+      name: 'Ankit Bansal',
+      inLanguage: 'en-IN',
+      publisher: { '@id': personId },
+    },
+    {
+      '@type': 'ProfilePage',
+      '@id': `${url}#profilepage`,
+      url,
+      name: site.title,
+      description: site.description,
+      inLanguage: 'en-IN',
+      isPartOf: { '@id': `${url}#website` },
+      mainEntity: { '@id': personId },
+      dateModified: new Date().toISOString().slice(0, 10),
+    },
+    {
+      '@type': 'Person',
+      '@id': personId,
+      name: profile.name,
+      givenName: 'Ankit',
+      familyName: 'Bansal',
+      jobTitle: profile.role,
+      description: site.description,
+      url,
+      image,
+      email: `mailto:${profile.email}`,
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Pune',
+        addressRegion: 'Maharashtra',
+        postalCode: '412101',
+        addressCountry: 'IN',
+      },
+      alumniOf: { '@type': 'CollegeOrUniversity', name: education[0].place },
+      knowsAbout: skills.flatMap((g) => g.subgroups.flatMap((sg) => sg.skills.map((sk) => sk.name))),
+      sameAs: [...socials.map((s) => s.href), ...featured.filter((f) => f.relation === 'Founder').map((f) => f.url)],
+    },
+    ...featured
+      .filter((f) => f.relation === 'Founder')
+      .map((f) => ({
+        '@type': 'Organization',
+        '@id': `${f.url}/#organization`,
+        name: f.name,
+        url: f.url,
+        description: f.description,
+        founder: { '@id': personId },
+      })),
+  ],
+};
+const jsonLdHtml = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{site.title}</title>
+    <meta name="author" content="Ankit Bansal" />
+    <meta name="description" content={site.description} />
+    <meta name="keywords" content={site.keywords} />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="google-site-verification" content={site.googleSiteVerification} />
+    <meta name="theme-color" content="#0b0e14" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f6f8fa" media="(prefers-color-scheme: light)" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="canonical" href={url} />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-friendly summary" />
+    <link rel="me" href="https://github.com/bansalankit92" />
+    <link rel="me" href="https://www.linkedin.com/in/ankitbansal2/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content={site.title} />
+    <meta property="og:description" content={site.ogDescription} />
+    <meta property="og:url" content={url} />
+    <meta property="og:site_name" content="Ankit Bansal" />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="og:image" content={image} />
+    <meta property="og:image:width" content="782" />
+    <meta property="og:image:height" content="661" />
+    <meta property="og:image:alt" content="Ankit Bansal, Senior Software Engineer" />
+    <meta property="profile:first_name" content="Ankit" />
+    <meta property="profile:last_name" content="Bansal" />
+
+    <!-- X / Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@ankeetbansal" />
+    <meta name="twitter:creator" content="@ankeetbansal" />
+    <meta name="twitter:title" content={site.title} />
+    <meta name="twitter:description" content={site.ogDescription} />
+    <meta name="twitter:image" content={image} />
+    <meta name="twitter:image:alt" content="Ankit Bansal, Senior Software Engineer" />
+
+    <script type="application/ld+json" set:html={jsonLdHtml} />
+
+    <script is:inline>
+      // Apply the saved theme before first paint to avoid a flash.
+      (function () {
+        var d = document.documentElement;
+        d.classList.add('js');
+        try {
+          var t = localStorage.getItem('theme');
+          if (t === 'light' || t === 'dark') d.dataset.theme = t;
+        } catch (e) {}
+      })();
+    </script>
+
+    <!-- Google Tag Manager, loaded once the page is idle so it never delays first paint -->
+    <script is:inline define:vars={{ gtmId: site.gtmId }}>
+      (function (w, d) {
+        w.dataLayer = w.dataLayer || [];
+        w.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        function load() {
+          var j = d.createElement('script');
+          j.async = true;
+          j.src = 'https://www.googletagmanager.com/gtm.js?id=' + gtmId;
+          d.head.appendChild(j);
+        }
+        function idle() {
+          'requestIdleCallback' in w ? w.requestIdleCallback(load, { timeout: 3000 }) : setTimeout(load, 1500);
+        }
+        d.readyState === 'complete' ? idle() : w.addEventListener('load', idle);
+      })(window, document);
+    </script>
+  </head>
+  <body>
+    <noscript
+      ><iframe
+        src={`https://www.googletagmanager.com/ns.html?id=${site.gtmId}`}
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"
+        title="Google Tag Manager"></iframe
+      ></noscript
+    >
+    <a class="skip-link" href="#main">Skip to content</a>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  .skip-link {
+    position: absolute;
+    left: 16px;
+    top: -48px;
+    z-index: 100;
+    padding: 8px 12px;
+    background: var(--accent);
+    color: var(--accent-ink);
+    border-radius: 6px;
+    font: 600 0.875rem var(--font-mono);
+  }
+  .skip-link:focus {
+    top: 12px;
+  }
+</style>
