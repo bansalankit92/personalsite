@@ -55,7 +55,7 @@ const chips = [
               </li>
             ))
           }
-          <li><a href={profile.resume} download class="file">resume.pdf</a></li>
+          <li><a href={profile.resume} target="_blank" rel="noopener" class="file">resume.pdf</a></li>
         </ul>
 
         <p class="line" data-cmd>
@@ -70,7 +70,7 @@ const chips = [
     </div>
 
     <div class="cta reveal">
-      <a class="btn btn-primary" href={profile.resume} download>↓ Download Resume</a>
+      <a class="btn btn-primary" href={profile.resume} target="_blank" rel="noopener">View Resume ↗</a>
       <a class="btn" href={`mailto:${profile.email}`}>Hire me</a>
     </div>
 
