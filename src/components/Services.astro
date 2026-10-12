@@ -26,9 +26,14 @@ const icon = (file: string) => icons[`../assets/services/${file}`].default;
               <p class="line">{l}</p>
             ))}
             <p class="price">{s.price}</p>
-            <a class="btn" href={`mailto:${profile.email}?subject=${encodeURIComponent(s.title)}`}>
-              Get in touch
-            </a>
+            <div class="svc-actions">
+              <a class="btn btn-primary" href={profile.booking} target="_blank" rel="noopener">
+                Book a call ↗
+              </a>
+              <a class="btn" href={`mailto:${profile.email}?subject=${encodeURIComponent(s.title)}`} data-hire>
+                Email
+              </a>
+            </div>
           </li>
         ))
       }
@@ -96,7 +101,9 @@ const icon = (file: string) => icons[`../assets/services/${file}`].default;
     font: 700 1.375rem var(--font-mono);
     color: var(--amber);
   }
-  .btn {
-    align-self: flex-start;
+  .svc-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
   }
 </style>

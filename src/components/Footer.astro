@@ -9,7 +9,8 @@ import { profile, site } from '../data/profile';
       <p class="cmd" aria-hidden="true"><span class="ps">$</span>echo "let's build something"</p>
       <p class="big">Have a role or a project in mind?</p>
       <div class="actions">
-        <a class="btn btn-primary" href={`mailto:${profile.email}`}>Hire me</a>
+        <a class="btn btn-primary" href={`mailto:${profile.email}`} data-hire>Hire me</a>
+        <a class="btn" href={profile.booking} target="_blank" rel="noopener">Book a call ↗</a>
         <a class="btn" href={profile.resume} target="_blank" rel="noopener">Resume ↗</a>
       </div>
     </div>
@@ -25,7 +26,7 @@ import { profile, site } from '../data/profile';
   </div>
 </footer>
 
-<a class="fab" href={`mailto:${profile.email}`} aria-label="Hire me by email">Hire me</a>
+<a class="fab" href={`mailto:${profile.email}`} data-hire>Hire me</a>
 
 <style>
   .footer {

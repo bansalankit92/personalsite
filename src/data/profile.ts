@@ -28,6 +28,9 @@ export const profile = {
   email: 'contact@ankitbansal.co.in',
   photo: 'ankit2.jpeg',
   resume: '/docs/Ankit_Bansal_SSE_Resume_11_yrs_exp.pdf',
+  booking: 'https://cal.com/ankitbansal/30min',
+  github: 'https://github.com/bansalankit92',
+  githubUser: 'bansalankit92',
 };
 
 export const about = [
@@ -642,6 +645,7 @@ export interface Featured {
   url: string;
   domain: string;
   relation: 'Founder' | 'Employee';
+  kind?: 'app'; // a mobile app rather than a website
   role: string;
   description: string;
   facts: string[];
@@ -689,6 +693,19 @@ export const featured: Featured[] = [
       { label: 'FinYouth · /youth', href: 'https://fincalculator.in/youth' },
     ],
     image: 'fincalculator.png',
+  },
+  {
+    id: 'pustakscan',
+    name: 'Pustak Scan',
+    url: 'https://play.google.com/store/apps/details?id=com.pustak.scanner',
+    domain: 'play.google.com · com.pustak.scanner',
+    relation: 'Founder',
+    kind: 'app',
+    role: 'Founder',
+    description:
+      'Android app that scans Hindi and Devanagari documents, extracts text with on-device OCR and exports searchable PDFs, all offline. Supports Sanskrit, Marathi and Nepali, with multi-page scanning and PDF import.',
+    facts: ['1K+ downloads', 'Offline on-device OCR', 'Android'],
+    image: 'pustakscan.png',
   },
   {
     id: 'peerlist',

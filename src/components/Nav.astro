@@ -50,7 +50,7 @@ const links = [
             stroke-linejoin="round"></path></svg
         >
       </button>
-      <a class="btn btn-primary hire" href={`mailto:${profile.email}`}>Hire me</a>
+      <a class="btn btn-primary hire" href={`mailto:${profile.email}`} data-hire>Hire me</a>
       <button
         class="icon-btn menu-btn"
         type="button"
@@ -83,8 +83,9 @@ const links = [
         }
       </ul>
       <div class="sheet-actions">
-        <a class="btn btn-primary" href={`mailto:${profile.email}`} data-menu-link>Hire me</a>
+        <a class="btn btn-primary" href={`mailto:${profile.email}`} data-menu-link data-hire>Hire me</a>
         <a class="btn" href={profile.resume} target="_blank" rel="noopener" data-menu-link>Resume ↗</a>
+        <a class="btn book" href={profile.booking} target="_blank" rel="noopener" data-menu-link>Book a 30-min call ↗</a>
       </div>
     </nav>
   </div>
@@ -284,6 +285,9 @@ const links = [
     grid-template-columns: 1fr 1fr;
     gap: 12px;
     margin-top: 20px;
+  }
+  .sheet-actions .book {
+    grid-column: 1 / -1;
   }
 
   @media (max-width: 859px) {

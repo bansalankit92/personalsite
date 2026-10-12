@@ -49,18 +49,32 @@ const jsonLd = {
       },
       alumniOf: { '@type': 'CollegeOrUniversity', name: education[0].place },
       knowsAbout: skills.flatMap((g) => g.subgroups.flatMap((sg) => sg.skills.map((sk) => sk.name))),
-      sameAs: [...socials.map((s) => s.href), ...featured.filter((f) => f.relation === 'Founder').map((f) => f.url)],
+      sameAs: socials.map((s) => s.href),
     },
     ...featured
       .filter((f) => f.relation === 'Founder')
-      .map((f) => ({
-        '@type': 'Organization',
-        '@id': `${f.url}/#organization`,
-        name: f.name,
-        url: f.url,
-        description: f.description,
-        founder: { '@id': personId },
-      })),
+      .map((f) =>
+        f.kind === 'app'
+          ? {
+              '@type': 'MobileApplication',
+              '@id': `${url}#${f.id}`,
+              name: f.name,
+              url: f.url,
+              description: f.description,
+              operatingSystem: 'Android',
+              applicationCategory: 'ProductivityApplication',
+              author: { '@id': personId },
+              creator: { '@id': personId },
+            }
+          : {
+              '@type': 'Organization',
+              '@id': `${f.url}/#organization`,
+              name: f.name,
+              url: f.url,
+              description: f.description,
+              founder: { '@id': personId },
+            },
+      ),
   ],
 };
 const jsonLdHtml = JSON.stringify(jsonLd).replace(/</g, '\\u003c');

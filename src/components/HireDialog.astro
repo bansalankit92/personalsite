@@ -1,0 +1,158 @@
+---
+// Contact dialog opened by every "Hire me" button ([data-hire]).
+// mailto: alone silently fails for people without a desktop mail app, so offer options that always work.
+import { profile, socials } from '../data/profile';
+
+const subject = 'Hiring enquiry';
+const gmail = `https://mail.google.com/mail/?view=cm&fs=1&to=${profile.email}&su=${encodeURIComponent(subject)}`;
+const linkedin = socials.find((s) => s.icon === 'linkedin')?.href;
+const [emailUser, emailDomain] = profile.email.split('@');
+---
+
+<dialog id="hire-dialog" class="hire-dlg" aria-labelledby="hire-title">
+  <div class="bar">
+    <span class="path">~/contact</span>
+    <button type="button" class="x" data-close aria-label="Close">✕</button>
+  </div>
+  <div class="body">
+    <h2 id="hire-title">Let's work together</h2>
+    <p class="lead">Open to senior backend / full stack roles, freelance projects and technical interviews.</p>
+
+    <div class="email">
+      <code>{emailUser}@<wbr />{emailDomain}</code>
+      <button type="button" class="btn copy" data-copy={profile.email}>Copy</button>
+    </div>
+    <p class="copied" role="status" aria-live="polite"></p>
+
+    <div class="opts">
+      <a class="btn btn-primary" href={profile.booking} target="_blank" rel="noopener">Book a 30-min call ↗</a>
+      <a class="btn" href={gmail} target="_blank" rel="noopener">Compose in Gmail ↗</a>
+      <a class="btn" href={`mailto:${profile.email}?subject=${encodeURIComponent(subject)}`}>Open mail app</a>
+      {
+        linkedin && (
+          <a class="btn" href={linkedin} target="_blank" rel="noopener">
+            Message on LinkedIn ↗
+          </a>
+        )
+      }
+    </div>
+  </div>
+</dialog>
+
+<style>
+  .hire-dlg {
+    width: min(520px, calc(100vw - 24px));
+    padding: 0;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius);
+    background: var(--bg-raised);
+    color: var(--text);
+    box-shadow: 0 30px 80px rgb(0 0 0 / 0.5);
+  }
+  .hire-dlg::backdrop {
+    background: rgb(0 0 0 / 0.6);
+    backdrop-filter: blur(4px);
+  }
+  .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    background: var(--bg-sunken);
+    border-bottom: 1px solid var(--border);
+  }
+  .path {
+    font: 0.8125rem var(--font-mono);
+    color: var(--muted);
+  }
+  .x {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+  }
+  .body {
+    padding: 22px;
+    display: grid;
+    gap: 14px;
+  }
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 800;
+  }
+  .lead {
+    color: var(--muted);
+  }
+  .email {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 8px 8px 14px;
+    border: 1px dashed var(--border-strong);
+    border-radius: var(--radius-sm);
+    background: var(--bg-sunken);
+  }
+  .email code {
+    flex: 1;
+    min-width: 0;
+    color: var(--accent);
+    font-size: 0.875rem;
+  }
+  .copy {
+    min-height: 36px;
+    padding: 6px 14px;
+  }
+  .copied {
+    min-height: 1.2em;
+    margin-top: -8px;
+    font: 0.8125rem var(--font-mono);
+    color: var(--accent);
+  }
+  .opts {
+    display: grid;
+    gap: 10px;
+  }
+  @media (min-width: 480px) {
+    .opts {
+      grid-template-columns: 1fr 1fr;
+    }
+    .opts .btn-primary {
+      grid-column: 1 / -1;
+    }
+  }
+</style>
+
+<script>
+  const dlg = document.getElementById('hire-dialog') as HTMLDialogElement | null;
+  if (dlg) {
+    document.querySelectorAll<HTMLAnchorElement>('[data-hire]').forEach((a) =>
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        dlg.showModal();
+      }),
+    );
+    dlg.querySelectorAll('[data-close]').forEach((b) => b.addEventListener('click', () => dlg.close()));
+    dlg.addEventListener('click', (e) => {
+      if (e.target === dlg) dlg.close();
+    });
+
+    const status = dlg.querySelector<HTMLElement>('.copied');
+    dlg.querySelectorAll<HTMLButtonElement>('[data-copy]').forEach((btn) =>
+      btn.addEventListener('click', async () => {
+        const text = btn.dataset.copy || '';
+        try {
+          await navigator.clipboard.writeText(text);
+          if (status) status.textContent = '✓ Copied to clipboard';
+        } catch {
+          // Clipboard blocked: select the address so it can be copied manually
+          const code = dlg.querySelector('.email code');
+          if (code) window.getSelection()?.selectAllChildren(code);
+          if (status) status.textContent = 'Press Ctrl/⌘ + C to copy';
+        }
+      }),
+    );
+  }
+</script>

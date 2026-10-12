@@ -4,11 +4,13 @@ import Nav from '../components/Nav.astro';
 import Terminal from '../components/Terminal.astro';
 import About from '../components/About.astro';
 import Featured from '../components/Featured.astro';
+import GitHub from '../components/GitHub.astro';
 import Experience from '../components/Experience.astro';
 import Skills from '../components/Skills.astro';
 import Projects from '../components/Projects.astro';
 import Services from '../components/Services.astro';
 import Footer from '../components/Footer.astro';
+import HireDialog from '../components/HireDialog.astro';
 import { profile } from '../data/profile';
 ---
 
@@ -18,12 +20,14 @@ import { profile } from '../data/profile';
     <Terminal />
     <About />
     <Featured />
+    <GitHub />
     <Experience />
     <Skills />
     <Projects />
     <Services />
   </main>
   <Footer />
+  <HireDialog />
 </Base>
 
 <script define:vars={{ birthDate: profile.birthDate, careerStart: profile.careerStart }}>
