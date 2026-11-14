@@ -12,7 +12,7 @@
   "dependencies": {
     "@fontsource/inter": "5.2.5",
     "@fontsource/jetbrains-mono": "5.2.5",
-    "astro": "7.3.5"
+    "astro": "7.4.7"
   },
   "engines": {
     "node": ">=22.12.0"
