@@ -19,7 +19,7 @@ export interface Contributions {
 export async function getContributions(user: string): Promise<Contributions | null> {
   try {
     const res = await fetch(`https://github.com/users/${user}/contributions`, {
-      headers: { 'User-Agent': 'ankitbansal.co.in build' },
+      headers: { 'User-Agent': 'ankitbansal.dev build' },
       signal: AbortSignal.timeout(10_000),
     });
     if (!res.ok) return null;

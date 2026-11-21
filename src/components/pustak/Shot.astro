@@ -1,0 +1,167 @@
+---
+// A store screenshot in a device frame. Images live in public/ and may not exist yet:
+// if the file is missing at build time, a styled placeholder keeps the layout intact.
+import { publicFileExists } from '../../lib/public-file';
+
+interface Props {
+  src: string; // path under public/, e.g. /pustak-scan/screens/01.webp
+  alt: string;
+  variant?: 'phone' | 'wide';
+  width?: number;
+  height?: number;
+  eager?: boolean;
+  sizes?: string;
+  class?: string;
+}
+const { src, alt, variant = 'phone', eager = false, class: className } = Astro.props;
+const width = Astro.props.width ?? (variant === 'phone' ? 1080 : 1024);
+const height = Astro.props.height ?? (variant === 'phone' ? 1920 : 500);
+const exists = publicFileExists(src);
+
+// scripts/optimize-images.mjs (npm run images) writes a full-width and a half-width WebP:
+// 01.webp + 01-540.webp. Use the half-width one on phones and small grid cells.
+const half = Math.round(width / 2);
+const halfSrc = src.replace(/\.webp$/, `-${half}.webp`);
+const srcset = publicFileExists(halfSrc) ? `${halfSrc} ${half}w, ${src} ${width}w` : undefined;
+const sizes = Astro.props.sizes ?? (variant === 'phone' ? '(min-width: 760px) 320px, 70vw' : '(min-width: 1100px) 1024px, 100vw');
+---
+
+<figure class:list={['shot', `shot-${variant}`, className]}>
+  <div class="frame">
+    {
+      exists ? (
+        <img
+          src={src}
+          srcset={srcset}
+          sizes={srcset ? sizes : undefined}
+          alt={alt}
+          width={width}
+          height={height}
+          loading={eager ? 'eager' : 'lazy'}
+          decoding="async"
+          fetchpriority={eager ? 'high' : undefined}
+        />
+      ) : (
+        <div class="ph" aria-hidden="true">
+          <span class="ph-bar" />
+          <span class="ph-title">Pustak Scan</span>
+          <span class="ph-dev" lang="hi">
+            पुस्तक
+          </span>
+          <span class="ph-line w90" />
+          <span class="ph-line w70" />
+          <span class="ph-line w80" />
+          <span class="ph-line w60" />
+          <span class="ph-chip">हिन्दी + English</span>
+        </div>
+      )
+    }
+  </div>
+</figure>
+
+<style>
+  .shot {
+    margin: 0;
+  }
+  .frame {
+    position: relative;
+    overflow: hidden;
+    background: var(--bg-sunken);
+    border: 1px solid var(--border-strong);
+    box-shadow: var(--shadow);
+  }
+  .shot-phone .frame {
+    aspect-ratio: 1080 / 1920;
+    border-radius: 28px;
+    border-width: 6px;
+    border-color: color-mix(in srgb, var(--text) 14%, var(--bg-raised));
+  }
+  .shot-wide .frame {
+    aspect-ratio: 1024 / 500;
+    border-radius: var(--radius);
+  }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Placeholder: a quiet sketch of a scanned page, so empty slots still look designed. */
+  .ph {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 9%;
+    padding: 14% 12%;
+    background:
+      radial-gradient(120% 60% at 100% 0%, var(--accent-soft), transparent 60%),
+      linear-gradient(180deg, var(--bg-raised), var(--bg-sunken));
+    container-type: inline-size;
+  }
+  .shot-phone .ph {
+    gap: 3.5%;
+  }
+  .shot-wide .ph {
+    justify-content: center;
+    gap: 6%;
+    padding: 6% 8%;
+  }
+  .ph-bar {
+    width: 30%;
+    height: 4px;
+    border-radius: 4px;
+    background: var(--border-strong);
+    margin: -6% auto 6%;
+  }
+  .shot-wide .ph-bar {
+    display: none;
+  }
+  .ph-title {
+    font: 800 clamp(0.75rem, 11cqi, 2.5rem) / 1.1 var(--font-sans);
+    color: var(--text);
+    letter-spacing: -0.02em;
+  }
+  .ph-dev {
+    font: 600 clamp(0.875rem, 14cqi, 3rem) / 1.2 var(--font-sans);
+    color: var(--accent);
+  }
+  .shot-wide .ph-title,
+  .shot-wide .ph-dev {
+    font-size: clamp(1rem, 6cqi, 3rem);
+  }
+  .ph-line {
+    display: block;
+    height: clamp(4px, 2.4cqi, 10px);
+    border-radius: 4px;
+    background: var(--border);
+  }
+  .shot-wide .ph-line {
+    display: none;
+  }
+  .w90 {
+    width: 90%;
+  }
+  .w80 {
+    width: 80%;
+  }
+  .w70 {
+    width: 70%;
+  }
+  .w60 {
+    width: 60%;
+  }
+  .ph-chip {
+    align-self: flex-start;
+    margin-top: auto;
+    font: 600 clamp(0.5rem, 5cqi, 0.875rem) / 1 var(--font-mono);
+    color: var(--accent);
+    border: 1px solid currentColor;
+    border-radius: 999px;
+    padding: 0.5em 0.9em;
+  }
+  .shot-wide .ph-chip {
+    margin-top: 0;
+    font-size: clamp(0.625rem, 2cqi, 0.9375rem);
+  }
+</style>

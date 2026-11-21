@@ -1,0 +1,674 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import HireDialog from '../../components/HireDialog.astro';
+import Reveal from '../../components/Reveal.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import { site, profile } from '../../data/profile';
+import { pustak } from '../../data/pustak';
+import { rows, verdict, sources, checked, kaagazAliases, type Mark, type SourceKey } from '../../data/compare-kaagaz';
+import { publicFileExists } from '../../lib/public-file';
+
+const path = `${pustak.path}/vs-kaagaz-scanner`;
+const pageUrl = `${site.url}${path}`;
+const hasGraphic = publicFileExists(pustak.featureGraphic.src);
+
+const title = 'Pustak Scan vs Kaagaz Scanner: an honest comparison (2026)';
+const description = `Pustak Scan vs Kaagaz (Kagaz) Scanner compared on Hindi OCR, watermark, price, ads, privacy, Word export and big PDFs, with a source for every Kaagaz claim. Checked ${checked.label}.`;
+
+// Number sources in the order they are listed, so table footnotes read [1], [2]…
+const sourceKeys = Object.keys(sources) as SourceKey[];
+const srcNo = (k: SourceKey) => sourceKeys.indexOf(k) + 1;
+
+const markLabel: Record<Mark, { sym: string; sr: string }> = {
+  yes: { sym: '✓', sr: 'Good:' },
+  no: { sym: '✗', sr: 'Missing:' },
+  partial: { sym: '◐', sr: 'Limited:' },
+  unknown: { sym: '?', sr: 'Not verified:' },
+};
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebPage',
+      '@id': `${pageUrl}#webpage`,
+      url: pageUrl,
+      name: title,
+      description,
+      inLanguage: 'en-IN',
+      isPartOf: { '@id': `${site.url}/#website` },
+      dateModified: checked.iso,
+      author: { '@type': 'Person', '@id': `${site.url}/#person`, name: profile.name, url: `${site.url}/` },
+      about: [
+        { '@type': 'MobileApplication', name: pustak.name, url: `${site.url}${pustak.path}`, operatingSystem: 'Android' },
+        { '@type': 'MobileApplication', name: 'Kaagaz Scanner', url: sources.play.url },
+      ],
+      breadcrumb: { '@id': `${pageUrl}#breadcrumb` },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${pageUrl}#breadcrumb`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Ankit Bansal', item: `${site.url}/` },
+        { '@type': 'ListItem', position: 2, name: pustak.name, item: `${site.url}${pustak.path}` },
+        { '@type': 'ListItem', position: 3, name: 'vs Kaagaz Scanner', item: pageUrl },
+      ],
+    },
+  ],
+};
+
+const navLinks = [
+  { href: '#verdict', label: 'verdict' },
+  { href: '#table', label: 'table' },
+  { href: '#differences', label: 'differences' },
+  { href: '#sources', label: 'sources' },
+  { href: pustak.path, label: 'pustak-scan' },
+];
+---
+
+<Base
+  title={title}
+  description={description}
+  keywords="pustak scan vs kaagaz, kaagaz scanner alternative, kagaz scanner alternative, hindi ocr scanner app, kaagaz hindi ocr, scanner app without watermark, offline document scanner india"
+  path={path}
+  ogType="article"
+  image={hasGraphic
+    ? { url: `${site.url}${pustak.featureGraphic.src}`, width: 1024, height: 500, alt: pustak.featureGraphic.alt }
+    : undefined}
+  largeImage={hasGraphic}
+  jsonLd={jsonLd}
+>
+  <Nav links={navLinks} brandHref="/" brandLabel="Ankit Bansal, home page" />
+  <main id="main">
+    <!-- Intro -->
+    <section id="top" class="hero" aria-labelledby="hero-title">
+      <div class="container narrow">
+        <nav aria-label="Breadcrumb" class="crumbs">
+          <ol>
+            <li><a href="/">~</a></li>
+            <li><a href={pustak.path}>pustak-scan</a></li>
+            <li aria-current="page">vs-kaagaz-scanner</li>
+          </ol>
+        </nav>
+        <p class="cmd" aria-hidden="true"><span class="ps">$</span>diff pustak-scan kaagaz</p>
+        <h1 id="hero-title">Pustak Scan <span class="vs">vs</span> Kaagaz Scanner</h1>
+        <p class="lead">
+          Both are free-to-use document scanner apps, but they are built for different jobs: Pustak Scan is about
+          reading Hindi and English text privately on your phone; Kaagaz is a broader PDF toolkit with cloud backup.
+        </p>
+        <p class="disclosure">
+          <span class="hash">//</span> Disclosure: I’m <a href="/">{profile.name}</a>, the developer of Pustak Scan, so read
+          this with that in mind. Every Kaagaz claim links to a public source, checked on{' '}
+          <time datetime={checked.iso}>{checked.label}</time>. Where I couldn’t verify something, it says so. {kaagazAliases}.
+        </p>
+      </div>
+    </section>
+
+    <!-- Verdict -->
+    <section id="verdict" class="section section-first" aria-labelledby="verdict-title">
+      <div class="container">
+        <SectionHeader cmd="cat verdict.txt" title="The short answer" id="verdict-title" />
+        <div class="verdict">
+          <div class="pick card reveal pick-pustak">
+            <h3>Choose Pustak Scan if…</h3>
+            <ul>{verdict.pustak.map((v) => <li>{v}</li>)}</ul>
+            <a class="btn btn-primary" href={pustak.playUrl} target="_blank" rel="noopener">Get Pustak Scan ↗</a>
+          </div>
+          <div class="pick card reveal pick-kaagaz">
+            <h3>Choose Kaagaz if…</h3>
+            <ul>{verdict.kaagaz.map((v) => <li>{v}</li>)}</ul>
+            <a class="btn" href={sources.play.url} target="_blank" rel="noopener nofollow">Kaagaz on Google Play ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Table -->
+    <section id="table" class="section" aria-labelledby="table-title">
+      <div class="container">
+        <SectionHeader cmd="column -t features.tsv" title="Feature by feature" id="table-title" />
+        <p class="legend reveal" aria-hidden="true">
+          <span><b class="m m-yes">✓</b> good</span>
+          <span><b class="m m-partial">◐</b> partly / with limits</span>
+          <span><b class="m m-no">✗</b> missing</span>
+          <span><b class="m m-unknown">?</b> not verified</span>
+          <span><sup>[n]</sup> source</span>
+        </p>
+        <div class="table-wrap card reveal">
+          <table role="table">
+            <caption class="sr-only">
+              Pustak Scan compared with Kaagaz Scanner. Kaagaz details from public sources as of {checked.label}.
+            </caption>
+            <thead role="rowgroup">
+              <tr role="row">
+                <th scope="col" role="columnheader">Feature</th>
+                <th scope="col" role="columnheader">Pustak Scan</th>
+                <th scope="col" role="columnheader">Kaagaz Scanner</th>
+              </tr>
+            </thead>
+            <tbody role="rowgroup">
+              {
+                rows.map((r) => (
+                  <tr role="row">
+                    <th scope="row" role="rowheader">{r.feature}</th>
+                    {(['pustak', 'kaagaz'] as const).map((side) => {
+                      const c = r[side];
+                      return (
+                        <td role="cell" data-label={side === 'pustak' ? 'Pustak Scan' : 'Kaagaz'}>
+                          <span class="cell">
+                            <b class={`m m-${c.mark}`} aria-hidden="true">
+                              {markLabel[c.mark].sym}
+                            </b>
+                            <span>
+                              <span class="sr-only">{markLabel[c.mark].sr} </span>
+                              {c.text}
+                              {[...(c.src ?? [])].sort((x, y) => srcNo(x) - srcNo(y)).map((k) => (
+                                <sup>
+                                  <a href={`#src-${k}`} aria-label={`Source ${srcNo(k)}: ${sources[k].label}`}>
+                                    [{srcNo(k)}]
+                                  </a>
+                                </sup>
+                              ))}
+                            </span>
+                          </span>
+                        </td>
+                      );
+                    })}
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+        <p class="note reveal">
+          Pustak Scan details describe the current version (v2). Kaagaz details are from its own store listings and
+          website; they can change, so check the sources before you decide.
+        </p>
+      </div>
+    </section>
+
+    <!-- Differences -->
+    <section id="differences" class="section" aria-labelledby="diff-title">
+      <div class="container narrow">
+        <SectionHeader cmd="git diff --stat" title="The main differences" id="diff-title" />
+
+        <article class="diff reveal" aria-labelledby="d-hindi">
+          <h3 id="d-hindi"><span class="hash">01</span> Reading Hindi text</h3>
+          <p>
+            Pustak Scan was built for this. It reads Hindi (Devanagari) and English text on the phone with Google ML Kit,
+            has an English-only mode, and lets you correct and format the result in a per-page editor.
+          </p>
+          <p>
+            Kaagaz has an OCR tool that extracts text from images and saves searchable PDFs, according to its App Store
+            release notes<sup><a href="#src-appStore">[{srcNo('appStore')}]</a></sup>. Its listings don’t say which
+            languages the OCR reads, so I couldn’t verify whether it reads Hindi. Note that the “12 languages” on its
+            Play listing<sup><a href="#src-play">[{srcNo('play')}]</a></sup> appear to be the app’s menu languages, not OCR
+            languages.
+          </p>
+        </article>
+
+        <article class="diff reveal" aria-labelledby="d-price">
+          <h3 id="d-price"><span class="hash">02</span> Watermark, price and ads</h3>
+          <p>
+            Neither app puts a watermark on your scans by default. Kaagaz says it has no default watermark and offers an
+            optional custom one<sup><a href="#src-faq">[{srcNo('faq')}]</a></sup>.
+          </p>
+          <p>
+            Pustak Scan is free and this version shows no ads. Kaagaz is free to scan, its Play listing says “Contains
+            ads”<sup><a href="#src-play">[{srcNo('play')}]</a></sup>, and its Premium plan (₹999/year, as listed for iPhone) adds HD scanning,
+            unlimited PDF tools, desktop access, 1 GB cloud storage and no ads<sup
+              ><a href="#src-premium">[{srcNo('premium')}]</a></sup
+            >. On iPhone it also sells a ₹199 monthly plan and extra storage<sup
+              ><a href="#src-appStore">[{srcNo('appStore')}]</a></sup
+            >.
+          </p>
+        </article>
+
+        <article class="diff reveal" aria-labelledby="d-privacy">
+          <h3 id="d-privacy"><span class="hash">03</span> Privacy and offline use</h3>
+          <p>
+            Pustak Scan has no account, no cloud and no server: documents never leave the phone unless you share them or
+            save a backup file somewhere yourself, text is read offline, and the only permission is the camera (plus
+            storage on very old Android).
+          </p>
+          <p>
+            Kaagaz’s privacy policy says scanning can work offline and on the device, and that scans stay on the device
+            unless you opt in to its cloud storage<sup><a href="#src-privacy">[{srcNo('privacy')}]</a></sup>. It also asks
+            for access to the files on your device and the camera, and its policy says that for the optional “Kaagaz AI”
+            feature, data “may be retained by OpenAI for up to 30 days”<sup><a href="#src-privacy">[{srcNo('privacy')}]</a></sup>. On Google
+            Play, its Data safety section lists data that may be collected (such as approximate location and optional
+            personal info) and some that may be shared for analytics<sup
+              ><a href="#src-dataSafety">[{srcNo('dataSafety')}]</a></sup
+            >. If you want cloud backup, that’s a plus for Kaagaz; if you want nothing to leave your phone unless
+            you send it, Pustak Scan is simpler.
+          </p>
+        </article>
+
+        <article class="diff reveal" aria-labelledby="d-pdf">
+          <h3 id="d-pdf"><span class="hash">04</span> Big PDFs</h3>
+          <p>
+            Pustak Scan imports PDFs with hundreds of pages and reads them page by page in the background, so the phone
+            doesn’t freeze and you can keep using the app. If a PDF is large for your phone’s memory or storage is low,
+            it warns you instead of refusing.
+          </p>
+          <p>
+            Kaagaz can import PDFs, including from WhatsApp<sup><a href="#src-play">[{srcNo('play')}]</a></sup>. I didn’t
+            find anything about how it handles very large PDFs, so this one is not verified.
+          </p>
+        </article>
+
+        <article class="diff reveal" aria-labelledby="d-word">
+          <h3 id="d-word"><span class="hash">05</span> Word export</h3>
+          <p>
+            Pustak Scan exports Word (.docx) files that keep bold, italic, underline, headings, lists and alignment, with
+            Hindi fonts that render correctly. It also exports searchable PDF, image PDF and plain text.
+          </p>
+          <p>
+            Kaagaz’s listing names PDF, JPG and PNG for scans<sup><a href="#src-play">[{srcNo('play')}]</a></sup>, plus
+            searchable PDF through its OCR tool<sup><a href="#src-appStore">[{srcNo('appStore')}]</a></sup>. I found no
+            mention of Word export from scans (not verified).
+          </p>
+        </article>
+
+        <article class="diff diff-them reveal" aria-labelledby="d-them">
+          <h3 id="d-them"><span class="hash">06</span> Where Kaagaz is stronger</h3>
+          <ul>
+            <li>
+              <strong>iPhone and computer.</strong> It has an iPhone app<sup
+                ><a href="#src-appStore">[{srcNo('appStore')}]</a></sup
+              > and web access at cloud.kaagaz.app<sup><a href="#src-cloud">[{srcNo('cloud')}]</a></sup> (a Premium
+              benefit<sup><a href="#src-premium">[{srcNo('premium')}]</a></sup>). Pustak Scan is Android only.
+            </li>
+            <li>
+              <strong>Cloud backup.</strong> 100 MB free in Kaagaz Cloud, plus uploads to Google Drive or Dropbox<sup
+                ><a href="#src-play">[{srcNo('play')}]</a></sup
+              >.
+            </li>
+            <li>
+              <strong>Signatures and PDF tools.</strong> Add a signature, merge, split, compress, remove a password, and
+              write or highlight on PDFs<sup><a href="#src-play">[{srcNo('play')}]</a></sup>.
+            </li>
+            <li>
+              <strong>More app languages.</strong> 12 menu languages versus Hindi and English<sup
+                ><a href="#src-play">[{srcNo('play')}]</a></sup
+              >.
+            </li>
+            <li>
+              <strong>Track record.</strong> Google Play shows 1Cr+ downloads and a 4.4★ rating from about 2.3 lakh
+              reviews<sup><a href="#src-play">[{srcNo('play')}]</a></sup>.
+            </li>
+          </ul>
+        </article>
+
+        <div class="cta reveal">
+          <a class="btn btn-primary" href={pustak.path}>See Pustak Scan →</a>
+          <a class="btn" href={pustak.playUrl} target="_blank" rel="noopener">Get it on Google Play ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sources -->
+    <section id="sources" class="section" aria-labelledby="sources-title">
+      <div class="container narrow">
+        <SectionHeader cmd="cat sources.txt" title="Sources" id="sources-title" />
+        <p class="checked">
+          Last checked: <time datetime={checked.iso}>{checked.label}</time>
+        </p>
+        <ol class="sources">
+          {
+            sourceKeys.map((k) => (
+              <li id={`src-${k}`}>
+                {sources[k].label}
+                <br />
+                <a href={sources[k].url} target="_blank" rel="noopener nofollow">
+                  {sources[k].url}
+                </a>
+              </li>
+            ))
+          }
+        </ol>
+        <p class="fine">
+          Kaagaz is a trademark of its owner. The app is published by Kaagaz Apps (Ordenado Labs Pvt Ltd, per its Google
+          Play listing). This page is not affiliated with or endorsed by them. Kaagaz information comes from public sources as of{' '}
+          {checked.label} and may have changed since. Prices are as shown in India and may vary. Spotted something wrong?
+          Email <a href={`mailto:${profile.email}?subject=${encodeURIComponent('Pustak Scan vs Kaagaz page')}`}
+            >{profile.email}</a
+          > and I’ll fix it.
+        </p>
+      </div>
+    </section>
+  </main>
+  <Footer />
+  <HireDialog />
+  <Reveal />
+</Base>
+
+<style>
+  .hero {
+    padding-block: 32px 8px;
+  }
+  @media (min-width: 768px) {
+    .hero {
+      padding-block: 56px 8px;
+    }
+  }
+  .narrow {
+    max-width: 860px;
+  }
+  .section-first {
+    padding-top: 40px;
+  }
+  .crumbs ol {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px;
+    font: 0.8125rem var(--font-mono);
+    color: var(--muted);
+  }
+  .crumbs li + li::before {
+    content: '/';
+    color: var(--faint);
+    margin-inline: 0.6ch;
+  }
+  .crumbs a {
+    color: var(--muted);
+  }
+  .crumbs [aria-current] {
+    color: var(--text);
+  }
+  .ps {
+    color: var(--accent);
+    margin-right: 1ch;
+  }
+  .hash {
+    color: var(--faint);
+    font-family: var(--font-mono);
+  }
+  h1 {
+    font-size: clamp(2.125rem, 7vw, 3.5rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    margin-top: 4px;
+  }
+  .vs {
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-weight: 400;
+    font-size: 0.7em;
+  }
+  .lead {
+    font-size: clamp(1.0625rem, 2.2vw, 1.25rem);
+    margin-top: 20px;
+    max-width: 60ch;
+  }
+  .disclosure {
+    margin-top: 16px;
+    font: 0.8125rem/1.7 var(--font-mono);
+    color: var(--muted);
+    max-width: 80ch;
+  }
+
+  /* Verdict */
+  .verdict {
+    display: grid;
+    gap: 20px;
+  }
+  @media (min-width: 800px) {
+    .verdict {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .pick {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 24px;
+  }
+  .pick-pustak {
+    border-color: var(--accent);
+    background: linear-gradient(160deg, var(--accent-soft), transparent 60%), var(--bg-raised);
+  }
+  .pick h3 {
+    font-size: 1.25rem;
+    font-weight: 800;
+  }
+  .pick ul {
+    display: grid;
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+    font-size: 0.9375rem;
+  }
+  .pick li {
+    position: relative;
+    padding-left: 22px;
+  }
+  .pick li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    font-family: var(--font-mono);
+    color: var(--accent);
+  }
+  .pick-kaagaz li::before {
+    color: var(--blue);
+  }
+  .pick .btn {
+    margin-top: auto;
+    align-self: flex-start;
+  }
+
+  /* Table */
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 18px;
+    font: 0.8125rem var(--font-mono);
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+  .table-wrap {
+    overflow: hidden;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9375rem;
+  }
+  thead th {
+    background: var(--bg-raised);
+    font: 700 0.8125rem var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    text-align: left;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border-strong);
+  }
+  thead th:nth-child(2) {
+    color: var(--accent);
+  }
+  tbody th,
+  td {
+    text-align: left;
+    vertical-align: top;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  tbody tr:last-child > * {
+    border-bottom: 0;
+  }
+  tbody th {
+    font-weight: 600;
+    width: 26%;
+  }
+  td {
+    color: var(--muted);
+    width: 37%;
+  }
+  td:nth-of-type(1) {
+    color: var(--text);
+  }
+  .cell {
+    display: flex;
+    gap: 10px;
+  }
+  .m {
+    flex: none;
+    width: 1.4em;
+    font: 700 1rem/1.5 var(--font-mono);
+    text-align: center;
+  }
+  .m-yes {
+    color: var(--accent);
+  }
+  .m-no {
+    color: var(--red);
+  }
+  .m-partial {
+    color: var(--amber);
+  }
+  .m-unknown {
+    color: var(--faint);
+  }
+  sup {
+    font: 0.6875rem var(--font-mono);
+    margin-left: 2px;
+  }
+  sup a {
+    text-decoration: none;
+    color: var(--blue);
+  }
+  sup a:hover {
+    text-decoration: underline;
+  }
+
+  /* Phones: each row becomes a small card with labelled cells. */
+  @media (max-width: 699px) {
+    thead {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+    }
+    table,
+    tbody,
+    tr,
+    th,
+    td {
+      display: block;
+      width: auto;
+    }
+    tr {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    tbody tr:last-child {
+      border-bottom: 0;
+    }
+    tbody th,
+    tbody td {
+      width: auto;
+      padding: 0;
+      border: 0;
+    }
+    tbody th {
+      margin-bottom: 8px;
+    }
+    td + td {
+      margin-top: 8px;
+    }
+    td::before {
+      content: attr(data-label);
+      display: block;
+      font: 700 0.6875rem var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--faint);
+      margin-bottom: 2px;
+    }
+  }
+  .note {
+    margin-top: 14px;
+    font-size: 0.8125rem;
+    color: var(--faint);
+  }
+
+  /* Differences */
+  .diff {
+    display: grid;
+    gap: 12px;
+    padding-block: 24px;
+    border-top: 1px dashed var(--border);
+  }
+  .diff:first-of-type {
+    border-top: 0;
+    padding-top: 0;
+  }
+  .diff h3 {
+    font-size: 1.375rem;
+    font-weight: 800;
+  }
+  .diff h3 .hash {
+    margin-right: 0.6ch;
+    font-size: 0.85em;
+  }
+  .diff p,
+  .diff li {
+    color: var(--muted);
+  }
+  .diff ul {
+    display: grid;
+    gap: 10px;
+    padding-left: 1.2em;
+  }
+  .diff strong {
+    color: var(--text);
+  }
+  .cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 16px;
+  }
+
+  /* Sources */
+  .checked {
+    font: 0.875rem var(--font-mono);
+    color: var(--amber);
+    margin-bottom: 16px;
+  }
+  .sources {
+    display: grid;
+    gap: 12px;
+    padding-left: 1.6em;
+    font-size: 0.9375rem;
+  }
+  .sources li {
+    padding-left: 4px;
+    scroll-margin-top: calc(var(--nav-h) + 24px);
+  }
+  .sources li:target {
+    background: var(--accent-soft);
+    border-radius: 6px;
+  }
+  .sources a {
+    font: 0.8125rem var(--font-mono);
+    overflow-wrap: anywhere;
+  }
+  .fine {
+    margin-top: 28px;
+    padding: 16px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: 0.8125rem;
+    color: var(--muted);
+    background: var(--bg-raised);
+  }
+</style>

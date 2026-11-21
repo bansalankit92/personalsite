@@ -1,8 +1,8 @@
-# ankitbansal.co.in
+# ankitbansal.dev
 
 Personal portfolio of **Ankit Bansal**, Senior Software Engineer. It's a terminal-themed, single-page static site built with [Astro](https://astro.build) and deployed on Vercel.
 
-Live: https://ankitbansal.co.in
+Live: https://ankitbansal.dev
 
 ## Features
 

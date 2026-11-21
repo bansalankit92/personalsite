@@ -1,0 +1,785 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import HireDialog from '../../components/HireDialog.astro';
+import Reveal from '../../components/Reveal.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import Shot from '../../components/pustak/Shot.astro';
+import { site, profile } from '../../data/profile';
+import { pustak, pustakFeatures, pustakSteps, pustakPrivacy, pustakFaq } from '../../data/pustak';
+import { publicFileExists } from '../../lib/public-file';
+
+const comparePath = `${pustak.path}/vs-kaagaz-scanner`;
+const pageUrl = `${site.url}${pustak.path}`;
+const hasGraphic = publicFileExists(pustak.featureGraphic.src);
+const [heroShot, ...galleryShots] = pustak.screens;
+
+const title = 'Pustak Scan: free Hindi + English document scanner with offline OCR';
+const description = pustak.description;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebPage',
+      '@id': `${pageUrl}#webpage`,
+      url: pageUrl,
+      name: title,
+      description,
+      inLanguage: 'en-IN',
+      isPartOf: { '@id': `${site.url}/#website` },
+      about: { '@id': `${pageUrl}#app` },
+      breadcrumb: { '@id': `${pageUrl}#breadcrumb` },
+    },
+    {
+      '@type': 'MobileApplication',
+      '@id': `${pageUrl}#app`,
+      name: pustak.name,
+      description,
+      url: pageUrl,
+      installUrl: pustak.playUrl,
+      operatingSystem: 'Android',
+      applicationCategory: 'ProductivityApplication',
+      inLanguage: ['hi', 'en'],
+      isAccessibleForFree: true,
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'INR' },
+      featureList: pustakFeatures.map((f) => f.title),
+      author: { '@type': 'Person', '@id': `${site.url}/#person`, name: profile.name, url: `${site.url}/` },
+      ...(hasGraphic ? { image: `${site.url}${pustak.featureGraphic.src}` } : {}),
+      screenshot: pustak.screens.filter((s) => publicFileExists(s.src)).map((s) => `${site.url}${s.src}`),
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': `${pageUrl}#faq`,
+      mainEntity: pustakFaq.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${pageUrl}#breadcrumb`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Ankit Bansal', item: `${site.url}/` },
+        { '@type': 'ListItem', position: 2, name: pustak.name, item: pageUrl },
+      ],
+    },
+  ],
+};
+
+const navLinks = [
+  { href: '#features', label: 'features' },
+  { href: '#how', label: 'how-it-works' },
+  { href: '#privacy', label: 'privacy' },
+  { href: '#faq', label: 'faq' },
+  { href: comparePath, label: 'vs-kaagaz' },
+];
+---
+
+<Base
+  title={title}
+  description={description}
+  keywords="pustak scan, hindi ocr app, hindi document scanner, devanagari ocr, hindi text from image, scan to word hindi, searchable pdf android, offline ocr, id card scanner, pdf to text hindi"
+  path={pustak.path}
+  ogType="website"
+  image={hasGraphic
+    ? { url: `${site.url}${pustak.featureGraphic.src}`, width: 1024, height: 500, alt: pustak.featureGraphic.alt }
+    : undefined}
+  largeImage={hasGraphic}
+  jsonLd={jsonLd}
+>
+  <Nav links={navLinks} brandHref="/" brandLabel="Ankit Bansal, home page" />
+  <main id="main">
+    <!-- Hero -->
+    <section id="top" class="hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <nav aria-label="Breadcrumb" class="crumbs">
+            <ol>
+              <li><a href="/">~</a></li>
+              <li><a href="/#featured">apps</a></li>
+              <li aria-current="page">pustak-scan</li>
+            </ol>
+          </nav>
+          <p class="cmd" aria-hidden="true"><span class="ps">$</span>./pustak-scan --help</p>
+          <h1 id="hero-title">
+            Pustak Scan
+            <span class="hi" lang="hi">पुस्तक स्कैन</span>
+          </h1>
+          <p class="pitch">{pustak.pitch}</p>
+          <p class="sub">
+            A document scanner for Android that reads <strong>Hindi and English</strong> text on your phone, then exports
+            searchable PDF, Word or plain text.
+          </p>
+          <div class="cta">
+            <a class="btn btn-primary" href={pustak.playUrl} target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"
+                ><path fill="currentColor" d="M4 2.6v18.8c0 .5.5.8.9.6l16.3-9.4c.4-.3.4-.9 0-1.2L4.9 2c-.4-.2-.9.1-.9.6Z"
+                ></path></svg
+              >
+              Get it on Google Play ↗
+            </a>
+            <a class="btn" href="#features">See features</a>
+          </div>
+          <ul class="tags" aria-label="Highlights">
+            {pustak.highlights.map((h) => <li class="tag" lang={/[ऀ-ॿ]/.test(h) ? 'hi' : undefined}>{h}</li>)}
+          </ul>
+        </div>
+        <div class="hero-visual">
+          <Shot src={heroShot.src} alt={heroShot.alt} eager class="hero-phone" />
+          <div class="float card" aria-hidden="true">
+            <span class="ps">✓</span> text read on-device
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="section" aria-labelledby="features-title">
+      <div class="container">
+        <SectionHeader cmd="pustak-scan --features" title="What it does" id="features-title" />
+        <ul class="features">
+          {
+            pustakFeatures.map((f) => (
+              <li class="feature card reveal" id={`f-${f.id}`}>
+                <p class="cmdline" aria-hidden="true">
+                  <span class="ps">$</span>
+                  {f.label}
+                </p>
+                <h3>{f.title}</h3>
+                <p class="lead">{f.lead}</p>
+                <ul class="points">
+                  {f.points.map((p) => (
+                    <li>{p}</li>
+                  ))}
+                </ul>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <!-- Screens -->
+    <section id="screens" class="section section-tight" aria-labelledby="screens-title">
+      <div class="container">
+        <SectionHeader cmd="ls ./screens" title="A look inside" id="screens-title" />
+        <div class="gallery reveal" role="region" tabindex="0" aria-label="App screenshots, scroll sideways for more">
+          <ul>
+            {
+              galleryShots.map((s) => (
+                <li>
+                  <Shot src={s.src} alt={s.alt} sizes="(min-width: 1000px) 180px, min(200px, 46vw)" />
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section id="how" class="section" aria-labelledby="how-title">
+      <div class="container">
+        <SectionHeader cmd="scan | read | export" title="How it works" id="how-title" />
+        <ol class="steps">
+          {
+            pustakSteps.map((s) => (
+              <li class="step card reveal">
+                <span class="n" aria-hidden="true">
+                  {s.n}
+                </span>
+                <h3>{s.title}</h3>
+                <p>{s.text}</p>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </section>
+
+    <!-- Design -->
+    <section id="design" class="section" aria-labelledby="design-title">
+      <div class="container">
+        <SectionHeader cmd="cat design.md" title="Built for everyday phones" id="design-title" />
+        <div class="design">
+          <Shot
+            src={pustak.featureGraphic.src}
+            alt={pustak.featureGraphic.alt}
+            variant="wide"
+            sizes="(min-width: 960px) 55vw, 100vw"
+            class="design-graphic reveal"
+          />
+          <ul class="design-points">
+            <li class="reveal">
+              <h3>Your language</h3>
+              <p>App menus in <span lang="hi">हिन्दी</span> or English.</p>
+            </li>
+            <li class="reveal">
+              <h3>Scan first, organise later</h3>
+              <p>New scans go to “My Scans”. No folder or file name to pick before you start.</p>
+            </li>
+            <li class="reveal">
+              <h3>Never stuck waiting</h3>
+              <p>
+                Heavy work, like importing a PDF with hundreds of pages, runs in the background, page by page, so
+                the app keeps responding.
+              </p>
+            </li>
+            <li class="reveal">
+              <h3>Honest warnings</h3>
+              <p>If a PDF is big for your phone’s memory or storage is low, you’re told, and you decide.</p>
+            </li>
+          </ul>
+        </div>
+        <p class="built reveal">
+          <span class="hash">//</span> Built with Flutter by <a href="/">{profile.name}</a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- Privacy -->
+    <section id="privacy" class="section" aria-labelledby="privacy-title">
+      <div class="container">
+        <SectionHeader cmd="cat privacy.txt" title="Your documents stay on your phone" id="privacy-title" />
+        <div class="privacy">
+          <ul class="privacy-grid">
+            {
+              pustakPrivacy.map((p) => (
+                <li class="card reveal">
+                  <h3>{p.title}</h3>
+                  <p>{p.text}</p>
+                </li>
+              ))
+            }
+          </ul>
+          <div class="perm card reveal" role="group" aria-label="Permissions summary">
+            <p class="perm-bar"><span class="ps">$</span>cat permissions.txt</p>
+            <dl>
+              <div><dt>camera</dt><dd class="ok">the only permission</dd></div>
+              <div><dt>storage</dt><dd>only on very old Android</dd></div>
+              <div><dt>contacts</dt><dd class="no">not requested</dd></div>
+              <div><dt>location</dt><dd class="no">not requested</dd></div>
+              <div><dt>account</dt><dd class="no">none</dd></div>
+              <div><dt>upload</dt><dd class="no">never</dd></div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section" aria-labelledby="faq-title">
+      <div class="container narrow">
+        <SectionHeader cmd="man pustak-scan" title="Questions" id="faq-title" />
+        <div class="faq">
+          {
+            pustakFaq.map((f) => (
+              <details class="qa reveal">
+                <summary>
+                  <h3>{f.q}</h3>
+                </summary>
+                <p>{f.a}</p>
+              </details>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Compare + final CTA -->
+    <section class="section section-tight" aria-labelledby="next-title">
+      <div class="container">
+        <h2 id="next-title" class="sr-only">Next steps</h2>
+        <div class="next">
+          <a class="compare card reveal" href={comparePath}>
+            <span class="cmdline" aria-hidden="true"><span class="ps">$</span>diff pustak-scan kaagaz</span>
+            <span class="compare-title">Pustak Scan vs Kaagaz Scanner</span>{' '}
+            <span class="compare-text">
+              An honest side-by-side: where each app is stronger, with a source for every Kaagaz claim.
+            </span>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+          <div class="get card reveal">
+            <p class="get-title">Try it on your next document.</p>
+            <p class="get-text">Free on Google Play. No sign-up, no watermark.</p>
+            <a class="btn btn-primary" href={pustak.playUrl} target="_blank" rel="noopener">Get it on Google Play ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+  <HireDialog />
+  <Reveal />
+</Base>
+
+<style>
+  /* ---------- Hero ---------- */
+  .hero {
+    padding-block: 32px 48px;
+    overflow: hidden;
+  }
+  @media (min-width: 768px) {
+    .hero {
+      padding-block: 56px 72px;
+    }
+  }
+  .hero-grid {
+    display: grid;
+    gap: 40px;
+    align-items: center;
+  }
+  @media (min-width: 860px) {
+    .hero-grid {
+      grid-template-columns: 1.25fr 1fr;
+      gap: 56px;
+    }
+  }
+  .crumbs ol {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px;
+    font: 0.8125rem var(--font-mono);
+    color: var(--muted);
+  }
+  .crumbs li + li::before {
+    content: '/';
+    color: var(--faint);
+    margin-inline: 0.6ch;
+  }
+  .crumbs a {
+    color: var(--muted);
+  }
+  .crumbs [aria-current] {
+    color: var(--text);
+  }
+  .ps {
+    color: var(--accent);
+    margin-right: 1ch;
+  }
+  h1 {
+    font-size: clamp(2.5rem, 8vw, 4.25rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.02;
+    margin-top: 4px;
+  }
+  h1 .hi {
+    display: block;
+    font-size: 0.42em;
+    font-weight: 600;
+    letter-spacing: 0;
+    color: var(--accent);
+    margin-top: 10px;
+  }
+  .pitch {
+    font-size: clamp(1.125rem, 2.4vw, 1.375rem);
+    font-weight: 600;
+    margin-top: 20px;
+    max-width: 34ch;
+  }
+  .sub {
+    color: var(--muted);
+    margin-top: 12px;
+    max-width: 52ch;
+  }
+  .sub strong {
+    color: var(--text);
+  }
+  .cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 28px;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+    margin-top: 24px;
+  }
+  .hero-visual {
+    position: relative;
+    justify-self: center;
+    width: min(280px, 72vw);
+  }
+  .hero-visual :global(.hero-phone) {
+    transform: rotate(2deg);
+  }
+  .float {
+    position: absolute;
+    right: -32px;
+    top: 56%;
+    padding: 10px 14px;
+    font: 600 0.8125rem var(--font-mono);
+    white-space: nowrap;
+  }
+  @media (max-width: 420px) {
+    .float {
+      right: -8px;
+    }
+  }
+  .hero-visual::before {
+    content: '';
+    position: absolute;
+    inset: 10% -20% -6%;
+    background: radial-gradient(closest-side, var(--accent-soft), transparent);
+    z-index: -1;
+  }
+
+  /* ---------- Shared ---------- */
+  .section-tight {
+    padding-block: 32px;
+  }
+  @media (min-width: 768px) {
+    .section-tight {
+      padding-block: 48px;
+    }
+  }
+  .narrow {
+    max-width: 820px;
+  }
+  .cmdline {
+    font: 0.8125rem var(--font-mono);
+    color: var(--muted);
+  }
+  .hash {
+    color: var(--faint);
+  }
+
+  /* ---------- Features ---------- */
+  .features {
+    display: grid;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+  }
+  @media (min-width: 700px) {
+    .features {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .feature {
+    display: grid;
+    align-content: start;
+    gap: 10px;
+    padding: 22px;
+    transition: border-color 0.2s, transform 0.2s, opacity 0.6s ease;
+  }
+  .feature:hover {
+    border-color: var(--border-strong);
+    transform: translateY(-3px);
+  }
+  .feature .cmdline {
+    padding-bottom: 12px;
+    border-bottom: 1px dashed var(--border);
+  }
+  .feature h3,
+  .step h3,
+  .privacy-grid h3,
+  .design-points h3 {
+    font-size: 1.25rem;
+    font-weight: 800;
+  }
+  .lead {
+    color: var(--muted);
+    font-size: 0.9375rem;
+  }
+  .points {
+    display: grid;
+    gap: 6px;
+    list-style: none;
+    padding: 0;
+    font-size: 0.9375rem;
+  }
+  .points li {
+    position: relative;
+    padding-left: 22px;
+  }
+  .points li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-family: var(--font-mono);
+  }
+
+  /* ---------- Gallery ---------- */
+  .gallery {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 8px 4px 20px;
+    margin: 0 -4px;
+    scrollbar-width: thin;
+    border-radius: var(--radius-sm);
+  }
+  .gallery ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+  }
+  .gallery li {
+    flex: 0 0 min(200px, 46vw);
+    scroll-snap-align: start;
+  }
+  @media (min-width: 1000px) {
+    .gallery li {
+      flex-basis: calc((100% - 6 * 20px) / 6.4);
+    }
+  }
+
+  /* ---------- Steps ---------- */
+  .steps {
+    display: grid;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+    counter-reset: none;
+  }
+  @media (min-width: 860px) {
+    .steps {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .step {
+    position: relative;
+    display: grid;
+    gap: 8px;
+    padding: 22px;
+  }
+  .step p {
+    color: var(--muted);
+    font-size: 0.9375rem;
+  }
+  .n {
+    font: 700 2rem/1 var(--font-mono);
+    color: var(--accent);
+  }
+  @media (min-width: 860px) {
+    .step:not(:last-child)::after {
+      content: '→';
+      position: absolute;
+      right: -17px;
+      top: 50%;
+      transform: translateY(-50%);
+      font: 700 1rem var(--font-mono);
+      color: var(--faint);
+    }
+  }
+
+  /* ---------- Design ---------- */
+  .design {
+    display: grid;
+    gap: 28px;
+  }
+  @media (min-width: 960px) {
+    .design {
+      grid-template-columns: 1.3fr 1fr;
+      align-items: center;
+      gap: 40px;
+    }
+  }
+  .design-points {
+    display: grid;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+  }
+  .design-points li {
+    padding-left: 16px;
+    border-left: 2px solid var(--accent);
+  }
+  .design-points h3 {
+    font-size: 1.0625rem;
+  }
+  .design-points p {
+    color: var(--muted);
+    font-size: 0.9375rem;
+    margin-top: 4px;
+  }
+  .built {
+    margin-top: 28px;
+    font: 0.875rem var(--font-mono);
+    color: var(--muted);
+  }
+
+  /* ---------- Privacy ---------- */
+  .privacy {
+    display: grid;
+    gap: 20px;
+  }
+  @media (min-width: 960px) {
+    .privacy {
+      grid-template-columns: 1.4fr 1fr;
+      align-items: start;
+    }
+  }
+  .privacy-grid {
+    display: grid;
+    gap: 16px;
+    list-style: none;
+    padding: 0;
+  }
+  @media (min-width: 640px) {
+    .privacy-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .privacy-grid li {
+    display: grid;
+    gap: 6px;
+    padding: 20px;
+  }
+  .privacy-grid h3 {
+    font-size: 1.0625rem;
+  }
+  .privacy-grid p {
+    color: var(--muted);
+    font-size: 0.9375rem;
+  }
+  .perm {
+    overflow: hidden;
+    background: var(--bg-sunken);
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+  }
+  .perm-bar {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-raised);
+    color: var(--muted);
+    overflow-wrap: anywhere;
+  }
+  .perm dl {
+    margin: 0;
+    padding: 14px;
+    display: grid;
+    gap: 6px;
+  }
+  .perm dl div {
+    display: grid;
+    grid-template-columns: 10ch 1fr;
+    gap: 12px;
+  }
+  .perm dt {
+    color: var(--blue);
+  }
+  .perm dd {
+    margin: 0;
+    color: var(--muted);
+  }
+  .perm .ok {
+    color: var(--accent);
+  }
+  .perm .no {
+    color: var(--text);
+  }
+
+  /* ---------- FAQ ---------- */
+  .faq {
+    display: grid;
+    gap: 10px;
+  }
+  .qa {
+    background: var(--bg-raised);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+  }
+  .qa[open] {
+    border-color: var(--border-strong);
+  }
+  summary {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 52px;
+    padding: 12px 16px;
+    cursor: pointer;
+    list-style: none;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  summary::after {
+    content: '+';
+    margin-left: auto;
+    font: 700 1.125rem var(--font-mono);
+    color: var(--accent);
+  }
+  .qa[open] summary::after {
+    content: '−';
+  }
+  summary h3 {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  .qa p {
+    padding: 0 16px 16px;
+    color: var(--muted);
+    font-size: 0.9375rem;
+  }
+
+  /* ---------- Next ---------- */
+  .next {
+    display: grid;
+    gap: 20px;
+  }
+  @media (min-width: 860px) {
+    .next {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .compare {
+    position: relative;
+    display: grid;
+    gap: 8px;
+    padding: 24px 56px 24px 24px;
+    color: var(--text);
+    text-decoration: none;
+    transition: border-color 0.2s, transform 0.2s, opacity 0.6s ease;
+  }
+  .compare:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+  }
+  .compare-title {
+    font-size: 1.375rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+  .compare-text {
+    color: var(--muted);
+    font-size: 0.9375rem;
+  }
+  .compare .arrow {
+    position: absolute;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    font: 700 1.5rem var(--font-mono);
+    color: var(--accent);
+  }
+  .get {
+    display: grid;
+    gap: 8px;
+    justify-items: start;
+    padding: 24px;
+    background: linear-gradient(135deg, var(--accent-soft), transparent 70%), var(--bg-raised);
+  }
+  .get-title {
+    font-size: 1.375rem;
+    font-weight: 800;
+  }
+  .get-text {
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+</style>

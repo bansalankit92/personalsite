@@ -1,0 +1,254 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import HireDialog from '../../components/HireDialog.astro';
+import Reveal from '../../components/Reveal.astro';
+import { site, profile } from '../../data/profile';
+import { getPosts, postPath, blogPath, formatDate, isoDate, readingMinutes } from '../../lib/blog';
+
+const posts = await getPosts();
+const pageUrl = `${site.url}${blogPath}`;
+const title = 'Blog - Ankit Bansal';
+const description =
+  'Notes from 11+ years of building with Java, Spring Boot, Kafka, Node.js and Next.js: backend architecture, full stack product engineering and shipping on AWS and GCP.';
+const tags = [...new Set(posts.flatMap((p) => p.data.tags))].sort();
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Blog',
+      '@id': `${pageUrl}#blog`,
+      url: pageUrl,
+      name: title,
+      description,
+      inLanguage: 'en-IN',
+      isPartOf: { '@id': `${site.url}/#website` },
+      author: { '@type': 'Person', '@id': `${site.url}/#person`, name: profile.name, url: `${site.url}/` },
+      blogPost: posts.map((p) => ({
+        '@type': 'BlogPosting',
+        headline: p.data.title,
+        url: `${site.url}${postPath(p)}`,
+        datePublished: isoDate(p.data.pubDate),
+      })),
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Ankit Bansal', item: `${site.url}/` },
+        { '@type': 'ListItem', position: 2, name: 'Blog', item: pageUrl },
+      ],
+    },
+  ],
+};
+
+const navLinks = [
+  { href: '/#about', label: 'about' },
+  { href: '/#featured', label: 'featured' },
+  { href: '/#projects', label: 'projects' },
+  { href: blogPath, label: 'blog' },
+];
+---
+
+<Base title={title} description={description} path={blogPath} ogType="website" jsonLd={jsonLd} noindex={posts.length === 0}>
+  <Nav links={navLinks} brandHref="/" brandLabel="Ankit Bansal, home page" />
+  <main id="main">
+    <section id="top" class="section head" aria-labelledby="blog-title">
+      <div class="container">
+        <nav aria-label="Breadcrumb" class="crumbs">
+          <ol>
+            <li><a href="/">~</a></li>
+            <li aria-current="page">blog</li>
+          </ol>
+        </nav>
+        <p class="cmd" aria-hidden="true"><span class="ps">$</span>ls -t ~/blog</p>
+        <h1 id="blog-title">Blog</h1>
+        <p class="lede">{description}</p>
+        <p class="feed"><a href={`${blogPath}/rss.xml`}>RSS feed</a></p>
+      </div>
+    </section>
+
+    <section class="section list" aria-label="Posts">
+      <div class="container">
+        {
+          posts.length === 0 ? (
+            <div class="empty card">
+              <p class="cmd" aria-hidden="true">
+                <span class="ps">$</span>ls ~/blog
+              </p>
+              <p>The first posts are on their way.</p>
+              <p class="muted">
+                Need something built in the meantime? <a href={profile.booking} target="_blank" rel="noopener">Book a call</a>{' '}
+                or email <a href={`mailto:${profile.email}`}>{profile.email}</a>.
+              </p>
+            </div>
+          ) : (
+            <>
+              {tags.length > 0 && (
+                <ul class="tags" aria-label="Topics">
+                  {tags.map((t) => (
+                    <li class="tag">#{t}</li>
+                  ))}
+                </ul>
+              )}
+              <ol class="posts">
+                {posts.map((p) => (
+                  <li class="reveal">
+                    <article class="post card">
+                      <p class="meta">
+                        <time datetime={isoDate(p.data.pubDate)}>{formatDate(p.data.pubDate)}</time>
+                        <span aria-hidden="true">·</span>
+                        <span>{readingMinutes(p.body)} min read</span>
+                        {p.data.draft && <span class="draft">draft</span>}
+                      </p>
+                      <h2>
+                        <a href={postPath(p)}>{p.data.title}</a>
+                      </h2>
+                      <p class="desc">{p.data.description}</p>
+                      {p.data.tags.length > 0 && (
+                        <ul class="post-tags" aria-label="Tags">
+                          {p.data.tags.map((t) => (
+                            <li>#{t}</li>
+                          ))}
+                        </ul>
+                      )}
+                    </article>
+                  </li>
+                ))}
+              </ol>
+            </>
+          )
+        }
+      </div>
+    </section>
+  </main>
+  <Footer />
+  <HireDialog />
+  <Reveal />
+</Base>
+
+<style>
+  .head {
+    padding-bottom: 0;
+  }
+  .list {
+    padding-top: 32px;
+  }
+  .crumbs ol {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px;
+    font: 0.8125rem var(--font-mono);
+    color: var(--muted);
+  }
+  .crumbs li + li::before {
+    content: '/';
+    color: var(--faint);
+    margin-inline: 0.6ch;
+  }
+  .crumbs a {
+    color: var(--muted);
+  }
+  .crumbs [aria-current] {
+    color: var(--text);
+  }
+  .ps {
+    color: var(--accent);
+    margin-right: 1ch;
+  }
+  h1 {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+  }
+  .lede {
+    max-width: 62ch;
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: 1.0625rem;
+  }
+  .feed {
+    margin-top: 12px;
+    font: 0.8125rem var(--font-mono);
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px;
+  }
+  .posts {
+    display: grid;
+    gap: 16px;
+    list-style: none;
+    padding: 0;
+  }
+  .post {
+    position: relative;
+    padding: 20px;
+  }
+  .post:hover {
+    border-color: var(--border-strong);
+  }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    font: 0.8125rem var(--font-mono);
+    color: var(--faint);
+  }
+  .draft {
+    color: var(--amber);
+  }
+  h2 {
+    margin-top: 8px;
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+    letter-spacing: -0.01em;
+  }
+  h2 a {
+    color: var(--text);
+    text-decoration: none;
+  }
+  /* The whole card is the link target. */
+  h2 a::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+  }
+  h2 a:focus-visible {
+    outline: none;
+  }
+  .post:has(a:focus-visible) {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+  .desc {
+    margin-top: 8px;
+    color: var(--muted);
+  }
+  .post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+    margin-top: 12px;
+    font: 0.8125rem var(--font-mono);
+    color: var(--accent);
+  }
+  .empty {
+    padding: 24px;
+    display: grid;
+    gap: 8px;
+  }
+  .muted {
+    color: var(--muted);
+  }
+</style>

@@ -1,0 +1,393 @@
+---
+import { render } from 'astro:content';
+import { Image, getImage } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import HireDialog from '../../components/HireDialog.astro';
+import Reveal from '../../components/Reveal.astro';
+import { site, profile } from '../../data/profile';
+import { getPosts, postPath, blogPath, formatDate, isoDate, readingMinutes, type Post } from '../../lib/blog';
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return posts.map((post, i) => ({
+    params: { slug: post.id },
+    props: { post, newer: posts[i - 1], older: posts[i + 1] },
+  }));
+}
+
+interface Props {
+  post: Post;
+  newer?: Post;
+  older?: Post;
+}
+const { post, newer, older } = Astro.props;
+const { Content } = await render(post);
+const { title, description, pubDate, updatedDate, tags, cover, coverAlt } = post.data;
+
+const path = postPath(post);
+const pageUrl = `${site.url}${path}`;
+const minutes = readingMinutes(post.body);
+
+// Link previews need an absolute JPEG/PNG/WebP URL at a fixed size.
+const og = cover ? await getImage({ src: cover, width: 1200, format: 'webp' }) : undefined;
+const ogImage =
+  cover && og
+    ? {
+        url: `${site.url}${og.src}`,
+        width: 1200,
+        height: Math.round((1200 * cover.height) / cover.width),
+        alt: coverAlt ?? title,
+      }
+    : undefined;
+
+const author = { '@type': 'Person', '@id': `${site.url}/#person`, name: profile.name, url: `${site.url}/` };
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'BlogPosting',
+      '@id': `${pageUrl}#post`,
+      mainEntityOfPage: pageUrl,
+      url: pageUrl,
+      headline: title,
+      description,
+      datePublished: isoDate(pubDate),
+      dateModified: isoDate(updatedDate ?? pubDate),
+      inLanguage: 'en-IN',
+      keywords: tags.join(', '),
+      timeRequired: `PT${minutes}M`,
+      author,
+      publisher: author,
+      isPartOf: { '@type': 'Blog', '@id': `${site.url}${blogPath}#blog` },
+      ...(ogImage ? { image: ogImage.url } : {}),
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Ankit Bansal', item: `${site.url}/` },
+        { '@type': 'ListItem', position: 2, name: 'Blog', item: `${site.url}${blogPath}` },
+        { '@type': 'ListItem', position: 3, name: title, item: pageUrl },
+      ],
+    },
+  ],
+};
+
+const navLinks = [
+  { href: '/#about', label: 'about' },
+  { href: '/#featured', label: 'featured' },
+  { href: '/#projects', label: 'projects' },
+  { href: blogPath, label: 'blog' },
+];
+---
+
+<Base
+  title={`${title} - Ankit Bansal`}
+  description={description}
+  keywords={tags.join(', ')}
+  path={path}
+  ogType="article"
+  image={ogImage}
+  largeImage={!!ogImage}
+  jsonLd={jsonLd}
+  noindex={post.data.draft}
+>
+  <Nav links={navLinks} brandHref="/" brandLabel="Ankit Bansal, home page" />
+  <main id="main">
+    <article class="section" aria-labelledby="post-title">
+      <div class="container narrow">
+        <nav aria-label="Breadcrumb" class="crumbs">
+          <ol>
+            <li><a href="/">~</a></li>
+            <li><a href={blogPath}>blog</a></li>
+            <li aria-current="page">{post.id}</li>
+          </ol>
+        </nav>
+        <header class="post-head">
+          <h1 id="post-title">{title}</h1>
+          <p class="meta">
+            <span>{profile.name}</span>
+            <span aria-hidden="true">·</span>
+            <time datetime={isoDate(pubDate)}>{formatDate(pubDate)}</time>
+            {
+              updatedDate && (
+                <>
+                  <span aria-hidden="true">·</span>
+                  <span>
+                    updated <time datetime={isoDate(updatedDate)}>{formatDate(updatedDate)}</time>
+                  </span>
+                </>
+              )
+            }
+            <span aria-hidden="true">·</span>
+            <span>{minutes} min read</span>
+          </p>
+          {
+            tags.length > 0 && (
+              <ul class="post-tags" aria-label="Tags">
+                {tags.map((t) => (
+                  <li>#{t}</li>
+                ))}
+              </ul>
+            )
+          }
+        </header>
+
+        {
+          cover && (
+            <Image
+              class="cover"
+              src={cover}
+              alt={coverAlt ?? ''}
+              widths={[480, 800, 1200]}
+              sizes="(min-width: 760px) 720px, 100vw"
+              loading="eager"
+              fetchpriority="high"
+            />
+          )
+        }
+
+        <div class="prose">
+          <Content />
+        </div>
+
+        <aside class="cta card" aria-label="Work with Ankit">
+          <p class="cmd" aria-hidden="true"><span class="ps">$</span>./hire --consult</p>
+          <p class="cta-title">Building a website, app or backend?</p>
+          <p class="muted">
+            I'm a full stack Java and Next.js developer in Pune with 11+ years of experience. Book a paid consultation or
+            email me about your project.
+          </p>
+          <div class="cta-actions">
+            <a class="btn btn-primary" href={profile.booking} target="_blank" rel="noopener">Book a 30-min call ↗</a>
+            <a class="btn" href={`mailto:${profile.email}`}>{profile.email}</a>
+          </div>
+        </aside>
+
+        {
+          (newer || older) && (
+            <nav class="pager" aria-label="More posts">
+              {older ? (
+                <a href={postPath(older)} rel="prev">
+                  <span>← older</span>
+                  {older.data.title}
+                </a>
+              ) : null}
+              {newer && (
+                <a class="next" href={postPath(newer)} rel="next">
+                  <span>newer →</span>
+                  {newer.data.title}
+                </a>
+              )}
+            </nav>
+          )
+        }
+      </div>
+    </article>
+  </main>
+  <Footer />
+  <HireDialog />
+  <Reveal />
+</Base>
+
+<style>
+  .narrow {
+    max-width: 760px;
+  }
+  .crumbs ol {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px;
+    font: 0.8125rem var(--font-mono);
+    color: var(--muted);
+  }
+  .crumbs li + li::before {
+    content: '/';
+    color: var(--faint);
+    margin-inline: 0.6ch;
+  }
+  .crumbs a {
+    color: var(--muted);
+  }
+  .crumbs [aria-current] {
+    color: var(--text);
+    overflow-wrap: anywhere;
+  }
+  .ps {
+    color: var(--accent);
+    margin-right: 1ch;
+  }
+  h1 {
+    font-size: clamp(2rem, 6vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+  }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+    font: 0.8125rem var(--font-mono);
+    color: var(--faint);
+  }
+  .post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+    font: 0.8125rem var(--font-mono);
+    color: var(--accent);
+  }
+  .cover {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-top: 28px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+  }
+
+  /* Rendered Markdown */
+  .prose {
+    margin-top: 32px;
+    font-size: 1.0625rem;
+    line-height: 1.75;
+  }
+  .prose :global(> * + *) {
+    margin-top: 1.1em;
+  }
+  .prose :global(h2) {
+    margin-top: 2em;
+    font-size: 1.5rem;
+    letter-spacing: -0.015em;
+  }
+  .prose :global(h3) {
+    margin-top: 1.6em;
+    font-size: 1.2rem;
+  }
+  .prose :global(a) {
+    color: var(--accent);
+  }
+  .prose :global(ul),
+  .prose :global(ol) {
+    padding-left: 1.4em;
+  }
+  .prose :global(li + li) {
+    margin-top: 0.4em;
+  }
+  .prose :global(blockquote) {
+    border-left: 3px solid var(--accent);
+    padding-left: 1em;
+    color: var(--muted);
+  }
+  .prose :global(img) {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius-sm);
+  }
+  .prose :global(hr) {
+    border: 0;
+    border-top: 1px dashed var(--border-strong);
+    margin-block: 2.5em;
+  }
+  .prose :global(:not(pre) > code) {
+    font: 0.9em var(--font-mono);
+    padding: 0.1em 0.35em;
+    border-radius: 5px;
+    background: var(--bg-sunken);
+    border: 1px solid var(--border);
+  }
+  .prose :global(pre) {
+    overflow-x: auto;
+    padding: 16px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    font: 0.875rem/1.6 var(--font-mono);
+  }
+  .prose :global(table) {
+    display: block;
+    overflow-x: auto;
+    border-collapse: collapse;
+    font-size: 0.9375rem;
+  }
+  .prose :global(th),
+  .prose :global(td) {
+    border: 1px solid var(--border);
+    padding: 8px 12px;
+    text-align: left;
+  }
+  /* Code highlighting: dark colours by default, switch to the light theme with the site. */
+  :global(:root[data-theme='light']) .prose :global(.astro-code),
+  :global(:root[data-theme='light']) .prose :global(.astro-code span) {
+    color: var(--shiki-light) !important;
+    background-color: var(--shiki-light-bg) !important;
+  }
+  @media (prefers-color-scheme: light) {
+    :global(:root:not([data-theme='dark'])) .prose :global(.astro-code),
+    :global(:root:not([data-theme='dark'])) .prose :global(.astro-code span) {
+      color: var(--shiki-light) !important;
+      background-color: var(--shiki-light-bg) !important;
+    }
+  }
+
+  .cta {
+    margin-top: 48px;
+    padding: 24px;
+    display: grid;
+    gap: 8px;
+  }
+  .cta-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+  }
+  .muted {
+    color: var(--muted);
+  }
+  .cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 8px;
+  }
+  .pager {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 32px;
+  }
+  .pager a {
+    display: grid;
+    gap: 4px;
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .pager a:hover {
+    border-color: var(--border-strong);
+  }
+  .pager span {
+    font: 0.75rem var(--font-mono);
+    color: var(--faint);
+  }
+  .pager .next {
+    grid-column: 2;
+    text-align: right;
+  }
+  @media (max-width: 600px) {
+    .pager {
+      grid-template-columns: 1fr;
+    }
+    .pager .next {
+      grid-column: 1;
+    }
+  }
+</style>

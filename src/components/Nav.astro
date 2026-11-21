@@ -1,19 +1,28 @@
 ---
 import { profile } from '../data/profile';
 
-const links = [
+interface Props {
+  // Sub-pages pass their own section links, and the brand goes back to the home page.
+  links?: { href: string; label: string }[];
+  brandHref?: string;
+  brandLabel?: string;
+}
+
+const homeLinks = [
   { href: '#about', label: 'about' },
   { href: '#featured', label: 'featured' },
   { href: '#experience', label: 'experience' },
   { href: '#skills', label: 'skills' },
   { href: '#projects', label: 'projects' },
   { href: '#services', label: 'services' },
+  { href: '/blog', label: 'blog' },
 ];
+const { links = homeLinks, brandHref = '#top', brandLabel = 'Ankit Bansal, back to top' } = Astro.props;
 ---
 
 <header class="nav" data-nav-root>
   <div class="container nav-inner">
-    <a class="brand" href="#top" aria-label="Ankit Bansal, back to top">
+    <a class="brand" href={brandHref} aria-label={brandLabel}>
       <span class="ps">~/</span>ankit<span class="cursor" aria-hidden="true">_</span>
     </a>
 
@@ -330,7 +339,7 @@ const links = [
     menuBtn.setAttribute('aria-expanded', String(open));
     menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
   };
-  menuBtn?.addEventListener('click', () => setOpen(menu!.hidden));
+  menuBtn?.addEventListener('click', () => setOpen(!!menu!.hidden));
   menu?.querySelectorAll('[data-menu-link]').forEach((a) => a.addEventListener('click', () => setOpen(false)));
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && menu && !menu.hidden) {
@@ -345,7 +354,7 @@ const links = [
 
   // Highlight the section currently in view
   const navLinks = [...document.querySelectorAll<HTMLAnchorElement>('a[data-nav]')];
-  const sections = [...new Set(navLinks.map((a) => a.getAttribute('href')!))]
+  const sections = [...new Set(navLinks.map((a) => a.getAttribute('href')!).filter((h) => h.startsWith('#')))]
     .map((h) => document.querySelector<HTMLElement>(h))
     .filter((el): el is HTMLElement => !!el);
   let ticking = false;

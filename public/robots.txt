@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ankitbansal.co.in/sitemap.xml
+Sitemap: https://ankitbansal.dev/sitemap.xml

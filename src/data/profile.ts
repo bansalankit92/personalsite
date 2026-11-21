@@ -2,7 +2,7 @@
 // To update the site, edit this file and rebuild.
 
 export const site = {
-  url: 'https://ankitbansal.co.in',
+  url: 'https://ankitbansal.dev',
   title: 'Ankit Bansal - Senior Software Engineer - 11 years exp',
   description:
     'I am Ankit Bansal, a Senior Software Engineer with 11 years of experience building scalable backend systems, event-driven microservices and cloud platforms.',
@@ -648,7 +648,7 @@ export interface Featured {
   role: string;
   description: string;
   facts: string[];
-  links?: { label: string; href: string }[]; // notable sub-sections of the site
+  links?: { label: string; href: string }[]; // notable sub-sections of the site; '/…' = a page on this site
   image: string; // file name in src/assets/featured
 }
 
@@ -704,6 +704,10 @@ export const featured: Featured[] = [
     description:
       'Android app that scans Hindi and Devanagari documents, extracts text with on-device OCR and exports searchable PDFs, all offline. Supports Sanskrit, Marathi and Nepali, with multi-page scanning and PDF import.',
     facts: ['1K+ downloads', 'Offline on-device OCR', 'Android'],
+    links: [
+      { label: 'Product page · /pustak-scan', href: '/pustak-scan' },
+      { label: 'Pustak Scan vs Kaagaz Scanner', href: '/pustak-scan/vs-kaagaz-scanner' },
+    ],
     image: 'pustakscan.png',
   },
   {
