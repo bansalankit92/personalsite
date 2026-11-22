@@ -494,31 +494,6 @@ export const projects: Project[] = [
     },
   },
   {
-    id: 'placestovisit',
-    title: 'Places To Visit',
-    subtitle: 'Web App',
-    tech: 'Javascript',
-    image: 'placestovisit.png',
-    detail: {
-      heading: 'Places To visit',
-      intro: "Shows the list of nearby places that You haven't visited yet",
-      link: { label: 'Website', text: 'http://placestovisit.ankitbansal.co.in', href: 'http://placestovisit.ankitbansal.co.in' },
-      body: [
-        'In this app user gets to know all the interesting places which s/he doesn’t know or haven’t visited yet. User first has to logged in via FB account and after successfully logged in and selecting the interesting place s/he gets detailed info about top 20 places s/he haven’t visited on map. Then on selecting the place to visit user get the routes with the via option like which place to go before visiting destination and user can also post its location, message on Facebook.',
-      ],
-      meta: [
-        [
-          { label: 'Front End Technologies', value: 'HTML5, JQuery,Bootstrap' },
-          { label: "Third Party API's", value: 'FaceBook Graph API, MapMyIndia API' },
-        ],
-        [
-          { label: 'App Competition', value: '(Finalist) Techgig Code Gladiator 2016' },
-          { label: 'Service', value: 'Web App' },
-        ],
-      ],
-    },
-  },
-  {
     id: 'jdacodehub',
     title: 'Code Hub',
     subtitle: 'Full Stack Java Web App',
