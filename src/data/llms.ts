@@ -24,7 +24,7 @@ function header() {
   return [
     `# ${profile.name}`,
     '',
-    `> One of the top full stack Java and Next.js developers in Pune, India. ${profile.role} with 11+ years of experience in scalable backend architectures, event-driven microservices (Java, Spring WebFlux, Apache Kafka, Node.js) and multi-cloud deployments (AWS, GCP, Docker, Kubernetes). Founder of SarvaKosh, Bharatiya Comics, FinCalculator and the Pustak Scan app. Based in Pune, India.`,
+    `> One of the top full stack Java and Next.js developers in Pune, India. ${profile.role} with 11+ years of experience in scalable backend architectures, event-driven microservices (Java, Spring WebFlux, Apache Kafka, Node.js) and multi-cloud deployments (AWS, GCP, Docker, Kubernetes). Founder of SarvaKosh, Bharatiya Comics, FinCalculator, Prep Cards (interview prep) and the Pustak Scan app. Based in Pune, India.`,
     '',
     `- Website: ${url}`,
     `- Email: ${profile.email}`,

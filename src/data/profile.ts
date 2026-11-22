@@ -686,6 +686,21 @@ export const featured: Featured[] = [
     image: 'pustakscan.png',
   },
   {
+    id: 'interviewprep',
+    name: 'Prep Cards',
+    url: 'https://interviewprep.ankitbansal.dev',
+    domain: 'interviewprep.ankitbansal.dev',
+    relation: 'Founder',
+    role: 'Founder',
+    description:
+      'Free interview prep in simple English for backend and full stack engineers: system design case studies, microservices, Java 8–25, Spring Boot, Kafka, React and AI/LLMs. Search any topic, swipe one card at a time, follow a 2-week to 2-month study plan and revise with flashcards.',
+    facts: ['3,000+ study cards', 'Study plans & flashcards', 'Free & open source (MIT)'],
+    links: [
+      { label: 'Source on GitHub', href: 'https://github.com/bansalankit92/java-spring-fullstack-interview-question-answers' },
+    ],
+    image: 'interviewprep.webp',
+  },
+  {
     id: 'peerlist',
     name: 'Peerlist',
     url: 'https://peerlist.io',
